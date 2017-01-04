@@ -13,6 +13,5 @@ namespace Webshop.Controllers
         {
             return View();
         }
-        ////teldö
     }
 }
