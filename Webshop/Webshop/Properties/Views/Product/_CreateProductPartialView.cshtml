@@ -1,0 +1,30 @@
+﻿<div class="col-md-4">
+    <b class="message-Invalide">{{responseMessage}} </b>
+    <form name="CreateNewProductForm" class="form-inline" novalidate>
+        <label class="control-label">
+            Product Name:
+            <input type="text" name="newProductName" ng-model="newProduct.Name" class="form-control" required />
+            <span ng-show="newProductForm.Name.$touched && newProductForm.Name.$invalid">The name is required.</span>
+        </label>
+        <label class="control-label">
+            Price:
+            <input type="text" ng-model="newProduct.Price" class="form-control" required />
+        </label>
+        <label class="control-label">
+            Category:
+            <select name="categorySelect" id="categorySelect" class="form-control" ng-model="newProduct.CategoryId">
+                <option ng-repeat="category in categoriesList" value="{{category.Id}}">{{category.Name}}</option>
+            </select>
+        </label>
+        <img id="photoPreveiw" src="#" alt="your image" />
+        <br />
+        <input type="button" value="Upload Picture" onclick="$('#upLoadNewProductPic').click()" class="btn btn-success" />
+        @*<input ng-model="vm.p.photo" type="file" />*@
+        <input name="newProductPhoto" id="upLoadNewProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
+               onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
+        <br />
+        <input type="button" class="btn btn-success" value="Save" ng-click="CreateProduct(newProduct)" />
+
+    </form>
+
+</div>
