@@ -43,6 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -71,11 +81,86 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.Mvc.4.0.1\lib\net45\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,6 +177,11 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -288,12 +378,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\tableStyleSheeet.css" />
     <Content Include="Global.asax" />
-    <Content Include="obj\Debug\WebShop-DESKTOP-LAA9K0G.dll" />
-    <Content Include="obj\Debug\WebShop-DESKTOP-LAA9K0G.pdb" />
-    <Content Include="obj\Debug\WebShop.csproj.FileListAbsolute-DESKTOP-LAA9K0G.txt" />
-    <Content Include="obj\Debug\WebShop.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\WebShop.dll" />
-    <Content Include="obj\Debug\WebShop.pdb" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />
@@ -1086,9 +1170,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IdentityOwinConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShopCartController.cs" />
+    <Compile Include="Controllers\ShopUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1145,7 +1238,6 @@
     <Compile Include="Models\Identity\AppRoleManager.cs" />
     <Compile Include="Models\Identity\AppSignInManager.cs" />
     <Compile Include="Models\Identity\AppUserManager.cs" />
-    <Compile Include="Models\Order-DESKTOP-LAA9K0G.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderProduct.cs" />
     <Compile Include="Models\OrderViewModels\OrderViewMoedel.cs" />
@@ -1153,14 +1245,9 @@
     <Compile Include="Models\ProductViewModels\NewProductViewModel.cs" />
     <Compile Include="Models\ShopUser.cs" />
     <Compile Include="Models\ShopUserModelView\ShopUserCreateViewModel.cs" />
-    <Compile Include="Models\ShopUserModelView\UserDetailsViewModel-DESKTOP-LAA9K0G.cs" />
     <Compile Include="Models\ShopUserModelView\UserDetailsViewModel.cs" />
     <Compile Include="Models\ShopUserModelView\UserForViewList.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Repository-DESKTOP-LAA9K0G.cs" />
     <Compile Include="Services\Repository\AuthRepository.cs" />
     <Compile Include="Services\Repository\IAuthRepository.cs" />
     <Compile Include="Services\Repository\IRepository.cs" />
@@ -1180,13 +1267,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput-DESKTOP-LAA9K0G.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\WebShop.csproj.GenerateResource-DESKTOP-LAA9K0G.Cache" />
-    <Content Include="obj\Debug\WebShop.csproj.GenerateResource.Cache" />
-    <Content Include="obj\Debug\WebShop.csprojResolveAssemblyReference-DESKTOP-LAA9K0G.cache" />
-    <Content Include="obj\Debug\WebShop.csprojResolveAssemblyReference.cache" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-cookies.min.js.map" />
@@ -1203,6 +1283,24 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Category\_CategoryPanelPartialView.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Order\_OrderPanelPartialView.cshtml" />
+    <Content Include="Views\Product\_CreateProductPartialView.cshtml" />
+    <Content Include="Views\Product\_ProductPanelPartialView.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LogInPartialView.cshtml" />
+    <Content Include="Views\Shared\_LogInViewPartialView.cshtml" />
+    <Content Include="Views\Shared\_NavBarPartialView.cshtml" />
+    <Content Include="Views\ShopCart\_ShopCartPartialView.cshtml" />
+    <Content Include="Views\ShopCart\_ViewShopCartPartialView.cshtml" />
+    <Content Include="Views\ShopUser\CreateUser.cshtml" />
+    <Content Include="Views\ShopUser\_CreateShopUserPartialView.cshtml" />
+    <Content Include="Views\ShopUser\_ShopUsersPartialView-DESKTOP-LAA9K0G.cshtml" />
+    <Content Include="Views\ShopUser\_ShopUsersPartialView.cshtml" />
+    <Content Include="Views\Test\TestPaging.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1212,8 +1310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611241112513_init.resx">
@@ -1249,17 +1345,6 @@
     <EmbeddedResource Include="Migrations\201701030916490_newLampaDatabase.resx">
       <DependentUpon>201701030916490_newLampaDatabase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.addresstotheuser.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.init.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.newLampaDatabase.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.photofouser.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.productquantity.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.relationbetweenproductandcategoryid.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.relationbtwenorderandcustomerusers.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.removemandatorybetweenproductandcategory.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.seedM.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.totalprice.resources" />
-    <EmbeddedResource Include="obj\Debug\WebShop.Migrations.totalpriceinorder.resources" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

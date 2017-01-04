@@ -11,7 +11,7 @@ using WebShop.Models;
 using WebShop.Models.Identity;
 
 
-//[assembly: OwinStartup(typeof(WebShop.App_Start.IdentityOwinConfig))]
+[assembly: OwinStartup(typeof(WebShop.App_Start.IdentityOwinConfig))]
 namespace WebShop.App_Start
 {
     
