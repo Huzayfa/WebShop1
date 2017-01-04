@@ -1139,6 +1139,23 @@
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Identity\AppRole.cs" />
+    <Compile Include="Models\Identity\AppRoleManager.cs" />
+    <Compile Include="Models\Identity\AppSignInManager.cs" />
+    <Compile Include="Models\Identity\AppUserManager.cs" />
+    <Compile Include="Models\Order-DESKTOP-LAA9K0G.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderProduct.cs" />
+    <Compile Include="Models\OrderViewModels\OrderViewMoedel.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductViewModels\NewProductViewModel.cs" />
+    <Compile Include="Models\ShopUser.cs" />
+    <Compile Include="Models\ShopUserModelView\ShopUserCreateViewModel.cs" />
+    <Compile Include="Models\ShopUserModelView\UserDetailsViewModel-DESKTOP-LAA9K0G.cs" />
+    <Compile Include="Models\ShopUserModelView\UserDetailsViewModel.cs" />
+    <Compile Include="Models\ShopUserModelView\UserForViewList.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -1195,7 +1212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
