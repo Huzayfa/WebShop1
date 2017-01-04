@@ -14,7 +14,7 @@ namespace Webshop.Controllers
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult Test1()
         {
             return View();
         }
