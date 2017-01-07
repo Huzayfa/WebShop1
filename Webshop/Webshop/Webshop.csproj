@@ -228,6 +228,10 @@
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
     <Content Include="Angular-App\Template\Directive\ProductDetailsPartialView.html" />
     <Content Include="Angular-App\Test\PagingAngular.js" />
+    <Content Include="App_Data\WebShopDB.mdf" />
+    <Content Include="App_Data\WebShopDB_log.ldf">
+      <DependentUpon>WebShopDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Avatar\33326a20-ecec-414e-8bd9-b46097449b10.jpg" />
     <Content Include="Avatar\5f5b7fb6-081d-4408-8c43-d28f8512e78b.jpg" />
     <Content Include="Avatar\627583ea-8959-4347-96e0-bc5dde9d0ef1.jpg" />
@@ -1303,9 +1307,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611241112513_init.resx">
       <DependentUpon>201611241112513_init.cs</DependentUpon>
