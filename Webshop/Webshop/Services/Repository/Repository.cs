@@ -74,28 +74,15 @@ namespace WebShop.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                City=user.City,
+                Country=user.Country,
+                PhoneNumber=user.PhoneNumber,
+                PostNumber=user.PostNumber,
+                StreetAddress=user.StreetAddress,
             };
             
-            var result = await UserManager.CreateAsync(newUser, user.Password);
-            /* if (result.Succeeded)
-             {
-
-                 if (model.IsAdmin)
-                 {
-
-                     var newUser = UserManager.FindByName(model.UserName);
-                     var adminRole = await RoleManager.FindByNameAsync("Admin");
-                     if (adminRole == null)
-                     {
-                         adminRole = new AppRole("Admin");
-                         await RoleManager.CreateAsync(adminRole);
-                     }
-                     var roleResult = UserManager.AddToRole(newUser.Id, "Admin");
-
-                 }
-                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-             }*/
+            var result = await UserManager.CreateAsync(newUser,user.Password);
+            
             return result;
         }
 
@@ -137,6 +124,12 @@ namespace WebShop.Services
                         Id = o.Id,
                         OrderDate = o.OrderDate,
                     }).ToList(),
+                    City = user.City,
+                    Country = user.Country,
+                    PhoneNumber = user.PhoneNumber,
+                    PostNumber = user.PostNumber,
+                    StreetAddress = user.StreetAddress,
+
                 };
             }
         }
