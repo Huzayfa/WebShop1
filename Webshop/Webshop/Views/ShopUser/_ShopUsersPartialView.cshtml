@@ -26,6 +26,7 @@
                 <div class="col-md-12" ng-if='(user.Id==selectedUserEditId)&&editSelected '>
 
                     <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
+                    <h3>Edit User</h3>
                     <form name="EditUserForm" class="form-inline" novalidate>
 
 
@@ -38,6 +39,61 @@
                         <label class="control-label">
                             Email : <input type="text" ng-model="selectedUser.Email" class="form-control" required />
                         </label>
+
+
+                        <label id="StreetAddress" class="control-label">
+                            StreetAddress:
+                            <input type="text" name="StreetAddress" ng-model="selectedUser.StreetAddress" class="form-control" required />
+                            <span style="color:red" ng-show="EditUserForm.StreetAddress.$dirty && newUserForm.StreetAddress.$invalid">
+                                <span class="message-Invalide" ng-show="EditUserForm.StreetAddress.$error.required">StreetAddress is required.</span>
+                                <span class="message-Invalide" ng-show="EditUserForm.StreetAddress.$error.email">Please insert a valid StreetAddress.</span>
+                            </span>
+                        </label>
+
+                        <label id="PostNumber" class="control-label">
+                            Post Number:
+                            <input type="text" name="PostNumber" ng-model="selectedUser.PostNumber" class="form-control" required />
+                            <span style="color:red" ng-show="EditUserForm.PostNumber.$dirty && newUserForm.PostNumber.$invalid">
+                                <span class="message-Invalide" ng-show="EditUserForm.PostNumber.$error.required">Post Number is required.</span>
+                                @* <span class="message-Invalide" ng-show="newUserForm.PostNumber.$error.email">Please insert a valid Country Name.</span>*@
+                            </span>
+                        </label>
+
+                        <label id="CityName" class="control-label">
+                            City Name:
+                            <input type="text" name="CityName" ng-model="selectedUser.City" class="form-control" required />
+                            <span style="color:red" ng-show="EditUserForm.CityName.$dirty && newUserForm.CityName.$invalid">
+                                <span class="message-Invalide" ng-show="EditUserForm.CityName.$error.required">City Name is required.</span>
+                                <span class="message-Invalide" ng-show="EditUserForm.CityName.$error.email">Please insert a valid City Name.</span>
+                            </span>
+                        </label>
+
+                        <label id="CountryName" class="control-label">
+                            Country Name:
+                            <input type="text" name="CountryName" ng-model="selectedUser.Country" class="form-control" required />
+                            <span style="color:red" ng-show="EditUserForm.CountryName.$dirty && newUserForm.CountryName.$invalid">
+                                <span class="message-Invalide" ng-show="EditUserForm.CountryName.$error.required">Country Name is required.</span>
+                                <span class="message-Invalide" ng-show="EditUserForm.CountryName.$error.email">Please insert a valid Country Name.</span>
+                            </span>
+                        </label>
+
+                        <label id="Email" class="control-label">
+                            Email:
+                            <input type="email" name="email" ng-model="selectedUser.Email" class="form-control" required />
+                            <span style="color:red" ng-show="EditUserForm.email.$dirty && newUserForm.email.$invalid">
+                                <span class="message-Invalide" ng-show="EditUserForm.email.$error.required">Email is required.</span>
+                                <span class="message-Invalide" ng-show="EditUserForm.email.$error.email">Please insert a valid Email.</span>
+                            </span>
+                        </label>
+
+                        <label id="PhoneNumber" class="control-label">
+                            PhoneNumber:
+                            <input type="text" name="PhoneNumber" ng-model="selectedUser.PhoneNumber" class="form-control" />
+                            <span style="color:red" ng-show="EditUserForm.PhoneNumber.$dirty && newUserForm.PhoneNumber.$invalid">
+
+                                <span class="message-Invalide" ng-show="EditUserForm.PhoneNumber.$error.email">Please insert a valid PhoneNumber.</span>
+                            </span>
+                        </label>
                         <input type="button" class="btn btn-success" value="Save" ng-click="saveEditUser(selectedUser)" />
                     </form>
 
@@ -48,80 +104,103 @@
                         <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
                     </div>
                     <div class="row container">
-                        <table class="table">
-                            <thead>
-                                <h3>User Details</h3>
-                                <tr>
-                                    <th>
-                                        First Name
-                                    </th>
-                                    <th>
-                                        Last Name
-                                    </th>
-                                    <th>
-                                        Email
-                                    </th>
-                                    <th>
-                                        PhoneNumber
-                                    </th>
-                                    <th>
-                                        City
-                                    </th>
-                                    <th>
-                                        StreetAddress
-                                    </th>
-                                    <th>
-                                        PostNumber
-                                    </th>
-                                    <th>
-                                        CountryName
-                                    </th>
-                                </tr>
-                                
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        {{selectedUser.FirstName}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.LastName}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.Email}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.PhoneNumber}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.City}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.StreetAddress}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.PostNumber}}
-                                    </td>
-                                    <td>
-                                        {{selectedUser.CountryName}}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="col-sm-12">
+                            <table class="table-bordered table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            FirstName
+                                        </th>
+                                        <td>
+                                            {{selectedUser.FirstName}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Last Name
+                                        </th>
+                                        <td>
+                                            {{selectedUser.LastName}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Email
+                                        </th>
+                                        <td>
+                                            {{selectedUser.Email}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            PhoneNumber
+                                        </th>
+                                        <td>
+                                            {{selectedUser.PhoneNumber}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            City
+                                        </th>
+                                        <td>
+                                            {{selectedUser.City}}
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <th>
+                                            StreetAddress
+                                        </th>
+                                        <td>
+                                            {{selectedUser.StreetAddress}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            PostNumber
+                                        </th>
+                                        <td>
+                                            {{selectedUser.PostNumber}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Country
+                                        </th>
+                                        <td>
+                                            {{selectedUser.Country}}
+                                        </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
                         @*<div class="col-md-4">
-                            <label>First Name : {{selectedUser.FirstName}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Last Name: {{selectedUser.LastName}}</label>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Email: {{selectedUser.Email}}</label>
-                        </div>*@
+                                <label>First Name : {{selectedUser.FirstName}}</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Last Name: {{selectedUser.LastName}}</label>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Email: {{selectedUser.Email}}</label>
+                            </div>*@
                         <div class="col-md-12">
-                            <h5>Number Of orders : {{selectedUser.orders.length}}</h5>
+                            <h3>Number Of orders : {{selectedUser.orders.length}}</h3>
                             <ul>
                                 <li ng-repeat="order in selectedUser.orders">
-                                    <label> {{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</label>
+                                    <div row>
+                                        <div class="col-sm-5">
+                                            <label>Order Number: {{order.Id}} </label>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <label>Order Date: <b>{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</b></label>
+
+                                        </div>
+
+                                    </div>
+
+
                                 </li>
 
                             </ul>
@@ -130,7 +209,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         <div class="col-md-4">
             @Html.Partial("_CreateShopUserPartialView")

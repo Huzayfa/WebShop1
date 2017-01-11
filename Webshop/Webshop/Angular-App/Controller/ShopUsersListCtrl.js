@@ -104,7 +104,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
 
     $scope.getUserDetails=function(userId)
     {
-        console.log("User Details " + userId);
+        
         $scope.editSelected = false;
         $scope.detailsSelected = true;
         $scope.selectedUserEditId = "";
@@ -124,6 +124,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
                 }
             }
             angular.copy(response.data, $scope.selectedUser);
+            
         });
         
     }

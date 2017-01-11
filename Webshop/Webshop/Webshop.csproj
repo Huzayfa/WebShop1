@@ -214,7 +214,6 @@
     <Content Include="Angular-App\Controller\OrderControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\ProductControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopCartCtrl.js" />
-    <Content Include="Angular-App\Controller\ShopUsersListCtrl-DESKTOP-LAA9K0G.js" />
     <Content Include="Angular-App\Controller\ShopUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ViewShopCartCtrl.js" />
     <Content Include="Angular-App\Directive\OrderDetails.js" />
