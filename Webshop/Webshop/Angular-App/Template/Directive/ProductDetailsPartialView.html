@@ -1,10 +1,20 @@
-﻿<div class="row container" >
+﻿
+<div class="row container">
+    <div id="ProductPhoto">
+        <a href="">
+            <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
+                 alt="Fjords" style="width:40%" />
+        </a>
+    </div>
     <div>
-        <button type="button" ng-click="close()" class="close">&times;</button>
-        <label>Product Name : {{selectedProduct.Name}}</label>
-        <label>Price : {{selectedProduct.Price}}</label>
-        <!--<img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
-             alt="Fjords" style="height:10px; width:100%" />-->
+
+        <h5>{{selectedProduct.Name}}</h5>
+        <p>{{selectedProduct.Description}}</p>
+    </div>
+    <div>
+        <span>Price: {{selectedProduct.Price}}</span>
     </div>
 
 </div>
+
+

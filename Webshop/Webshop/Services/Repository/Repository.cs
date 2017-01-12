@@ -113,7 +113,7 @@ namespace WebShop.Services
             else
             {
 
-
+                
                 return new UserDetailsViewModel()
                 {
                     FirstName = user.FirstName,
@@ -136,10 +136,15 @@ namespace WebShop.Services
 
         public ActionResult EditUser(UserDetailsViewModel user)
         {
-            var userEdit = UserManager.FindById(user.Id);
+            var userEdit = UserManager.FindById(user.Id);           
             userEdit.FirstName = user.FirstName;
             userEdit.LastName = user.LastName;
             userEdit.Email = user.Email;
+            userEdit.City = user.City;            
+            userEdit.Country = user.Country;
+            userEdit.PhoneNumber = user.PhoneNumber;
+            userEdit.PostNumber = user.PostNumber;
+            userEdit.StreetAddress = user.StreetAddress;
             var Result = UserManager.Update(userEdit);
             if(Result.Succeeded)
             {

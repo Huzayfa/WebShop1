@@ -2,16 +2,7 @@
 'use strict'
 app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, $rootScope, pagingList) {
 
-    
-
-
-
-
-
-
-
-
-
+ 
 
 
     $scope.productsList = [];
@@ -140,10 +131,21 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
     }
 
     $scope.cancelEdit = function (productId) {
-        $scope.editSelected = false;
-        $scope.detailsSelected = false;
-        $scope.selectedProductEditId = " ";
-        $scope.selectedProductDetails = " ";
+        var modal = $('#productDetailsModal' + productId);
+        if (modal != undefined)
+        {
+            console.log("Hide");
+            modal.modal('hide');
+        }
+        $timeout(function () {
+            $scope.selectedProductDetails = " ";
+            $scope.editSelected = false;
+            $scope.detailsSelected = false;
+            $scope.selectedProductEditId = " ";
+
+        }, 400);
+        
+        
     }
 
     $scope.DeleteProduct = function (productId) {
@@ -244,6 +246,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         $scope.selectedProductEditId = "";
         
         $scope.selectedProduct = {};
+       
     //    $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
 
     //        angular.copy(response.data, $scope.selectedProduct);

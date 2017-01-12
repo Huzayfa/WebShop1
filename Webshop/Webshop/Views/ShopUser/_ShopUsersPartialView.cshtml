@@ -94,17 +94,20 @@
                                 <span class="message-Invalide" ng-show="EditUserForm.PhoneNumber.$error.email">Please insert a valid PhoneNumber.</span>
                             </span>
                         </label>
-                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditUser(selectedUser)" />
+                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditUser(selectedUser)"
+                               ng-disabled="newUserForm.$invalid" />
                     </form>
 
 
                 </div>
                 <div class="col-md-12" ng-if='(user.Id===selectedUserDetails)&&detailsSelected'>
                     <div class="row">
+                        
                         <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
+                        <h3> User Details</h3>
                     </div>
-                    <div class="row container">
-                        <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6">
                             <table class="table-bordered table-responsive">
                                 <tbody>
                                     <tr>
@@ -147,7 +150,7 @@
                                             {{selectedUser.City}}
                                         </td>
                                     </tr>
-                                    
+
                                     <tr>
                                         <th>
                                             StreetAddress
@@ -172,7 +175,7 @@
                                             {{selectedUser.Country}}
                                         </td>
                                     </tr>
-                                   
+
                                 </tbody>
                             </table>
                         </div>
@@ -185,22 +188,13 @@
                             <div class="col-md-4">
                                 <label>Email: {{selectedUser.Email}}</label>
                             </div>*@
-                        <div class="col-md-12">
+                        <div class="col-sm-6">
                             <h3>Number Of orders : {{selectedUser.orders.length}}</h3>
                             <ul>
                                 <li ng-repeat="order in selectedUser.orders">
-                                    <div row>
-                                        <div class="col-sm-5">
-                                            <label>Order Number: {{order.Id}} </label>
-                                        </div>
-                                        <div class="col-sm-5">
-                                            <label>Order Date: <b>{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</b></label>
 
-                                        </div>
-
-                                    </div>
-
-
+                                    <label>Order Number: {{order.Id}} </label>
+                                    <label>Order Date: <b>{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</b></label>
                                 </li>
 
                             </ul>
