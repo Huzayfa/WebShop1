@@ -4,7 +4,7 @@
 
         <div class="col-md-8 col-lg-8">
 
-            <div class="col-md-12">
+            <div class="col-md-12" id="PagingDiv">
                 <ul ng-if="pager.pages.length" class="pagination">
                     <li ng-class="{disabled:pager.currentPage === 1}">
                         <a ng-click="setPage(1)">First</a>
@@ -24,52 +24,26 @@
                 </ul>
             </div>
 
-            <table id="productTable" class="table table-bordered">
-                <tr>
-                    <th ng-click="selectOrderBy('Id')" class="btn btn-link">
-                        Id
-                    </th>
-                    <th ng-click="selectOrderBy('Name')" class="btn-link">
-                        Name
-                    </th>
-                    <th ng-click="selectOrderBy('Price')" class="btn-link">
-                        Price
-                    </th>
-                </tr>
-                <tr ng-repeat="product in productsListPaged | orderBy:selectedOrder">
-                    <td ng-bind="product.Id"></td>
-                    <td>{{product.Name}}</td>
-                    <td>{{product.Price}}</td>
 
-                    <td>
-                        <button ng-click="DeleteProduct(product.Id)" class="btn btn-sm btn-link" value="Delete">Delete</button>
-                        @*<button ng-click="EditProduct(product.Id)" class="btn btn-sm btn-link" value="Edit">Edit</button>*@
-                        <button ng-click="EditProduct(product.Id)" id="ShowEditModal" type="button" class="btn btn-sm btn-link" data-toggle="modal"
-                                data-target="#edirProductModal{{product.Id}}">
-                            @*scroll-to="#tableEditProduct{{product.Id}}"*@
-                            Edit
-                        </button>
-                        <button ng-click="getProductDetails(product.Id)" type="button" class="btn btn-sm btn-link"
-                                data-toggle="modal"
-                                data-target="#productDetailsModal{{product.Id}}"
-                                >Details</button>
-                    </td>
-                    <td id="tableEditProduct{{product.Id}}" class="EditProduct col-md-12" ng-if='(product.Id==selectedProductEditId)&&editSelected'>
+            <!-- Modal
+
+                Edit Modal
+           -->
+
+            
+                <div class="modal fade"  role="dialog" id="editProductModal">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content ">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Edit Product</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container row">
+                                    <div class="col-sm-10">
 
 
-                        <!-- Modal -->
-
-
-                        <div class="modal fade" id="edirProductModal{{product.Id}}" role="dialog">
-                            <div class="modal-dialog">
-
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title">Edit Product</h4>
-                                    </div>
-                                    <div class="modal-body">
                                         <form name="EditProductForm" class="form-inline" novalidate>
 
                                             <label class="control-label">
@@ -85,18 +59,103 @@
                                                 </select>
                                             </label>
 
+
+                                            <img class="img-rounded" id="photoPreveiw{{selectedProduct.Id}}"
+                                                 style="width:20em"
+                                                 ng-src="{{selectedProduct.Photo}}" alt="your image" />
+                                            <br />
+                                            <input type="button" value="Upload Picture" onclick="$('#upLoadEditProductPic').click()" class="btn btn-success" />
+                                            @*<input ng-model="vm.p.photo" type="file" />*@
+                                            <input name="newProductPhoto{{selectedProduct.Id}}" id="upLoadEditProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
+                                                   onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
+                                            <br />
+
                                             <input type="button" class="btn btn-success" value="Save" ng-click="saveEditProduct(selectedProduct)" />
                                         </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
                                 </div>
-
-
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>
 
+
+                    </div>
+                </div>
+            
+
+            <!-- Modal
+
+                    Details Modal
+            -->
+                <div class="modal fade " id="productDetailsModal"
+                     @*style="width:60%;height:auto" *@
+                     role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+
+                                <button type="button" class="close"
+                                        @*data-dismiss="modal"*@
+                                        ng-click="cancelEdit(selectedProduct.Id)">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title">Product Details</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container" ng-if='detailsSelected'>
+                                    <product-Details selected-product-details-id="selectedProductDetails"
+                                                     selected-product="selectedProduct"
+                                                     close="cancelEdit(product.Id)">
+                                    </product-Details>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                                            ng-click="cancelEdit(selectedProduct.Id)">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+
+            <table id="productTable" class="table table-bordered">
+                <tr id="tableHeader">
+                    <th ng-click="selectOrderBy('Id')" class="btn btn-link">
+                        Id
+                    </th>
+                    <th ng-click="selectOrderBy('Name')" class="btn-link">
+                        Name
+                    </th>
+                    <th ng-click="selectOrderBy('Price')" class="btn-link">
+                        Price
+                    </th>
+                </tr>
+                <tr ng-repeat="product in productsListPaged | orderBy:selectedOrder">
+                    <td ng-bind="product.Id"></td>
+                    <td>{{product.Name}}</td>
+                    <td>{{product.Price}}</td>
+
+                    <td id="productActions">
+                        <button ng-click="DeleteProduct(product.Id)" class="btn btn-sm btn-link" value="Delete">Delete</button>
+                        @*<button ng-click="EditProduct(product.Id)" class="btn btn-sm btn-link" value="Edit">Edit</button>*@
+                        <button ng-click="EditProduct(product.Id)" id="ShowEditModal" type="button" class="btn btn-sm btn-link" data-toggle="modal"
+                                data-target="#editProductModal">
+                            @*scroll-to="#tableEditProduct{{product.Id}}"*@
+                            Edit
+                        </button>
+                        <button ng-click="getProductDetails(product.Id)" type="button" class="btn btn-sm btn-link"
+                                data-toggle="modal"
+                                data-target="#productDetailsModal">
+                            Details
+                        </button>
+                    </td>
+                    <td id="tableEditProduct{{product.Id}}" class="EditProduct col-md-12" ng-if='(product.Id==selectedProductEditId)&&editSelected'>
 
                         <div>
                             <button type="button" ng-click="cancelEdit(product.Id)" class="close">&times;</button>
@@ -119,36 +178,6 @@
                             </form>
 
                         </div>
-                    </td>
-
-                    <td class="productDetails col-md-6" ng-if='(product.Id==selectedProductDetails)&&detailsSelected'>
-                        <div class="modal fade " id="productDetailsModal{{product.Id}}"
-                             @*style="width:60%;height:auto" *@
-                             role="dialog">
-                            <div class="modal-dialog">
-                                 <div class="modal-content">
-                                     
-                                    <div class="modal-header">
-                                        
-                                        <button type="button" class="close" 
-                                                @*data-dismiss="modal"*@
-                                                ng-click="cancelEdit(product.Id)"
-                                                >&times;</button>
-                                        <h4 class="modal-title">Product Details</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <product-Details selected-product-details-id="selectedProductDetails"
-                                                         selected-product="selectedProduct"
-                                                         close="cancelEdit(product.Id)">
-                                        </product-Details>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </td>
                 </tr>
 
@@ -175,6 +204,11 @@
                         <option ng-repeat="category in categoriesList" value="{{category.Id}}">{{category.Name}}</option>
                     </select>
                 </label>
+                <label class="control-label">
+                    Description:
+                    <textarea rows="4" cols="50" name="Description" id="Description" class="form-control" ng-model="newProduct.Description"></textarea>
+                </label>
+                <br />
                 <img id="photoPreveiw" src="#" alt="your image" />
                 <br />
                 <input type="button" value="Upload Picture" onclick="$('#upLoadNewProductPic').click()" class="btn btn-success" />

@@ -1,18 +1,17 @@
 ﻿
 <div class="row container">
-    <div id="ProductPhoto">
+    <div id="ProductPhoto33333" class="col-sm-6" >
         <a href="">
             <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
                  alt="Fjords" style="width:40%" />
         </a>
     </div>
-    <div>
+    <div class="col-sm-6">
 
         <h5>{{selectedProduct.Name}}</h5>
-        <p>{{selectedProduct.Description}}</p>
-    </div>
-    <div>
-        <span>Price: {{selectedProduct.Price}}</span>
+        <p> <pre>{{selectedProduct.Description}} </pre></p>
+    
+        <span>Price: {{selectedProduct.Price |  currency:"SEK":(2) }} </span>
     </div>
 
 </div>

@@ -7,7 +7,6 @@
 
     $scope.CreateUser = function (newUser) {
         
-        console.log($scope.newUser);
         
         $http({
             method: 'POST',
@@ -16,12 +15,13 @@
             
         }).then(function (response) {
             $scope.responseMessage = response.data;
-            console.log(response.data);
+            
             $timeout(function () {
                 $scope.responseMessage = "";
+                $scope.newUser = {};
                 if(response.data==="Done")
                 {
-                    newUser = {};
+                    
                    // document.getElementById('newUserForm').reset();
                 }
             }, 3000);

@@ -59,7 +59,8 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append("Name", newProduct.Name);
         fdata.append('CategoryId', newProduct.CategoryId);
         fdata.append('Price', newProduct.Price);
-        
+        fdata.append('Description',newProduct.Description);
+        console.log(newProduct.Description);
         var promise=$http({
             method: 'POST',
             url: "Product/Create",
@@ -127,24 +128,22 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
         destinationProduct.Id = angular.copy(sourceProduct.Id);
         destinationProduct.Name = sourceProduct.Name;
+        destinationProduct.Description = sourceProduct.Description;
         destinationProduct.Price = angular.copy(sourceProduct.Price);
     }
 
     $scope.cancelEdit = function (productId) {
-        var modal = $('#productDetailsModal' + productId);
+        var modal = $('#productDetailsModal');
         if (modal != undefined)
         {
             console.log("Hide");
-            modal.modal('hide');
+           modal.modal('hide');
         }
-        $timeout(function () {
+        
             $scope.selectedProductDetails = " ";
             $scope.editSelected = false;
             $scope.detailsSelected = false;
-            $scope.selectedProductEditId = " ";
-
-        }, 400);
-        
+            $scope.selectedProductEditId = " ";     
         
     }
 
@@ -247,11 +246,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         
         $scope.selectedProduct = {};
        
-    //    $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
-
-    //        angular.copy(response.data, $scope.selectedProduct);
-    //    });
-    //    console.log($scope.selectedProduct.Photo);
 
     }
 });
