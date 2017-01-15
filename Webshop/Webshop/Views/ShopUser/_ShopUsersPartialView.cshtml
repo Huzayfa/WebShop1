@@ -48,9 +48,67 @@
                         <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
                     </div>
                     <div class="row container">
-                        
-                        <div class="col-md-4">
-
+                        <table class="table">
+                            <thead>
+                                <h3>User Details</h3>
+                                <tr>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        PhoneNumber
+                                    </th>
+                                    <th>
+                                        City
+                                    </th>
+                                    <th>
+                                        StreetAddress
+                                    </th>
+                                    <th>
+                                        PostNumber
+                                    </th>
+                                    <th>
+                                        CountryName
+                                    </th>
+                                </tr>
+                                
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {{selectedUser.FirstName}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.LastName}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.Email}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.PhoneNumber}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.City}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.StreetAddress}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.PostNumber}}
+                                    </td>
+                                    <td>
+                                        {{selectedUser.CountryName}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @*<div class="col-md-4">
                             <label>First Name : {{selectedUser.FirstName}}</label>
                         </div>
                         <div class="col-md-4">
@@ -58,7 +116,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>Email: {{selectedUser.Email}}</label>
-                        </div>
+                        </div>*@
                         <div class="col-md-12">
                             <h5>Number Of orders : {{selectedUser.orders.length}}</h5>
                             <ul>

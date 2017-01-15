@@ -1255,9 +1255,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
@@ -1296,7 +1293,6 @@
     <Content Include="Views\ShopCart\_ViewShopCartPartialView.cshtml" />
     <Content Include="Views\ShopUser\CreateUser.cshtml" />
     <Content Include="Views\ShopUser\_CreateShopUserPartialView.cshtml" />
-    <Content Include="Views\ShopUser\_ShopUsersPartialView-DESKTOP-LAA9K0G.cshtml" />
     <Content Include="Views\ShopUser\_ShopUsersPartialView.cshtml" />
     <Content Include="Views\Test\TestPaging.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />

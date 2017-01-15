@@ -10,12 +10,12 @@
         </div>
         <div class="row">
             <div ng-repeat="product in productsList | orderBy:selectedOrder"
-                 class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div style="display:grid; margin:10px; border:groove" class="panel panel-body">
+                 class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <div style="display:grid; margin:10px; border:groove; background-image:url({{product.Photo}}) "  class="panel panel-body">
                     <div id="ProductPhoto">
                         <a href="">
                             <img ng-src="{{product.Photo}}" class="img-rounded"
-                                 alt="Fjords" style="height:10em; width:80%" />
+                                 alt="Fjords" style="height:8em; width:80%" />
                         </a>
                     </div>
                     <div>
