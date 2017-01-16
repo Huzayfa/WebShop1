@@ -69,8 +69,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         });
         promise.success(function (response) {
             var product = {};
-            
-            console.log(response);
             copyProduct(response, product);
             $scope.productsList.push(product);
             $scope.productsListPaged.push(product);
@@ -162,7 +160,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     };
 
-    //get User By Id to Edit hem
+    //get Product By Id to Edit it
     $scope.EditProduct = function (productId) {
        
         
