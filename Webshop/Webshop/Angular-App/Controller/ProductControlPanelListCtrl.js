@@ -1,10 +1,6 @@
 ﻿
 'use strict'
 app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, $rootScope, pagingList) {
-
- 
-
-
     $scope.productsList = [];
     $scope.productsListPaged = [];
     $scope.pager = {};
@@ -21,11 +17,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     );
     
-   // $rootScope.clicked = false;
-    //$scope.changeVal = function () {
-    //    $rootScope.clicked = true;
-    //    console.log($rootScope.clicked)
-    //}
     $scope.categoriesList = [];
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
@@ -162,9 +153,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     //get Product By Id to Edit it
     $scope.EditProduct = function (productId) {
-       
-        
-
+   
         $scope.selectedProductEditId = angular.copy(productId);
         
         $scope.selectedProduct = {};
