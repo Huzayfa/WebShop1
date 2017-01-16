@@ -104,7 +104,7 @@
         <input name="newUserPhoto" id="upLoadNewUserPic" type="file" ng-hide="true"
                ng-model="userPhoto" value="Uplaod Pic" file-model="userPhoto" />
         <br />
-        <input type="button" class="btn btn-success" value="Save" ng-click="CreateUser(newUser)"
+        <input type="button" class="btn btn-success" value="Save" ng-click="CreateUser(newUserForm,newUser)"
                ng-disabled="newUserForm.$invalid" />
 
     </form>

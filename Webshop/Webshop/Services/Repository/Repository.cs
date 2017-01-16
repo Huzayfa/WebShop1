@@ -14,6 +14,7 @@ using WebShop.Models.ShopUserModelView;
 using WebShop.Models.Account;
 using Microsoft.Owin.Security;
 using WebShop.Models.ProductViewModels;
+using Webshop.Models.ProductViewModels;
 
 namespace WebShop.Services
 {
@@ -184,10 +185,26 @@ namespace WebShop.Services
             
         }
 
-        public Product GetProductDetails(int? productId)
+        public ProductDetailsViewModel GetProductDetails(int? productId)
         {
-            var product = DbContext.Products.Find(productId);
-            return product;
+            var product = DbContext.Products.Include("Category").SingleOrDefault(p => p.Id == productId);
+
+
+           var pView= new ProductDetailsViewModel()
+            {
+                Category = product.Category.Name,
+                Description = product.Description,
+                Name = product.Name,
+                Photo = product.Photo,
+                Price = product.Price,
+                Quantity=product.Quantity,
+                Id=product.Id,
+                CategoryId=product.CategoryId,
+                
+            };
+            
+                
+            return pView;
         }
 
         public ActionResult EditProduct(Product product)

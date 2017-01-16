@@ -1,19 +1,19 @@
-﻿
-<div class="row container">
-    <div id="ProductPhoto33333" class="col-sm-6" >
-        <a href="">
-            <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
-                 alt="Fjords" style="width:40%" />
-        </a>
-    </div>
-    <div class="col-sm-6">
+﻿<div class="container">
+    <div class="row">  
+        <div id="ProductDetailsPhoto" class="col-sm-6">
+            <a href="" style="align-content:center" >
+                <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
+                     alt="Fjords" style="width:100em; align-content:center" />
+            </a>
+        </div>
+        <div class="col-sm-6">
 
-        <h5>{{selectedProduct.Name}}</h5>
-        <p> <pre>{{selectedProduct.Description}} </pre></p>
-    
-        <span>Price: {{selectedProduct.Price |  currency:"SEK":(2) }} </span>
-    </div>
+            <h5>{{selectedProduct.Name}}</h5>
+            <p> <pre>{{selectedProduct.Description}} </pre></p>
+            <p>Category: {{selectedProduct.Category}}</p>
+            <span>Price: {{selectedProduct.Price |  currency:"SEK":(2) }} </span>
+        </div>
 
+    </div>
 </div>
-
 

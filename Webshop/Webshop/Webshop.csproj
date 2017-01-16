@@ -232,6 +232,10 @@
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
     <Content Include="Angular-App\Template\Directive\ProductDetailsPartialView.html" />
     <Content Include="Angular-App\Test\PagingAngular.js" />
+    <Content Include="App_Data\WebShopDB.mdf" />
+    <Content Include="App_Data\WebShopDB_log.ldf">
+      <DependentUpon>WebShopDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Avatar\33326a20-ecec-414e-8bd9-b46097449b10.jpg" />
     <Content Include="Avatar\5f5b7fb6-081d-4408-8c43-d28f8512e78b.jpg" />
     <Content Include="Avatar\627583ea-8959-4347-96e0-bc5dde9d0ef1.jpg" />
@@ -375,6 +379,7 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\AngularValidationStyle.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\ImageStyleSheet.css" />
     <Content Include="fonts\tableStyleSheeet.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1242,6 +1247,7 @@
     <Compile Include="Models\OrderViewModels\OrderViewMoedel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductViewModels\NewProductViewModel.cs" />
+    <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\ShopUser.cs" />
     <Compile Include="Models\ShopUserModelView\ShopUserCreateViewModel.cs" />
     <Compile Include="Models\ShopUserModelView\UserDetailsViewModel.cs" />
@@ -1303,9 +1309,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611241112513_init.resx">
       <DependentUpon>201611241112513_init.cs</DependentUpon>

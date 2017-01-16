@@ -165,8 +165,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
     //get User By Id to Edit hem
     $scope.EditProduct = function (productId) {
        
-        $scope.editSelected = true;
-        $scope.detailsSelected = false;
+        
 
         $scope.selectedProductEditId = angular.copy(productId);
         
@@ -174,14 +173,16 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
             angular.copy(response.data, $scope.categoriesList);
+            $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
+
+                angular.copy(response.data, $scope.selectedProduct);
+            });
         });
 
-        $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
-
-            angular.copy(response.data, $scope.selectedProduct);
-        });
         
-
+        
+        $scope.editSelected = true;
+        $scope.detailsSelected = false;
         
         setTimeout(function () {
             //var scrollPos = document.body.scrollTop;
