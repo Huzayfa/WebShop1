@@ -45,16 +45,29 @@
 
 
                                     <form name="EditProductForm" class="form-inline" novalidate>
+
+
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Name: <input type="text" ng-model="selectedProduct.Name" class="form-control" required />
                                             </label>
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Description: <input type="text" ng-model="selectedProduct.Description" class="form-control" required />
+                                            </label>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Price : <input type="text" ng-model="selectedProduct.Price" class="form-control" required />
                                             </label>
                                         </div>
+
+
                                         <div class="form-group">
                                             <label class="control-label">
                                                 Category:
@@ -64,6 +77,7 @@
                                             </label>
                                         </div>
 
+
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <img class="img-rounded" id="photoPreveiw{{selectedProduct.Id}}"
@@ -72,6 +86,7 @@
                                             </div>
                                         </div>
 
+
                                         <div class="form-group">
                                             <input type="button" value="Upload Picture" onclick="$('#upLoadEditProductPic').click()" class="btn btn-success" />
                                             @*<input ng-model="vm.p.photo" type="file" />*@
@@ -79,9 +94,13 @@
                                                    onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
                                             <br />
                                         </div>
+
+
                                         <div class="form-group">
                                             <input type="button" class="btn btn-success" value="Save" ng-click="saveEditProduct(selectedProduct)" />
                                         </div>
+
+
                                     </form>
                                 </div>
                             </div>
