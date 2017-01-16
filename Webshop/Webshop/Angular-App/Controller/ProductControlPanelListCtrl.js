@@ -222,10 +222,16 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
 
     $scope.saveEditProduct = function (product) {
+        
         $http.post('Product/Edit', product).then(function (response) {
             var index = findProductInList($scope.productsList,product.Id);
             if (index > -1) {
                 copyProduct(product, $scope.productsList[index]);
+            }
+            var modal = $("#editProductModal");
+            if (modal != undefined) {
+                console.log("Hide");
+                modal.modal('hide');
             }
             $scope.editSelected = false;
             $scope.detailsSelected = false;
