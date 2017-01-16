@@ -10,7 +10,7 @@ namespace WebShop.Models.ProductViewModels
 {
     public class NewProductViewModel
     {
-        //test Edit in github
+        
         [Display(Name = "Product Name")]
         [Required(ErrorMessage = "Product Name is required")]
         [StringLength(maximumLength: 50, MinimumLength = 2, ErrorMessage = "Length of the product name is 2..50")]
