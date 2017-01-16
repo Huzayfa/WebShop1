@@ -69,8 +69,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         });
         promise.success(function (response) {
             var product = {};
-            
-            console.log(response);
             copyProduct(response, product);
             $scope.productsList.push(product);
             $scope.productsListPaged.push(product);
@@ -162,7 +160,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     };
 
-    //get User By Id to Edit hem
+    //get Product By Id to Edit it
     $scope.EditProduct = function (productId) {
        
         
@@ -224,10 +222,16 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
 
     $scope.saveEditProduct = function (product) {
+        
         $http.post('Product/Edit', product).then(function (response) {
             var index = findProductInList($scope.productsList,product.Id);
             if (index > -1) {
                 copyProduct(product, $scope.productsList[index]);
+            }
+            var modal = $("#editProductModal");
+            if (modal != undefined) {
+                console.log("Hide");
+                modal.modal('hide');
             }
             $scope.editSelected = false;
             $scope.detailsSelected = false;

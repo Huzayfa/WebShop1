@@ -107,6 +107,11 @@ app.controller('CategoryControlPanelListCtrl', function ($scope, $http, $rootSco
 
     $scope.saveEditCategory = function (category) {
         $http.post('Category/Edit', category).then(function (response) {
+            var modal=$("#editCategoryModal");
+            if (modal != undefined) {
+                console.log("Hide");
+                modal.modal('hide');
+            }
             var index = findCategoryInList(category.Id);
             if (index > -1) {
                 copyCategory(category, $scope.categoriesList[index]);
