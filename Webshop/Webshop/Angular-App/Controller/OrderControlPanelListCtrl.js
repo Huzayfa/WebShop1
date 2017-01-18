@@ -28,14 +28,12 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
             if (index > -1) {
                 $scope.ordersList.splice(index, 1);
             }
-        }
-        
-        
+        }       
     };
 
-    //get User By Id to Edit hem
+    //get order By Id to Edit it
     $scope.EditOrder = function (orderId) {
-       // $scope.selectedOrder = orderServices.getOrderDetails(orderId);
+        $scope.selectedOrder = orderServices.getOrderDetails(orderId);
         $scope.editSelected = true;
         $scope.detailsSelected = false;
         $scope.selectedOrderEditId = angular.copy(orderId);
