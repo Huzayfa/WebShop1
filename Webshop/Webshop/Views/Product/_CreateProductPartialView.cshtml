@@ -1,26 +1,46 @@
 ﻿<div class="col-md-4">
     <b class="message-Invalide">{{responseMessage}} </b>
     <form name="CreateNewProductForm" class="form-inline" novalidate>
+
         <label id="ProductNameLabel" class="control-label">
             Product Name:
             <input type="text" name="newProductName" ng-model="newProduct.Name" class="form-control" required />
             <span ng-show="newProductForm.Name.$touched && newProductForm.Name.$invalid">The name is required.</span>
         </label>
+
+
         <label class="control-label">
             Price:
             <input type="text" ng-model="newProduct.Price" class="form-control" required />
         </label>
+
+
         <label class="control-label">
             Category:
             <select name="categorySelect" id="categorySelect" class="form-control" ng-model="newProduct.CategoryId">
                 <option ng-repeat="category in categoriesList" value="{{category.Id}}">{{category.Name}}</option>
             </select>
         </label>
+
+
         <label class="control-label">
             Description:
             <textarea rows="4" cols="50" name="Description" id="Description" class="form-control" ng-model="newProduct.Description">
               </textarea>
         </label>
+
+        <label class="control-label">
+            Quantity in stock:
+            <input type="text" ng-model="newProduct.StockQuantity" class="form-control" />
+        </label>
+
+        <label class="control-label">
+            Quantity to show:
+            <input type="text" ng-model="newProduct.StockQuantityToShow" class="form-control" />
+        </label>
+
+
+
         <img id="photoPreveiw" src="#" alt="your image" />
         <br />
         <input type="button" value="Upload Picture" onclick="$('#upLoadNewProductPic').click()" class="btn btn-success" />

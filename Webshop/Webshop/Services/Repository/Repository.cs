@@ -200,6 +200,8 @@ namespace WebShop.Services
                 Quantity=product.Quantity,
                 Id=product.Id,
                 CategoryId=product.CategoryId,
+                StockQuantity=product.StockQuantity,
+                StockQuantityToShow=product.StockQuantityToShow,
                 
             };
             
@@ -252,6 +254,8 @@ namespace WebShop.Services
                 Price = product.Price,
                 Description = product.Description,
                 CategoryId = product.CategoryId,
+                StockQuantity = product.StockQuantity,
+                StockQuantityToShow = product.StockQuantityToShow,
                 Photo = "/Avatar//" + filename,
             };
             try
