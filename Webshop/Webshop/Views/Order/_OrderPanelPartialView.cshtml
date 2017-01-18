@@ -2,6 +2,77 @@
 
     <div class="row" ng-controller="OrderControlPanelListCtrl">
         <div class="col-md-10 col-lg-10">
+
+
+            <!-- Modal
+
+                 Edit Modal
+            -->
+
+
+            <div class="modal fade" role="dialog" id="editOrderModal">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Order</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container row">
+                                <form name="EditOrderForm" class="form-inline" novalidate>
+
+
+                                    <label class="control-label">
+                                        Order Date: <input type="text" ng-model="selectedOrder.OrderDate " class="form-control" required />
+                                    </label>
+                                    <label class="control-label">
+                                        Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
+                                    </label>
+
+                                    <input type="button" class="btn btn-success" value="Save" ng-click="saveEditOrder(selectedOrder)" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Modal
+
+    Details Modal
+       -->
+
+
+            <div class="modal fade" role="dialog" id="detailsOrderModal">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Details Order</h4>
+                        </div>
+                        <div class="modal-body">
+                            <order-details ng-if='detailsSelected'
+                                           selected-order-details="selectedOrderDetails"
+                                           close="cancelEdit(order.Id)">
+                            </order-details>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+   
             <table class="table table-bordered" >
                 <tr>
                     <th ng-click="selectOrderBy('OrderDate')" class="btn-link">
@@ -17,34 +88,44 @@
                     <td>{{order.TotalPrice}}</td>
                     <td style="display:none" ng-bind="order.Id"></td>
                     <td>
-                        <button ng-click="DeleteOrder(order.Id)" class="btn btn-sm btn-link" value="Delete">Delete</button>
-                        <button ng-click="EditOrder(order.Id)" class="btn btn-sm btn-link" value="Edit">Edit</button>
-                        <button ng-click="getOrderDetails(order.Id)" class="btn btn-sm btn-link">Details</button>
-                    </td>
-                    <td class="col-md-12" ng-if='(order.Id==selectedOrderEditId)&&editSelected '>
-                        <div>
-                            <button type="button"  ng-click="cancelEdit(Order.Id)" class="close" >&times;</button>
-                            <form name="EditOrderForm" class="form-inline" novalidate>
-                                
-                                   
-                                <label class="control-label">
-                                    Order Date: <input type="text" ng-model="selectedOrder.OrderDate " class="form-control" required />
-                                </label>
-                                <label class="control-label">
-                                   Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
-                                </label>
-                                
-                                <input type="button" class="btn btn-success" value="Save" ng-click="saveEditOrder(selectedOrder)" />
-                            </form>
+                        <button ng-click="DeleteOrder(order.Id)" 
+                                class="btn btn-sm btn-link" value="Delete">Delete</button>
 
-                        </div>
+                        <button ng-click="EditOrder(order.Id)"
+                                data-toggle="modal"
+                                data-target="#editOrderModal"
+                                 class="btn btn-sm btn-link" value="Edit">Edit</button>
+                        <button ng-click="getOrderDetails(order.Id)" 
+                                data-toggle="modal"
+                                data-target="#detailsOrderModal"
+                                class="btn btn-sm btn-link">Details</button>
                     </td>
-                    <td class="col-md-12" ng-if='order.Id === selectedOrderDetails && detailsSelected'>
-                        <order-details selected-order-details="selectedOrderDetails"
-                                       close="cancelEdit(order.Id)">
+                    <div id="OldTablewithoutModal">
+                        @*<td class="col-md-12" ng-if='(order.Id==selectedOrderEditId)&&editSelected '>
+                <div>
+                    <button type="button"  ng-click="cancelEdit(Order.Id)" class="close" >&times;</button>
+                    <form name="EditOrderForm" class="form-inline" novalidate>
 
-                        </order-details>
-                    </td>
+
+                        <label class="control-label">
+                            Order Date: <input type="text" ng-model="selectedOrder.OrderDate " class="form-control" required />
+                        </label>
+                        <label class="control-label">
+                           Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
+                        </label>
+
+                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditOrder(selectedOrder)" />
+                    </form>
+
+                </div>
+            </td>
+            <td class="col-md-12" ng-if='order.Id === selectedOrderDetails && detailsSelected'>
+                <order-details selected-order-details="selectedOrderDetails"
+                               close="cancelEdit(order.Id)">
+
+                </order-details>
+            </td>*@
+                    </div>
                 </tr>
             </table>
         </div>
