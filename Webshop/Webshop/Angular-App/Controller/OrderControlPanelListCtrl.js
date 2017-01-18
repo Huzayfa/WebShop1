@@ -45,6 +45,11 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         if (index > -1) {
             orderServices.copyOrder(order, $scope.ordersList[index]);
         }
+        var modal = $("#editOrderModal");
+        if (modal != undefined) {
+            console.log("Hide");
+            modal.modal('hide');
+        }
         $scope.editSelected = false;
         $scope.detailsSelected = false;
         $scope.selectedOrderEditId = " ";
