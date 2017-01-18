@@ -73,10 +73,7 @@ app.controller('CategoryControlPanelListCtrl', function ($scope, $http, $rootSco
 
     $scope.DeleteCategory = function (categoryId) {
 
-
-
-
-        $http.post('Category/Delete', JSON.stringify({ categoryId: categoryId })).then(function (response) {
+        $http.post('Category/Delete', { categoryId: categoryId }).then(function (response) {
             var index = findCategoryInList(categoryId);
             if (index > -1) {
                 $scope.categoriesList.splice(index, 1);
@@ -87,7 +84,7 @@ app.controller('CategoryControlPanelListCtrl', function ($scope, $http, $rootSco
 
     };
 
-    //get User By Id to Edit hem
+    //get Category By Id to Edit it
     $scope.EditCategory = function (categoryId) {
 
         $scope.editSelected = true;
