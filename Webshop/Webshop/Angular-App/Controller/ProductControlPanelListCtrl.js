@@ -119,6 +119,9 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         destinationProduct.Name = sourceProduct.Name;
         destinationProduct.Description = sourceProduct.Description;
         destinationProduct.Price = angular.copy(sourceProduct.Price);
+        destinationProduct.StockQuantity = angular.copy(sourceProduct.StockQuantity);
+        destinationProduct.StockQuantityToShow = angular.copy(sourceProduct.StockQuantityToShow);
+
     }
 
     $scope.cancelEdit = function (productId) {
@@ -171,15 +174,15 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         $scope.editSelected = true;
         $scope.detailsSelected = false;
         
-        setTimeout(function () {
-            //var scrollPos = document.body.scrollTop;
-            var element = document.getElementById("tableEditProduct" + productId);
-            //var elementPos = $(element).position().top;
-            // document.body.scrollTop = elementPos + $(element).height();
-            element.tabIndex = "-10";
-            element.focus();
-            //element.scrollIntoView(true);
-        }, 100);
+        //setTimeout(function () {
+        //    //var scrollPos = document.body.scrollTop;
+        //    var element = document.getElementById("tableEditProduct" + productId);
+        //    //var elementPos = $(element).position().top;
+        //    // document.body.scrollTop = elementPos + $(element).height();
+        //    element.tabIndex = "-10";
+        //    element.focus();
+        //    //element.scrollIntoView(true);
+        //}, 100);
         
         //setTimeout(function () {
         //    var postScroll = document.getElementById("tableEditProduct" + productId);
@@ -212,6 +215,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     $scope.saveEditProduct = function (product) {
         
+        console.log(product);
         $http.post('Product/Edit', product).then(function (response) {
             var index = findProductInList($scope.productsList,product.Id);
             if (index > -1) {

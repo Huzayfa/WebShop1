@@ -66,10 +66,10 @@ namespace WebShop.Controllers
 
         //Post
         [HttpPost]
-        public ActionResult Edit(Product user)
+        public ActionResult Edit(Product product)
         {
 
-            return _rep.EditProduct(user);
+            return _rep.EditProduct(product);
 
         }
 
