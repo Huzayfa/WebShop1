@@ -29,8 +29,8 @@
         templateUrl: '/Angular-App/Template/Directive/ProductDetailsPartialView.html?' + new Date(),
         link: function (scope, el, attr) {
             
-            console.log(el)
-            console.log(attr)
+           // console.log(el)
+            //console.log(attr)
             
             //$("#productDetailsModal" + $scope.selectedProductDetailsId).modal('show');
 

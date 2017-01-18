@@ -25,6 +25,15 @@ namespace WebShop.Models.ProductViewModels
         //[NotMapped]
         public int Quantity { get; set; }
 
+        //Quantity In the Stock
+        [Display(Name = "Stock quantity")]
+        public int StockQuantity { get; set; }
+
+
+        //Quantity to show to the Customers
+        [Display(Name = "Stock quantity to show")]
+        public int StockQuantityToShow { get; set; }
+
 
         [Display(Name = "Description")]
         public string Description { get; set; }

@@ -249,6 +249,15 @@
                     </select>
                 </label>
                 <label class="control-label">
+                    Quantity in stock:
+                    <input type="text" ng-model="newProduct.StockQuantity" class="form-control" />
+                </label>
+
+                <label class="control-label">
+                    Quantity to show:
+                    <input type="text" ng-model="newProduct.StockQuantityToShow" class="form-control" />
+                </label>
+                <label class="control-label">
                     Description:
                     <textarea rows="4" cols="50" name="Description" id="Description" class="form-control" ng-model="newProduct.Description"></textarea>
                 </label>

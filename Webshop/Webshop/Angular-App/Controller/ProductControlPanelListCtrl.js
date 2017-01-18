@@ -50,7 +50,9 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append("Name", newProduct.Name);
         fdata.append('CategoryId', newProduct.CategoryId);
         fdata.append('Price', newProduct.Price);
-        fdata.append('Description',newProduct.Description);
+        fdata.append('Description', newProduct.Description);
+        fdata.append('StockQuantity', newProduct.StockQuantity);
+        fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);
         console.log(newProduct.Description);
         var promise=$http({
             method: 'POST',
@@ -166,6 +168,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
             $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
 
                 angular.copy(response.data, $scope.selectedProduct);
+               // console.log($scope.selectedProduct);
             });
         });
 
