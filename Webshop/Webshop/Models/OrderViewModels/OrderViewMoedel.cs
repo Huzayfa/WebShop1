@@ -13,7 +13,12 @@ namespace WebShop.Models.OrderViewModels
 
         [Display(Name = "Order Date")]
         [DataType(DataType.DateTime)]
-
         public DateTime OrderDate { get; set; }
+
+        [Display(Name = "Deliver Date")]
+        [DataType(DataType.DateTime)]
+        public DateTime DeliverDate { get; set; }
+
+
     }
 }

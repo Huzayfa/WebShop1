@@ -13,13 +13,13 @@ namespace WebShop.Models
         public int Id { get; set; }
 
         [Display(Name ="Order Date")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime OrderDate { get; set; }
 
 
         [Display(Name = "Deliver Date")]
         [DataType(DataType.Date)]
-        public DateTime DeliverDate;
+        public DateTime DeliverDate { get; set; }
 
         [Display(Name ="Total Price")]
         public decimal TotalPrice { get; set; }
