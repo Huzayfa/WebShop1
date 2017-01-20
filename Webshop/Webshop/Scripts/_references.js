@@ -7,7 +7,6 @@
 /// <reference path="../angular-app/controller/productcontrolpanellistctrl.js" />
 /// <reference path="../angular-app/controller/shopcartctrl.js" />
 /// <reference path="../angular-app/controller/shopuserslistctrl.js" />
-/// <reference path="../angular-app/controller/shopuserslistctrl-desktop-laa9k0g.js" />
 /// <reference path="../angular-app/controller/viewshopcartctrl.js" />
 /// <reference path="../angular-app/directive/orderdetails.js" />
 /// <reference path="../angular-app/directive/productdetails.js" />

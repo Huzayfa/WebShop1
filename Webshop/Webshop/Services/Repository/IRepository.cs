@@ -9,6 +9,7 @@ using WebShop.Models;
 using WebShop.Models.ShopUserModelView;
 using WebShop.Models.Account;
 using WebShop.Models.ProductViewModels;
+using Webshop.Models.ProductViewModels;
 
 namespace WebShop.Services
 {
@@ -24,7 +25,7 @@ namespace WebShop.Services
 
         //Product Functions
         ActionResult DeleteProduct(int? productId);
-        Product GetProductDetails(int? productId);
+        ProductDetailsViewModel GetProductDetails(int? productId);
         ActionResult EditProduct(Product product);
         ActionResult DeleteOrder(int? orderId);
         List<Product> GetProductsList();

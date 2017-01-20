@@ -38,11 +38,14 @@ namespace WebShop.Controllers
         public ActionResult Delete(string userId)
         {
 
-            if (userId == null)
+            if (userId == null || userId==HttpContext.User.Identity.GetUserId())
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            _rep.DeleteUser(userId);
+            else
+            {
+                _rep.DeleteUser(userId);
+            }
             return null;
         }
 
@@ -71,8 +74,14 @@ namespace WebShop.Controllers
         [HttpPost]
         public ActionResult Edit(UserDetailsViewModel user)
         {
-           return _rep.EditUser(user);
-
+            if (ModelState.IsValid)
+            {
+                return _rep.EditUser(user);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotAcceptable);
+            }
         }
 
 

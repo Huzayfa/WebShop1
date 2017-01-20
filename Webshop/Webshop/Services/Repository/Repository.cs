@@ -14,6 +14,7 @@ using WebShop.Models.ShopUserModelView;
 using WebShop.Models.Account;
 using Microsoft.Owin.Security;
 using WebShop.Models.ProductViewModels;
+using Webshop.Models.ProductViewModels;
 
 namespace WebShop.Services
 {
@@ -113,7 +114,7 @@ namespace WebShop.Services
             else
             {
 
-
+                
                 return new UserDetailsViewModel()
                 {
                     FirstName = user.FirstName,
@@ -136,10 +137,15 @@ namespace WebShop.Services
 
         public ActionResult EditUser(UserDetailsViewModel user)
         {
-            var userEdit = UserManager.FindById(user.Id);
+            var userEdit = UserManager.FindById(user.Id);           
             userEdit.FirstName = user.FirstName;
             userEdit.LastName = user.LastName;
             userEdit.Email = user.Email;
+            userEdit.City = user.City;            
+            userEdit.Country = user.Country;
+            userEdit.PhoneNumber = user.PhoneNumber;
+            userEdit.PostNumber = user.PostNumber;
+            userEdit.StreetAddress = user.StreetAddress;
             var Result = UserManager.Update(userEdit);
             if(Result.Succeeded)
             {
@@ -179,10 +185,28 @@ namespace WebShop.Services
             
         }
 
-        public Product GetProductDetails(int? productId)
+        public ProductDetailsViewModel GetProductDetails(int? productId)
         {
-            var product = DbContext.Products.Find(productId);
-            return product;
+            var product = DbContext.Products.Include("Category").SingleOrDefault(p => p.Id == productId);
+
+
+           var pView= new ProductDetailsViewModel()
+            {
+                Category = product.Category.Name,
+                Description = product.Description,
+                Name = product.Name,
+                Photo = product.Photo,
+                Price = product.Price,
+                Quantity=product.Quantity,
+                Id=product.Id,
+                CategoryId=product.CategoryId,
+                StockQuantity=product.StockQuantity,
+                StockQuantityToShow=product.StockQuantityToShow,
+                
+            };
+            
+                
+            return pView;
         }
 
         public ActionResult EditProduct(Product product)
@@ -230,6 +254,8 @@ namespace WebShop.Services
                 Price = product.Price,
                 Description = product.Description,
                 CategoryId = product.CategoryId,
+                StockQuantity = product.StockQuantity,
+                StockQuantityToShow = product.StockQuantityToShow,
                 Photo = "/Avatar//" + filename,
             };
             try

@@ -1,19 +1,6 @@
 ﻿
 'use strict'
 app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, $rootScope, pagingList) {
-
-    
-
-
-
-
-
-
-
-
-
-
-
     $scope.productsList = [];
     $scope.productsListPaged = [];
     $scope.pager = {};
@@ -30,11 +17,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     );
     
-   // $rootScope.clicked = false;
-    //$scope.changeVal = function () {
-    //    $rootScope.clicked = true;
-    //    console.log($rootScope.clicked)
-    //}
     $scope.categoriesList = [];
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
@@ -68,7 +50,10 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append("Name", newProduct.Name);
         fdata.append('CategoryId', newProduct.CategoryId);
         fdata.append('Price', newProduct.Price);
-        
+        fdata.append('Description', newProduct.Description);
+        fdata.append('StockQuantity', newProduct.StockQuantity);
+        fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);
+        console.log(newProduct.Description);
         var promise=$http({
             method: 'POST',
             url: "Product/Create",
@@ -77,8 +62,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         });
         promise.success(function (response) {
             var product = {};
-            
-            console.log(response);
             copyProduct(response, product);
             $scope.productsList.push(product);
             $scope.productsListPaged.push(product);
@@ -136,14 +119,26 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
         destinationProduct.Id = angular.copy(sourceProduct.Id);
         destinationProduct.Name = sourceProduct.Name;
+        destinationProduct.Description = sourceProduct.Description;
         destinationProduct.Price = angular.copy(sourceProduct.Price);
+        destinationProduct.StockQuantity = angular.copy(sourceProduct.StockQuantity);
+        destinationProduct.StockQuantityToShow = angular.copy(sourceProduct.StockQuantityToShow);
+
     }
 
     $scope.cancelEdit = function (productId) {
-        $scope.editSelected = false;
-        $scope.detailsSelected = false;
-        $scope.selectedProductEditId = " ";
-        $scope.selectedProductDetails = " ";
+        var modal = $('#productDetailsModal');
+        if (modal != undefined)
+        {
+            console.log("Hide");
+           modal.modal('hide');
+        }
+        
+            $scope.selectedProductDetails = " ";
+            $scope.editSelected = false;
+            $scope.detailsSelected = false;
+            $scope.selectedProductEditId = " ";     
+        
     }
 
     $scope.DeleteProduct = function (productId) {
@@ -161,36 +156,36 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     };
 
-    //get User By Id to Edit hem
+    //get Product By Id to Edit it
     $scope.EditProduct = function (productId) {
-       
-        $scope.editSelected = true;
-        $scope.detailsSelected = false;
-
+   
         $scope.selectedProductEditId = angular.copy(productId);
         
         $scope.selectedProduct = {};
         $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
             angular.copy(response.data, $scope.categoriesList);
+            $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
+
+                angular.copy(response.data, $scope.selectedProduct);
+               // console.log($scope.selectedProduct);
+            });
         });
 
-        $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
-
-            angular.copy(response.data, $scope.selectedProduct);
-        });
         
-
         
-        setTimeout(function () {
-            //var scrollPos = document.body.scrollTop;
-            var element = document.getElementById("tableEditProduct" + productId);
-            //var elementPos = $(element).position().top;
-            // document.body.scrollTop = elementPos + $(element).height();
-            element.tabIndex = "-10";
-            element.focus();
-            //element.scrollIntoView(true);
-        }, 100);
+        $scope.editSelected = true;
+        $scope.detailsSelected = false;
+        
+        //setTimeout(function () {
+        //    //var scrollPos = document.body.scrollTop;
+        //    var element = document.getElementById("tableEditProduct" + productId);
+        //    //var elementPos = $(element).position().top;
+        //    // document.body.scrollTop = elementPos + $(element).height();
+        //    element.tabIndex = "-10";
+        //    element.focus();
+        //    //element.scrollIntoView(true);
+        //}, 100);
         
         //setTimeout(function () {
         //    var postScroll = document.getElementById("tableEditProduct" + productId);
@@ -222,10 +217,17 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
 
     $scope.saveEditProduct = function (product) {
+        
+        console.log(product);
         $http.post('Product/Edit', product).then(function (response) {
             var index = findProductInList($scope.productsList,product.Id);
             if (index > -1) {
                 copyProduct(product, $scope.productsList[index]);
+            }
+            var modal = $("#editProductModal");
+            if (modal != undefined) {
+                console.log("Hide");
+                modal.modal('hide');
             }
             $scope.editSelected = false;
             $scope.detailsSelected = false;
@@ -244,11 +246,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         $scope.selectedProductEditId = "";
         
         $scope.selectedProduct = {};
-    //    $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
-
-    //        angular.copy(response.data, $scope.selectedProduct);
-    //    });
-    //    console.log($scope.selectedProduct.Photo);
+       
 
     }
 });

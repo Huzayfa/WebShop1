@@ -5,10 +5,9 @@
     $scope.responseMessage = "";
 
 
-    $scope.CreateUser = function (newUser) {
+    $scope.CreateUser = function (newUserForm,newUser) {
         
-        console.log($scope.newUser);
-        
+   
         $http({
             method: 'POST',
             url: "ShopUser/Create",
@@ -16,12 +15,16 @@
             
         }).then(function (response) {
             $scope.responseMessage = response.data;
-            console.log(response.data);
+            
             $timeout(function () {
                 $scope.responseMessage = "";
+                
                 if(response.data==="Done")
                 {
-                    newUser = {};
+                    
+                    $scope.newUser = {};
+                    newUserForm.$setPristine(true);
+                    newUserForm.$setUntouched(true);
                    // document.getElementById('newUserForm').reset();
                 }
             }, 3000);

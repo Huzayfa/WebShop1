@@ -18,9 +18,13 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
         $scope.cartLength = cart.length;
     }
     $scope.productsList = [];
+    $("body").css("cursor", "progress");
     $http.get("/Product/Products", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.productsList);
+
+    $("body").css("cursor", "default");
+
     }
 
     );

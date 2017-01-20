@@ -3,9 +3,12 @@
 app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
     $scope.usersList = [];
     console.log("ShopUsersListCtrl");
+    $("body").css("cursor", "progress");
     $http.get("/ShopUser/ShopUsers",{cache:false}).then(function (response) {
 
         angular.copy(response.data, $scope.usersList);
+    $("body").css("cursor", "default");
+
     }
 
     );
@@ -104,7 +107,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
 
     $scope.getUserDetails=function(userId)
     {
-        console.log("User Details " + userId);
+        
         $scope.editSelected = false;
         $scope.detailsSelected = true;
         $scope.selectedUserEditId = "";
@@ -124,6 +127,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
                 }
             }
             angular.copy(response.data, $scope.selectedUser);
+            
         });
         
     }
