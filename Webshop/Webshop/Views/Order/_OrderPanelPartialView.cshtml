@@ -17,11 +17,11 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Edit Order</h4>
+                            Order Id: {{selectedOrder.Id}}
                         </div>
                         <div class="modal-body">
                             <div class="container row">
                                 <form name="EditOrderForm" class="form-inline" novalidate>
-
 
                                     <label class="control-label">
                                         Order Date: <input type="date" ng-model="selectedOrder.OrderDate " class="form-control" required />
@@ -62,6 +62,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Details Order</h4>
+                            Order Id: {{selectedOrder.Id}}
                         </div>
                         <div class="modal-body">
                             <order-details ng-if='detailsSelected'
@@ -81,6 +82,9 @@
    
             <table class="table table-bordered" >
                 <tr>
+                    <th ng-click="selectOrderBy('Id')" class="btn-link">
+                        OrderId
+                    </th>
                     <th ng-click="selectOrderBy('OrderDate')" class="btn-link">
                         OrderDate
                     </th>
@@ -90,6 +94,7 @@
                 </tr>
                 <tr ng-repeat="order in ordersList | orderBy:selectedOrder">
                      <!-- date : 'dd-MMMM-yyyy'-->
+                    <td>{{order.Id}}</td>
                     <td >{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</td>
                     <td>{{order.TotalPrice}}</td>
                     <td style="display:none" ng-bind="order.Id"></td>
