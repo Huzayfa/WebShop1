@@ -1228,6 +1228,14 @@
     <Compile Include="Migrations\201701030916490_newLampaDatabase.Designer.cs">
       <DependentUpon>201701030916490_newLampaDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701200855172_lennart1.cs" />
+    <Compile Include="Migrations\201701200855172_lennart1.Designer.cs">
+      <DependentUpon>201701200855172_lennart1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701200859212_lennart2.cs" />
+    <Compile Include="Migrations\201701200859212_lennart2.Designer.cs">
+      <DependentUpon>201701200859212_lennart2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
@@ -1338,6 +1346,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701030916490_newLampaDatabase.resx">
       <DependentUpon>201701030916490_newLampaDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701200855172_lennart1.resx">
+      <DependentUpon>201701200855172_lennart1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701200859212_lennart2.resx">
+      <DependentUpon>201701200859212_lennart2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

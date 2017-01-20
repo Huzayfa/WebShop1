@@ -3,9 +3,12 @@
 app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
     $scope.usersList = [];
     console.log("ShopUsersListCtrl");
+    $("body").css("cursor", "progress");
     $http.get("/ShopUser/ShopUsers",{cache:false}).then(function (response) {
 
         angular.copy(response.data, $scope.usersList);
+    $("body").css("cursor", "default");
+
     }
 
     );

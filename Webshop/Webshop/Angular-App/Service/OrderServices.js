@@ -5,6 +5,7 @@
         $http.get("/Order/Orders", { cache: false }).then(function (response) {
              for (var i = 0; i < response.data.length; i++) {
                  response.data[i].OrderDate = toJavaScriptDate(response.data[i].OrderDate);
+                 response.data[i].DeliverDate = toJavaScriptDate(response.data[i].DeliverDate);
              }
             angular.copy(response.data, orderList);
         }
@@ -27,6 +28,7 @@
 
             //$scope.selectedOrder = {};
             response.data.OrderDate = toJavaScriptDate(response.data.OrderDate);
+            response.data.DeliverDate = toJavaScriptDate(response.data.DeliverDate);
             angular.copy(response.data, order);
         });
         return order;
@@ -44,6 +46,7 @@
         destinationOrder.Id = angular.copy(sourceOrder.Id);
         destinationOrder.TotalPrice = sourceOrder.TotalPrice;
         destinationOrder.OrderDate = angular.copy(sourceOrder.OrderDate);
+        destinationOrder.DeliverDate = angular.copy(sourceOrder.DeliverDate);
     }
 
     this.findOrderInList = function (orderId, orderList) {

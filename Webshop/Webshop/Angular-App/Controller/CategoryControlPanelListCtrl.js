@@ -4,9 +4,12 @@
 'use strict'
 app.controller('CategoryControlPanelListCtrl', function ($scope, $http, $rootScope) {
     $scope.categoriesList = [];
+    $("body").css("cursor", "progress");
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.categoriesList);
+    $("body").css("cursor", "default");
+
     }
 
     );
