@@ -1,6 +1,6 @@
 ﻿@*@model WebShop.Models.Account.LoginViewModel*@
-<div class="container" ng-controller="LoginCtrl">
-    <div class="row">
+<div class="row" ng-controller="LoginCtrl">
+    <div class="col-md-8 col-sm-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2">
         <b class="message-Invalide">{{responseMessage}} </b>
         <form class="form-horizontal" ng-submit="login()">
            @* @Html.ValidationMessage(Model)*@
