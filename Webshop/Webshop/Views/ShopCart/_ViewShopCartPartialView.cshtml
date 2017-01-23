@@ -6,7 +6,7 @@
 
 
         <!-- Modal -->
-        <button style="display:none" id="ShowLoginModal" type="button"  data-toggle="modal" data-target="#logInModal">Open Modal</button>
+        <button style="display:none" id="ShowLoginModal" type="button" data-toggle="modal" data-target="#logInModal">Open Modal</button>
 
         <div class="modal fade" id="logInModal" role="dialog" style="display:none">
             <div class="modal-dialog">
@@ -28,53 +28,69 @@
             </div>
         </div>
 
-        @using (Ajax.BeginForm("ConfirmShoping", "ShopCart", new {  }, new AjaxOptions
+        @using (Ajax.BeginForm("ConfirmShoping", "ShopCart", new { }, new AjaxOptions
         {
             HttpMethod = "Post",
             // OnSuccess = "",
 
 
         }
-                            , new { id = "ConfirmShoping" }))
+                                , new { id = "ConfirmShoping" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            
+
             <span class="glyphicon glyphicon-shopping-cart">{{cart.length}}</span>
-            
-                
-            <button type="button" onclick="getCart()" class="btn btn-success" 
+
+
+            <button type="button" onclick="getCart()" class="btn btn-success"
                     value="Confirm Shoping">
                 Confirm Shoping
             </button>
             @*<button type="submit" class="btn btn-success" value="Confirm Shoping"
-                    ng-click="confirmShoping()">
-                Confirm Shoping
-            </button>*@
+                        ng-click="confirmShoping()">
+                    Confirm Shoping
+                </button>*@
         }
     </div>
     <div class="row">
         <h4>Total Price : {{totalPrice}}</h4>
     </div>
     <div class="row">
-        <div ng-repeat="product in cart | orderBy:selectedOrder" class="col-md-4 col-sm-4 col-xs-6">
-            <div id="ProductPhoto">
-                <a href="">
-                    <img ng-src="{{product.Photo}}" class="img-rounded"
-                         alt="Fjords" style="width:40%" />
-                </a>
-            </div>
-            <div>
-                <h5>{{product.Name}}</h5>
-                <p>{{product.Description}}</p>
-            </div>
-            <div>
-                <span>Price: {{product.Price}}</span>
-            </div>
+       
+            <div ng-repeat="product in cart | orderBy:selectedOrder" class="col-md-4 col-sm-4 col-xs-6">
+                <div id="ProductPhoto">
+                    <a href="">
+                        <img ng-src="{{product.Photo}}" class="img-rounded"
+                             alt="Fjords" style="width:40%" />
+                    </a>
+                    <div class="col">
+                        Quantity
+                        <input style="max-width:70px" type="number"
+                               min="0"
+                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+                               pattern="\d*"
+                               step="1"
+                               max="10000"
+                                class="small input-sm"
+                               
+                               ng-model="product.Quantity" />
 
-            <div style="display:none" ng-bind="product.Id"></div>
+                    </div>
+                </div>
+                <div>
+                    <h5>{{product.Name}}</h5>
+                    <p>{{product.Description}}</p>
+                </div>
+                <div>
+                    <span>Price: {{product.Price}}</span>
+                </div>
 
-            <button ng-click="deleteProductFromCart(product.Id)" class="btn btn-sm btn-danger" value="Delete">Delete From Cart</button>
-        </div>
+                <div style="display:none" ng-bind="product.Id"></div>
+
+                <button ng-click="deleteProductFromCart(product.Id)" class="btn btn-sm btn-danger" value="Delete">Delete From Cart</button>
+            </div>
+        
     </div>
+    
 </div>
