@@ -1,7 +1,7 @@
-﻿app.controller('CreateShopUsersCtrl', function ($scope, $http,$timeout, $q) {
+﻿app.controller('CreateShopUsersCtrl', function ($scope, $http, $timeout, $q) {
 
     $scope.newUser = {};
-    console.log("Create User Controller");
+   
     $scope.responseMessage = "";
 
 

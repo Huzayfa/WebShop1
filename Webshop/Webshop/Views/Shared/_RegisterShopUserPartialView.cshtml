@@ -1,0 +1,113 @@
+﻿
+
+<div  ng-controller="RegisterShopUsersCtrl">
+    
+    <h3 class="h">Register User</h3>
+    <br />
+    <b class="message-Invalide">{{responseMessage}} </b>
+    <form id="newUserForm" name="newUserForm" class="form" novalidate>
+
+        <label id="FirstName" class="control-label">
+            <span class="message-Invalide" ng-show="newUserForm.firstName.$touched && newUserForm.firstName.$error.required"> The name is required.<br /></span>
+            <span class="message-Invalide" ng-show="newUserForm.firstName.$touched && newUserForm.firstName.$error.minlength">The name length must be 3 at least.<br /></span>
+            <span class="message-Invalide" ng-show="newUserForm.firstName.$touched && newUserForm.firstName.$error.maxlength">The name length must be less than 16.<br /></span>
+
+            FirstName:
+
+            <input type="text" name="firstName"
+                   ng-model="newUser.FirstName" class="form-control"
+                   ng-minlength="3" ng-maxlength="15" required />
+
+        </label>
+        <label id="LastName" class="control-label">
+            <span class="message-Invalide" ng-show="newUserForm.lastName.$touched && newUserForm.lastName.$invalid">The last name is required.<br /></span>
+            LastName:
+            
+            <input type="text" name="lastName" ng-model="newUser.LastName" class="form-control" required />
+            
+        </label>
+        <label id="UserName" class="control-label">
+            <span class="message-Invalide" ng-show="newUserForm.userName.$touched && newUserForm.userName.$invalid">The userName is required.<br /></span>
+            UserName:
+            <input type="text" name="userName" ng-model="newUser.UserName" class="form-control" required />
+            
+        </label>
+        <label id="Password" class="control-label">
+            <span class="message-Invalide" ng-show="newUserForm.password.$touched && newUserForm.password.$invalid">The password is required.<br /></span>
+            Password:
+            <input name="password" type="password" ng-model="newUser.Password" class="form-control" required />
+            
+        </label>
+
+        <label id="StreetAddress" class="control-label">
+            <span style="color:red" ng-show="newUserForm.StreetAddress.$dirty && newUserForm.StreetAddress.$invalid">
+                <span class="message-Invalide" ng-show="newUserForm.StreetAddress.$error.required">StreetAddress is required.<br /></span>
+                <span class="message-Invalide" ng-show="newUserForm.StreetAddress.$error.email">Please insert a valid StreetAddress.<br /></span>
+            </span>
+            StreetAddress:
+            <input type="text" name="StreetAddress" ng-model="newUser.StreetAddress" class="form-control" required />
+            
+        </label>
+
+        <label id="PostNumber" class="control-label">
+            <span style="color:red" ng-show="newUserForm.PostNumber.$dirty && newUserForm.PostNumber.$invalid">
+                <span class="message-Invalide" ng-show="newUserForm.PostNumber.$error.required">Post Number is required.<br /></span>
+                @* <span class="message-Invalide" ng-show="newUserForm.PostNumber.$error.email">Please insert a valid Country Name.</span>*@
+            </span>
+            Post Number:
+            <input type="text" name="PostNumber" ng-model="newUser.PostNumber" class="form-control" required />
+            
+        </label>
+
+        <label id="CityName" class="control-label">
+            <span style="color:red" ng-show="newUserForm.CityName.$dirty && newUserForm.CityName.$invalid">
+                <span class="message-Invalide" ng-show="newUserForm.CityName.$error.required">City Name is required.<br /></span>
+                <span class="message-Invalide" ng-show="newUserForm.CityName.$error.email">Please insert a valid City Name.<br /></span>
+            </span>
+            City Name:
+            <input type="text" name="CityName" ng-model="newUser.City" class="form-control" required />
+            
+        </label>
+
+        <label id="CountryName" class="control-label">
+            <span style="color:red" ng-show="newUserForm.CountryName.$dirty && newUserForm.CountryName.$invalid">
+                <span class="message-Invalide" ng-show="newUserForm.CountryName.$error.required">Country Name is required.<br /></span>
+                <span class="message-Invalide" ng-show="newUserForm.CountryName.$error.email">Please insert a valid Country Name.<br /></span>
+            </span>
+            Country Name:
+            <input type="text" name="CountryName" ng-model="newUser.Country" class="form-control" required />
+            
+        </label>
+
+        <label id="Email" class="control-label">
+            <span style="color:red" ng-show="newUserForm.email.$dirty && newUserForm.email.$invalid">
+                <span class="message-Invalide" ng-show="newUserForm.email.$error.required">Email is required.<br /></span>
+                <span class="message-Invalide" ng-show="newUserForm.email.$error.email">Please insert a valid Email.<br /></span>
+            </span>
+            Email:
+            <input type="email" name="email" ng-model="newUser.Email" class="form-control" required />
+            
+        </label>
+
+        <label id="PhoneNumber" class="control-label">
+            <span style="color:red" ng-show="newUserForm.PhoneNumber.$dirty && newUserForm.PhoneNumber.$invalid">
+
+                <span class="message-Invalide" ng-show="newUserForm.PhoneNumber.$error.email">Please insert a valid PhoneNumber.</span>
+            </span>
+            PhoneNumber:
+            <input type="text" name="PhoneNumber" ng-model="newUser.PhoneNumber" class="form-control" />
+            
+        </label>
+
+
+        <br />
+        <input type="button" value="Upload Picture" onclick="$('#upLoadNewUserPic').click()" class="btn btn-success" />
+        <input name="newUserPhoto" id="upLoadNewUserPic" type="file" ng-hide="true"
+               ng-model="userPhoto" value="Uplaod Pic" file-model="userPhoto" />
+        <br />
+        <input type="button" class="btn btn-success" value="Save" ng-click="CreateUser(newUserForm,newUser)"
+               ng-disabled="newUserForm.$invalid" />
+
+    </form>
+
+</div>
