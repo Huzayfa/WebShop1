@@ -25,7 +25,7 @@
                     $scope.newUser = {};
                     newUserForm.$setPristine(true);
                     newUserForm.$setUntouched(true);
-                   // document.getElementById('newUserForm').reset();
+                  
                 }
             }, 3000);
            // angular.copy(response.data, $scope.selectedProduct);

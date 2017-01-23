@@ -51,8 +51,11 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
         /*var cart = $cookies.getObject(cookieOptionService.cookieName);*/
         if (cart === undefined || cart === null)
         {
-            product.Quantity = 1;
-            cart = [product];
+            var p = {};
+            p.Id = angular.copy(product.Id);
+            p.Quantity = 1;
+            p.Price = angular.copy(product.Price)
+            cart = [p];
             $scope.cartLength = 1;
            /* $cookies.putObject(cookieOptionService.cookieName,JSON.stringify(cart), {
                 expires: cookieOptionService.exp
@@ -68,8 +71,13 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
             var index = findProductInList(product.Id,cart)
             if (index == -1)
             {
+                
+                var p = {};
+                p.Quantity = 1;
+                p.Id = angular.copy(product.Id);
                 product.Quantity = 1;
-                cart.push(product);
+                p.Price = angular.copy(product.Price) 
+                cart.push(p);
                 $scope.cartLength = cart.length;
                /* $cookies.putObject(cookieOptionService.cookieName, JSON.stringify(cart)
                     , {
@@ -89,10 +97,9 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
            
 
         }
-        console.log(cart);
+        
         $window.sessionStorage.setItem(cookieOptionService.cookieName,angular.toJson(cart));
-        console.log($window.sessionStorage);
-        console.log($window.sessionStorage[cookieOptionService.cookieName]);
+       
     }
 
 

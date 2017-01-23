@@ -35,7 +35,7 @@
 
 
         }
-                                , new { id = "ConfirmShoping" }))
+                                        , new { id = "ConfirmShoping" }))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -56,41 +56,43 @@
     <div class="row">
         <h4>Total Price : {{totalPrice}}</h4>
     </div>
-    <div class="row">
-       
-            <div ng-repeat="product in cart | orderBy:selectedOrder" class="col-md-4 col-sm-4 col-xs-6">
-                <div id="ProductPhoto">
-                    <a href="">
-                        <img ng-src="{{product.Photo}}" class="img-rounded"
-                             alt="Fjords" style="width:40%" />
-                    </a>
-                    <div class="col">
+    <div class="row text-center">
+
+        <div ng-repeat="product in cart | orderBy:selectedOrder"
+             class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+            <div class="thumbnail"
+                 @*style="display:grid; margin:10px; border:groove;"
+                 class="center-block panel panel-body"*@
+                 >
+                <div class="" id="ProductPhoto">
+
+                    <img ng-src="{{product.Photo}}" class="img-rounded"
+                         alt="Fjords" style="width:40%" />
+                </div>
+                <div class="caption">
+                    <div>
                         Quantity
                         <input style="max-width:70px" type="number"
                                min="0"
-                               onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-                               pattern="\d*"
+                               oninput="this.value=this.value.replace(/[^0-9]/g,'0');"
                                step="1"
-                               max="10000"
-                                class="small input-sm"
-                               
+                               max="1000"
+                               class="small input-sm"
                                ng-model="product.Quantity" />
 
                     </div>
+                    <div>
+                        <h5>{{product.Name}}</h5>
+                        <p>{{product.Description}}</p>
+                    </div>
+                    <div>
+                        <span>Price: {{product.Price}}</span>
+                    </div>
+                    <button ng-click="deleteProductFromCart(product.Id)" class="btn btn-sm btn-danger" value="Delete">Delete From Cart</button>
                 </div>
-                <div>
-                    <h5>{{product.Name}}</h5>
-                    <p>{{product.Description}}</p>
-                </div>
-                <div>
-                    <span>Price: {{product.Price}}</span>
-                </div>
-
-                <div style="display:none" ng-bind="product.Id"></div>
-
-                <button ng-click="deleteProductFromCart(product.Id)" class="btn btn-sm btn-danger" value="Delete">Delete From Cart</button>
             </div>
-        
+        </div>
+
     </div>
-    
+
 </div>
