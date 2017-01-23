@@ -1,10 +1,11 @@
 ﻿
 
-<div class="container" ng-controller="CreateShopUsersCtrl">
+<div  ng-controller="CreateShopUsersCtrl">
+    
     <h3 class="h">Create User</h3>
     <br />
     <b class="message-Invalide">{{responseMessage}} </b>
-    <form id="newUserForm" name="newUserForm" class="form-inline" novalidate>
+    <form id="newUserForm" name="newUserForm" class="form" novalidate>
 
         <label id="FirstName" class="control-label">
             <span class="message-Invalide" ng-show="newUserForm.firstName.$touched && newUserForm.firstName.$error.required"> The name is required.<br /></span>

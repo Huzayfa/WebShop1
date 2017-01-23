@@ -19,22 +19,22 @@
                             <h4 class="modal-title">Edit Order</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="container row">
-                                <form name="EditOrderForm" class="form-inline" novalidate>
+                            <div class="col-md-12">
+                                <form name="EditOrderForm" class="form" novalidate>
 
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            Order Date: <input type="date" ng-model="selectedOrder.OrderDate " class="form-control" required />
+                                        </label>
 
-                                    <label class="control-label">
-                                        Order Date: <input type="date" ng-model="selectedOrder.OrderDate " class="form-control" required />
-                                    </label>
+                                        <label class="control-label">
+                                            Deliver Date: <input type="date" ng-model="selectedOrder.DeliverDate " class="form-control" required />
+                                        </label>
 
-                                    <label class="control-label">
-                                        Deliver Date: <input type="date" ng-model="selectedOrder.DeliverDate " class="form-control" required />
-                                    </label>
-
-                                    <label class="control-label">
-                                        Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
-                                    </label>
-
+                                        <label class="control-label">
+                                            Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
+                                        </label>
+                                    </div>
 
                                     <input type="button" class="btn btn-success" value="Save" ng-click="saveEditOrder(selectedOrder)" />
                                 </form>
@@ -106,32 +106,6 @@
                                 data-target="#detailsOrderModal"
                                 class="btn btn-sm btn-link">Details</button>
                     </td>
-                    <div id="OldTablewithoutModal">
-                        @*<td class="col-md-12" ng-if='(order.Id==selectedOrderEditId)&&editSelected '>
-                <div>
-                    <button type="button"  ng-click="cancelEdit(Order.Id)" class="close" >&times;</button>
-                    <form name="EditOrderForm" class="form-inline" novalidate>
-
-
-                        <label class="control-label">
-                            Order Date: <input type="text" ng-model="selectedOrder.OrderDate " class="form-control" required />
-                        </label>
-                        <label class="control-label">
-                           Total Price : <input type="text" ng-model="selectedOrder.TotalPrice" class="form-control" required />
-                        </label>
-
-                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditOrder(selectedOrder)" />
-                    </form>
-
-                </div>
-            </td>
-            <td class="col-md-12" ng-if='order.Id === selectedOrderDetails && detailsSelected'>
-                <order-details selected-order-details="selectedOrderDetails"
-                               close="cancelEdit(order.Id)">
-
-                </order-details>
-            </td>*@
-                    </div>
                 </tr>
             </table>
         </div>

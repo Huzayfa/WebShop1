@@ -18,13 +18,15 @@
                             <h4 class="modal-title">Edit Category</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="container row">
-                                <form name="EditCategoryForm" class="form-inline" novalidate>
-                                    <label class="control-label">
-                                        Name: <input type="text" ng-model="selectedCategory.Name" class="form-control" required />
-                                    </label>
-                                    <input type="button" class="btn btn-success" value="Save" ng-click="saveEditCategory(selectedCategory)" />
-                                </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form name="EditCategoryForm" class="form-inline" novalidate>
+                                        <label class="control-label">
+                                            Name: <input type="text" ng-model="selectedCategory.Name" class="form-control" required />
+                                        </label>
+                                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditCategory(selectedCategory)" />
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -52,8 +54,8 @@
                             <h4 class="modal-title">Details Category</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="row container">
-                                <div>
+                            <div class="row">
+                                <div class="col-md-12">
                                     <label>Category Name : {{selectedCategory.Name}}</label>
                                 </div>
 
@@ -93,21 +95,7 @@
                                 >Details
                         </button>
                     </td>
-                    @*<td class="col-md-12" ng-if='(category.Id==selectedCategoryEditId)&&editSelected '>
-                            <div>
-                                <button type="button" ng-click="cancelEdit(category.Id)" class="close">&times;</button>
-                                <form name="EditCategoryForm" class="form-inline" novalidate>
-
-
-                                    <label class="control-label">
-                                        Name: <input type="text" ng-model="selectedCategory.Name" class="form-control" required />
-                                    </label>
-
-                                    <input type="button" class="btn btn-success" value="Save" ng-click="saveEditCategory(selectedCategory)" />
-                                </form>
-
-                            </div>
-                        </td>*@
+                    
                 </tr>
             </table>
         </div>
@@ -115,7 +103,7 @@
 
         <div class="col-md-4">
 
-            <form name="newCategoryForm" class="form-inline" novalidate>
+            <form name="newCategoryForm" class="form" novalidate>
                 <label class="control-label">
                     Category Name:
                     <input type="text" name="newProductName" ng-model="newCategory.Name" class="form-control" required />
