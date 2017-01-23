@@ -42,56 +42,55 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-10">
-                                    <form name="EditProductForm" class="form-inline" novalidate>
+                                    <form name="EditProductForm" class="form" novalidate>
+
+
+
+                                        <label class="control-label">
+                                            Name: <input type="text" ng-model="selectedProduct.Name" class="form-control" required />
+                                        </label>
+
+
+
+                                        <label class="control-label">
+                                            Description: <input type="text" ng-model="selectedProduct.Description" class="form-control" required />
+                                        </label>
+
+
+
+
+                                        <label class="control-label">
+                                            Price : <input type="text" ng-model="selectedProduct.Price" class="form-control" required />
+                                        </label>
+
+
+
+
+                                        <label class="control-label">
+                                            Category:
+                                            <select name="categorySelect" id="categorySelect" class="form-control" ng-model="selectedProduct.CategoryId">
+                                                <option ng-repeat="category in categoriesList" value="{{category.Id}}" ng-selected="category.Id==selectedProduct.CategoryId">{{category.Name}}</option>
+                                            </select>
+                                        </label>
+
+
+
+
+                                        <label class="control-label">
+                                            Quantity in stock : <input type="text" ng-model="selectedProduct.StockQuantity" class="form-control" required />
+                                        </label>
+
+
+
+
+                                        <label class="control-label">
+                                            Quantity to show : <input type="text" ng-model="selectedProduct.StockQuantityToShow" class="form-control" required />
+                                        </label>
+
+
 
 
                                         <div class="form-group">
-                                            <label class="control-label">
-                                                Name: <input type="text" ng-model="selectedProduct.Name" class="form-control" required />
-                                            </label>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Description: <input type="text" ng-model="selectedProduct.Description" class="form-control" required />
-                                            </label>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Price : <input type="text" ng-model="selectedProduct.Price" class="form-control" required />
-                                            </label>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Category:
-                                                <select name="categorySelect" id="categorySelect" class="form-control" ng-model="selectedProduct.CategoryId">
-                                                    <option ng-repeat="category in categoriesList" value="{{category.Id}}" ng-selected="category.Id==selectedProduct.CategoryId">{{category.Name}}</option>
-                                                </select>
-                                            </label>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Quantity in stock : <input type="text" ng-model="selectedProduct.StockQuantity" class="form-control" required />
-                                            </label>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label">
-                                                Quantity to show : <input type="text" ng-model="selectedProduct.StockQuantityToShow" class="form-control" required />
-                                            </label>
-                                        </div>
-
-
-
-                                        <div class="row">
                                             <div class="col-md-12">
                                                 <img class="img-rounded" id="photoPreveiw{{selectedProduct.Id}}"
                                                      style="width:20em"
@@ -99,15 +98,11 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="form-group">
-                                            <input type="button" value="Upload Picture" onclick="$('#upLoadEditProductPic').click()" class="btn btn-success" />
-                                            @*<input ng-model="vm.p.photo" type="file" />*@
-                                            <input name="newProductPhoto{{selectedProduct.Id}}" id="upLoadEditProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
-                                                   onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
-                                            <br />
-                                        </div>
-
+                                        <input type="button" value="Upload Picture" onclick="$('#upLoadEditProductPic').click()" class="btn btn-success" />
+                                        @*<input ng-model="vm.p.photo" type="file" />*@
+                                        <input name="newProductPhoto{{selectedProduct.Id}}" id="upLoadEditProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
+                                               onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
+                                    
 
                                         <div class="form-group">
                                             <input type="button" class="btn btn-success" value="Save" ng-click="saveEditProduct(selectedProduct)" />
