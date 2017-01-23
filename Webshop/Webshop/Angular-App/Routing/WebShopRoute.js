@@ -26,6 +26,9 @@ app.config(function ($routeProvider) {
         templateUrl:"/Account/Login"
     }).when("/Orders", {
         templateUrl: "/Order/"
+    }).when("/Register", {
+        templateUrl: "/RegisterUser/"
+
     }).otherwise({
 
         template: "<h1>Otherwise From Angular Route</h1>"

@@ -204,11 +204,13 @@
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\CreateShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\LoginCtrl.js" />
     <Content Include="Angular-App\Controller\OrderControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\ProductControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopCartCtrl.js" />
+    <Content Include="Angular-App\Controller\RegisterUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ViewShopCartCtrl.js" />
     <Content Include="Angular-App\Directive\OrderDetails.js" />
@@ -1183,6 +1185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\ShopCartController.cs" />
     <Compile Include="Controllers\ShopUserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1302,10 +1305,12 @@
     <Content Include="Views\ShopCart\_ShopCartPartialView.cshtml" />
     <Content Include="Views\ShopCart\_ViewShopCartPartialView.cshtml" />
     <Content Include="Views\ShopUser\CreateUser.cshtml" />
-    <Content Include="Views\ShopUser\_CreateShopUserPartialView.cshtml" />
+    <Content Include="Views\Shared\_CreateShopUserPartialView.cshtml" />
     <Content Include="Views\ShopUser\_ShopUsersPartialView.cshtml" />
     <Content Include="Views\Test\TestPaging.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\RegisterUser\_RegisterUsersPartialView.cshtml" />
+    <Content Include="Views\Shared\_RegisterShopUserPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
