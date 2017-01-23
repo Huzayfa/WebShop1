@@ -27,7 +27,7 @@
 
                     <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
                     <h3>Edit User</h3>
-                    <form name="EditUserForm" class="form-inline" novalidate>
+                    <form name="EditUserForm" class="form" novalidate>
 
 
                         <label class="control-label">
@@ -179,15 +179,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        @*<div class="col-md-4">
-                                <label>First Name : {{selectedUser.FirstName}}</label>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Last Name: {{selectedUser.LastName}}</label>
-                            </div>
-                            <div class="col-md-4">
-                                <label>Email: {{selectedUser.Email}}</label>
-                            </div>*@
+                       
                         <div class="col-sm-6">
                             <h3>Number Of orders : {{selectedUser.orders.length}}</h3>
                             <ul>
