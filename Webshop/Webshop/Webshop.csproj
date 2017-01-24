@@ -1259,6 +1259,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductViewModels\NewProductViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
+    <Compile Include="Models\ProductViewModels\ProductForCustomerViewModel.cs" />
     <Compile Include="Models\ShopUser.cs" />
     <Compile Include="Models\ShopUserModelView\ShopUserCreateViewModel.cs" />
     <Compile Include="Models\ShopUserModelView\UserDetailsViewModel.cs" />

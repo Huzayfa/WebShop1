@@ -5,6 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Webshop.Models.ProductViewModels;
 using WebShop.Models;
 using WebShop.Models.ProductViewModels;
 using WebShop.Services;
@@ -45,7 +46,7 @@ namespace WebShop.Controllers
 
 
         //Get Edit User
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult ProductDetails(int? productId)
         {
             if (productId == null)
@@ -73,7 +74,7 @@ namespace WebShop.Controllers
 
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         //Get jeson List Of the User
         public JsonResult Products()
         {
@@ -81,7 +82,12 @@ namespace WebShop.Controllers
             return Json(productsList, JsonRequestBehavior.AllowGet);
         }
 
-       
+        [AllowAnonymous]
+        public JsonResult ProductsForCustomer()
+        {
+            List<ProductForCustomerViewModel> productsList = _rep.GetProductsForCustomerList();
+            return Json(productsList, JsonRequestBehavior.AllowGet);
+        }
 
 
         //Post

@@ -231,6 +231,27 @@ namespace WebShop.Services
             
         }
 
+        public List<ProductForCustomerViewModel> GetProductsForCustomerList()
+        {
+
+            IEnumerable<ProductForCustomerViewModel> products = DbContext.Products.Select(p =>
+                new ProductForCustomerViewModel {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price=p.Price,
+                    Photo=p.Photo,
+                    StockQuantityToShow=p.StockQuantityToShow,
+                });
+            if (products != null)
+            {
+                return products.ToList();
+            }
+            else
+            {
+                return new List<ProductForCustomerViewModel>();
+            }
+
+        }
         public Product CreateProduct(NewProductViewModel product)
         {
             var files= HttpContext.Current.Request.Files;

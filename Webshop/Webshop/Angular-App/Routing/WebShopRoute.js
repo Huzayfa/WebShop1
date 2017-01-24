@@ -6,7 +6,7 @@ app.config(function ($routeProvider) {
         template: "<h1>Main Route Angular</h1>"
 
     }).when("/Users", {
-        templateUrl: "/ShopUser/",
+        templateUrl: "/ShopUser/?" + Date.now(),
         // controller: "ShopUsersListCtrl"
 
 
