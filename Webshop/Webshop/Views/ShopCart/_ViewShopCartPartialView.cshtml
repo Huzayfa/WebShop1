@@ -83,7 +83,12 @@
                     </div>
                     <div>
                         <h5>{{product.Name}}</h5>
-                        <p>{{product.Description}}</p>
+                        <div class="Mytooltip">
+                            Description
+                            <span class="Mytooltiptext" ng-model="product.Description">
+                                {{product.Description}}
+                            </span>
+                        </div>
                     </div>
                     <div>
                         <span>Price: {{product.Price}}</span>
