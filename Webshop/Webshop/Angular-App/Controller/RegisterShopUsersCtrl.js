@@ -1,7 +1,6 @@
 ﻿app.controller('RegisterShopUsersCtrl', function ($scope, $http,$timeout, $q) {
 
     $scope.newUser = {};
-    console.log("Register User Controller");
     $scope.responseMessage = "";
 
 

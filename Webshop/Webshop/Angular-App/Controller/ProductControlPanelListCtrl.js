@@ -53,7 +53,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append('Description', newProduct.Description);
         fdata.append('StockQuantity', newProduct.StockQuantity);
         fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);
-        console.log(newProduct.Description);
         var promise=$http({
             method: 'POST',
             url: "Product/Create",
@@ -95,7 +94,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     $scope.fileNameChanged=function(elem)
     {
-        console.log(elem.files);
         $scope.photoFile = elem.files[0];
 
     }
@@ -130,7 +128,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         var modal = $('#productDetailsModal');
         if (modal != undefined)
         {
-            console.log("Hide");
            modal.modal('hide');
         }
         
@@ -168,7 +165,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
             $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
 
                 angular.copy(response.data, $scope.selectedProduct);
-               // console.log($scope.selectedProduct);
             });
         });
 
@@ -198,7 +194,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
         //var myElement = document.getElementById("tableEditProduct" + productId);
         //var topPos = myElement.offsetTop;
-        //console.log(topPos);
         //setTimeout(function () {
         //    window.scrollTo(0, topPos - 100)
         //}, 20);
@@ -206,7 +201,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         //document.getElementById('productTable').animate(topPos.top);
         //document.getElementById("tableEditProduct" + productId).scrollTop -= 10;
        // $("body").animate({scrollTop: "tableEditProduct"+productId}, "slow");
-        //console.log(angular.element("tableEditProduct" + productId).offset());
         //angular.element("body").animate({
         //    scrollTop: angular.element("tableEditProduct"+productId).top
         //}, 3000);
@@ -218,7 +212,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     $scope.saveEditProduct = function (product) {
         
-        console.log(product);
         $http.post('Product/Edit', product).then(function (response) {
             var index = findProductInList($scope.productsList,product.Id);
             if (index > -1) {
@@ -226,7 +219,6 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
             }
             var modal = $("#editProductModal");
             if (modal != undefined) {
-                console.log("Hide");
                 modal.modal('hide');
             }
             $scope.editSelected = false;

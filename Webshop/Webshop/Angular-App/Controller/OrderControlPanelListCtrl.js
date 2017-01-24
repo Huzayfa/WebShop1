@@ -47,7 +47,6 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         }
         var modal = $("#editOrderModal");
         if (modal != undefined) {
-            console.log("Hide");
             modal.modal('hide');
         }
         $scope.editSelected = false;

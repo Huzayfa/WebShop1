@@ -23,7 +23,7 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
     }
     $scope.productsList = [];
     $("body").css("cursor", "progress");
-    $http.get("/Product/Products", { cache: false }).then(function (response) {
+    $http.get("/Product/ProductsForCustomer", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.productsList);
 
@@ -49,7 +49,6 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
 
     $scope.addToCart = function (product) {
         //$cookies.put('customerCart', undefined);
-        //console.log(product);
         var cart = angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
         /*var cart = $cookies.getObject(cookieOptionService.cookieName);*/
         if (cart === undefined || cart === null) {
@@ -67,7 +66,6 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
              $cookies.putObject(cookieOptionService.cookieName,cart,
                 { expires: cookieOptionService.exp }
                  );
-             console.log(JSON.stringify(cart));
              */
         }
         else {
@@ -88,7 +86,6 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
 
             }
             else {
-                // console.log("Q++");
                 cart[index].Quantity++;
                 $scope.cartLength += 1;
                 /* $cookies.putObject(cookieOptionService.cookieName, cart, {

@@ -6,7 +6,6 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, co
     // $scope.cart = $cookies.getObject(cookieOptionService.cookieName);
     $scope.cart =angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
     //$window.sessionStorage.setItem(cookieOptionService.cookieName, cart);
-    //console.log($scope.cart);
     if ($scope.cart === undefined || $scope.cart === null)
     {
         $scope.cart = [];
@@ -58,7 +57,6 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, co
         
         //var cart = $cookies.getObject(cookieOptionService.cookieName);
         var cart = angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
-        console.log(cart);
         if (cart === undefined || cart === null)
         {
             
@@ -69,10 +67,7 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, co
             var index = findProductInCart(cart, productId);
             if (index > -1)
             {
-                console.log(cart);
-                console.log(index);
                 cart.splice(index, 1);
-                console.log(cart);
                 $window.sessionStorage.setItem(cookieOptionService.cookieName, angular.toJson(cart));
                 $scope.cart =angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
                 //$cookies.putObject(cookieOptionService.cookieName, cart);

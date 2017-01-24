@@ -2,7 +2,6 @@
 'use strict'
 app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
     $scope.usersList = [];
-    console.log("ShopUsersListCtrl");
     $("body").css("cursor", "progress");
     $http.get("/ShopUser/ShopUsers",{cache:false}).then(function (response) {
 
@@ -71,13 +70,11 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
         $scope.editSelected = true;
         $scope.detailsSelected = false;    
         $scope.selectedUserEditId = angular.copy(userId);
-        console.log($scope.selectedUserEditId);
         $scope.selectedUser={};
         $http.post('/ShopUser/UserDetails', JSON.stringify({ userId: userId })).then(function (response) {
 
             angular.copy(response.data, $scope.selectedUser);
         });
-        console.log($scope.selectedUser);
     }
 
 
@@ -105,7 +102,6 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
         $scope.selectedUserEditId = "";
         $scope.selectedUserDetails = angular.copy(userId);
         $scope.selectedUser = {};
-        console.log("User Details");
         $http.post('/ShopUser/UserDetails', { userId: userId }).then(function (response) {
             if (response.data != null && response.data != undefined)
             {
@@ -114,7 +110,6 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
                     
                     for(var i=0;i<response.data.orders.length;i++)
                     {
-                        console.log(response.data.orders[i]);
                         response.data.orders[i].OrderDate = toJavaScriptDate(response.data.orders[i].OrderDate);
                     }
                 }

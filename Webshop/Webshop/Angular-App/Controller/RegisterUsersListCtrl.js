@@ -2,7 +2,6 @@
 'use strict'
 app.controller('RegisterUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
     $scope.usersList = [];
-    console.log("RegisterUsersListCtrl");
     $("body").css("cursor", "progress");
     $http.get("/RegisterUser/ShopUsers",{cache:false}).then(function (response) {
 
@@ -41,8 +40,6 @@ app.controller('RegisterUsersListCtrl', function ($scope, toJavaScriptDate, $htt
 
     var copyUser=function(sourceUser,destinationUser)
     {
-        console.log(sourceUser);
-        console.log(destinationUser);
         destinationUser.Id=angular.copy(sourceUser.Id);
         destinationUser.FullName = sourceUser.FirstName + " " + sourceUser.LastName;
         destinationUser.Email=angular.copy(sourceUser.Email);
@@ -74,18 +71,15 @@ app.controller('RegisterUsersListCtrl', function ($scope, toJavaScriptDate, $htt
     //get User By Id to Edit hem
     $scope.EditUser=function(userId)
     {
-        console.log("Edit User" + userId);
         $scope.editSelected = true;
         $scope.detailsSelected = false;
         
         $scope.selectedUserEditId = angular.copy(userId);
-        console.log($scope.selectedUserEditId);
         $scope.selectedUser={};
         $http.post('RegisterUser/UserDetails', JSON.stringify({ userId: userId })).then(function (response) {
 
             angular.copy(response.data, $scope.selectedUser);
         });
-        console.log($scope.selectedUser);
     }
 
 
@@ -121,7 +115,6 @@ app.controller('RegisterUsersListCtrl', function ($scope, toJavaScriptDate, $htt
                     
                     for(var i=0;i<response.data.orders.length;i++)
                     {
-                        console.log(response.data.orders[i]);
                         response.data.orders[i].OrderDate = toJavaScriptDate(response.data.orders[i].OrderDate);
                     }
                 }

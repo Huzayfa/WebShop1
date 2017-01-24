@@ -1,7 +1,6 @@
 ﻿app.directive('orderDetails', function () {
     
     var controller = function ($scope, $http, orderServices) {
-        console.log($scope.selectedOrderDetails);
         $scope.selectedOrder = {};
         $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrderDetails);
     };
