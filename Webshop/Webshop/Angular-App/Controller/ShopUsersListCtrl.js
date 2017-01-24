@@ -53,7 +53,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
 
     $scope.DeleteUser = function (userId) {
     
-        $http.post('ShopUser/Delete', JSON.stringify({ userId: userId })).then(function (response)
+        $http.post('/ShopUser/Delete', JSON.stringify({ userId: userId })).then(function (response)
         {
             var index = findUserInList(userId);
             if (index > -1)
@@ -73,7 +73,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
         $scope.selectedUserEditId = angular.copy(userId);
         console.log($scope.selectedUserEditId);
         $scope.selectedUser={};
-        $http.post('ShopUser/UserDetails', JSON.stringify({ userId: userId })).then(function (response) {
+        $http.post('/ShopUser/UserDetails', JSON.stringify({ userId: userId })).then(function (response) {
 
             angular.copy(response.data, $scope.selectedUser);
         });
@@ -105,7 +105,8 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
         $scope.selectedUserEditId = "";
         $scope.selectedUserDetails = angular.copy(userId);
         $scope.selectedUser = {};
-        $http.post('ShopUser/UserDetails', JSON.stringify({ userId: userId })).then(function (response) {
+        console.log("User Details");
+        $http.post('/ShopUser/UserDetails', { userId: userId }).then(function (response) {
             if (response.data != null && response.data != undefined)
             {
                 if(response.data.orders!=null && response.data.orders!=undefined)
