@@ -25,8 +25,7 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
 
     //Help Functions
     var findUserInList=function(userId)
-    {
-        
+    { 
         for(var i=0;i<$scope.usersList.length;i++)
         {
             if(userId==$scope.usersList[i].Id)
@@ -34,20 +33,16 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
                 return i;
             }
         }
-
         return -1;
     }
 
 
     var copyUser=function(sourceUser,destinationUser)
     {
-        console.log(sourceUser);
-        console.log(destinationUser);
         destinationUser.Id=angular.copy(sourceUser.Id);
         destinationUser.FullName = sourceUser.FirstName + " " + sourceUser.LastName;
         destinationUser.Email=angular.copy(sourceUser.Email);
     }
-
     $scope.cancelEdit=function(userId)
     {
         $scope.editSelected = false;
@@ -67,17 +62,14 @@ app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
             }
             
         });
-
-
     };
 
     //get User By Id to Edit hem
     $scope.EditUser=function(userId)
     {
-        console.log("Edit User" + userId);
-        $scope.editSelected = true;
-        $scope.detailsSelected = false;
         
+        $scope.editSelected = true;
+        $scope.detailsSelected = false;    
         $scope.selectedUserEditId = angular.copy(userId);
         console.log($scope.selectedUserEditId);
         $scope.selectedUser={};

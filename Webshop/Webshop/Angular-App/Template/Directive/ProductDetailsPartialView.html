@@ -1,37 +1,32 @@
-﻿    <div class="row">
-        <div id="ProductDetailsPhoto" class="col-sm-6">
-            <a href="" style="align-content:center">
-                <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
-                     alt="Fjords" style="width:100em; align-content:center" />
-            </a>
+﻿<div class="row">
+    <div id="ProductDetailsPhoto" class="col-sm-6">
+        <a href="" style="align-content:center">
+            <img ng-src="{{selectedProduct.Photo}}" class="img-rounded"
+                 alt="Fjords" style="width:100em; align-content:center" />
+        </a>
+    </div>
+    <div class="col-sm-6">
+
+        <h5>{{selectedProduct.Name}}</h5>
+        <div class="Mytooltip">
+            Description
+            <span class="Mytooltiptext" ng-model="selectedProduct.Description">
+                {{selectedProduct.Description}}
+            </span>
         </div>
-        <div class="col-sm-6">
+        <p>  </p>
+        <p>Category: {{selectedProduct.Category}}</p>
+        <span>Price: {{selectedProduct.Price |  currency:"SEK":(2) }} </span>
+        <p>Quantity in stock: {{selectedProduct.StockQuantity}}</p>
+        <p>Quantity to show: {{selectedProduct.StockQuantityToShow}}</p>
 
-            <h5>{{selectedProduct.Name}}</h5>
-            <p> <pre>{{selectedProduct.Description}} </pre></p>
-            <p>Category: {{selectedProduct.Category}}</p>
-            <span>Price: {{selectedProduct.Price |  currency:"SEK":(2) }} </span>
-            <p>Quantity in stock: {{selectedProduct.StockQuantity}}</p>
-            <p>Quantity to show: {{selectedProduct.StockQuantityToShow}}</p>
-            <a href="#" 
-               data-toggle="tooltip" 
-               data-placement="right" 
-               title="Hooray!">
-                Hover
-            </a>
-            <!-- HTML to write -->
-            <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
 
-            <!-- Generated markup by the plugin -->
-            <div class="tooltip tooltip-top" role="tooltip">
-                <div class="tooltip-arrow"></div>
-                <div class="tooltip-inner">
-                    Some tooltip text!
-                </div>
-            </div>
 
-        </div>
+
+
 
     </div>
+
+</div>
 
 

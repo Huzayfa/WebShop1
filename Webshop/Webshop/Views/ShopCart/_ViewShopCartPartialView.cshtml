@@ -40,7 +40,7 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <span class="glyphicon glyphicon-shopping-cart">{{cart.length}}</span>
+            <span class="glyphicon glyphicon-shopping-cart">{{cartLength}}</span>
 
 
             <button type="button" onclick="getCart()" class="btn btn-success"

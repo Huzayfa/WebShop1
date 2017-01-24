@@ -10,12 +10,17 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
         else {
             $scope.cartLength = cart.length;
         }
-      */ 
+      */
+    
     if (cart === undefined || cart === null) {
         $scope.cartLength = '';
     }
     else {
-        $scope.cartLength = cart.length;
+        $scope.cartLength = 0;
+        for(var i=0;i<cart.length;i++)
+        {
+            $scope.cartLength += cart[i].Quantity;
+        }
     }
     $scope.productsList = [];
     $("body").css("cursor", "progress");
@@ -78,7 +83,7 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
                 product.Quantity = 1;
                 p.Price = angular.copy(product.Price) 
                 cart.push(p);
-                $scope.cartLength = cart.length;
+                $scope.cartLength += 1;
                /* $cookies.putObject(cookieOptionService.cookieName, JSON.stringify(cart)
                     , {
                     expires: cookieOptionService.exp
@@ -89,6 +94,7 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies,$window ,cookie
             {
                // console.log("Q++");
                 cart[index].Quantity++;
+                $scope.cartLength += 1;
                /* $cookies.putObject(cookieOptionService.cookieName, cart, {
                     expires: cookieOptionService.exp
                 });

@@ -13,8 +13,23 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, co
     }
     $scope.$watch('cart', function (neww, old) {
         $scope.totalPrice = counteTotalPrice(neww);
+        $scope.cartLength = countProductQuantity(neww);
     }, true)
    
+    var countProductQuantity=function(cart)
+    {
+        if (cart === undefined || cart === null) {
+            return '';
+        }
+        else {
+            var cartLength = 0;
+            for (var i = 0; i < cart.length; i++) {
+                cartLength += cart[i].Quantity;
+            }
+            return cartLength;
+        }
+    }
+
     $scope.clearShopCart=function()
     {
         //$cookies.putObject(cookieOptionService.cookieName, null);
