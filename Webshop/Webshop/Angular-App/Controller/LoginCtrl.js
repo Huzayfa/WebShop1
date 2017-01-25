@@ -7,11 +7,11 @@ app.controller('LoginCtrl', function ($scope, $http, $cookies, $location,$timeou
 
     
     $scope.login = function () {
-        $http.post('Account/Login', $scope.userLoginVieModel).success(function (response, status) {
+        $http.post('/Account/Login', $scope.userLoginVieModel).success(function (response, status) {
             
             if (login)
             {
-                $window.location.href = "home";
+                $window.location.href = "Home";
                
             }
             else

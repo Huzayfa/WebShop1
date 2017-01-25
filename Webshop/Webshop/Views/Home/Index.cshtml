@@ -6,8 +6,16 @@
 <h2>   </h2>
 
 <div >
-    
-
+    <button onclick="f()" class="btn btn-danger">Test</button>
+   <div id="Div">
+       <script>
+           function f()
+           {
+               alert("Function");
+               document.getElementById("Div").innerHTML="";
+           }
+       </script>
+   </div>
     
     <ng-view >
         Loooding Page......
