@@ -240,6 +240,7 @@ namespace WebShop.Services
                     Name = p.Name,
                     Price=p.Price,
                     Photo=p.Photo,
+                    Description=p.Description,
                     StockQuantityToShow=p.StockQuantityToShow,
                 });
             if (products != null)
