@@ -67,6 +67,24 @@ namespace WebShop.Services
             return shopUsers;
         }
 
+
+        public List<UserForViewList> GetRegUserList()
+        {
+            string usName;
+            var user = HttpContext.Current.User;
+            usName = user.Identity.GetUserName();
+
+            IQueryable<UserForViewList> query = DbContext.Users.Select(u => new UserForViewList { FullName = u.FirstName + " " + u.LastName, Email = u.Email, Id = u.Id, UserName = u.UserName });
+            List<UserForViewList> shopUsers = query.ToList();
+
+            shopUsers.RemoveAll(s => s.UserName != usName);
+
+            return shopUsers;
+        }
+
+
+
+
         public async Task<IdentityResult> CreateUser(ShopUserCreateViewModel user)
         {
             var newUser = new ShopUser()
