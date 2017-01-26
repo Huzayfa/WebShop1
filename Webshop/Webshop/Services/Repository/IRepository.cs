@@ -17,6 +17,7 @@ namespace WebShop.Services
     {
         
         List<UserForViewList> GetShoUserList();
+        List<UserForViewList> GetRegUserList();
         Task<IdentityResult> CreateUser(ShopUserCreateViewModel user);
         ActionResult DeleteUser(string userId);
         UserDetailsViewModel GetUserDetails(string userId);

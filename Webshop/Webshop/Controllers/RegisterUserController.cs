@@ -88,7 +88,7 @@ namespace WebShop.Controllers
         //Get jeson List Of the User
         public JsonResult ShopUsers()
         {
-            List<UserForViewList> usersList = _rep.GetShoUserList();
+            List<UserForViewList> usersList = _rep.GetRegUserList();
             return Json(usersList, JsonRequestBehavior.AllowGet);
         }
 
