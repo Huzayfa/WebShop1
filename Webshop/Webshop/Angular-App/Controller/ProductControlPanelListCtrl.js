@@ -50,6 +50,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append("Name", newProduct.Name);
         fdata.append('CategoryId', newProduct.CategoryId);
         fdata.append('Price', newProduct.Price);
+        fdata.append("isRecommended", newProduct.isRecommended);
         fdata.append('Description', newProduct.Description);
         fdata.append('StockQuantity', newProduct.StockQuantity);
         fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);

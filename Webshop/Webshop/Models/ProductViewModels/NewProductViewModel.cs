@@ -21,6 +21,10 @@ namespace WebShop.Models.ProductViewModels
         [Range(0, Double.MaxValue, ErrorMessage = "Try Valid Price")]
         public decimal Price { get; set; }
 
+        [Display(Name = "isRecommended")]
+        public bool isRecommended { get; set; }
+
+
         //Using this property to know how many product in the cart
         //[NotMapped]
         public int Quantity { get; set; }

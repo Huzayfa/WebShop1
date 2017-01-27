@@ -102,7 +102,7 @@
                                         @*<input ng-model="vm.p.photo" type="file" />*@
                                         <input name="newProductPhoto{{selectedProduct.Id}}" id="upLoadEditProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
                                                onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
-                                    
+
 
                                         <div class="form-group">
                                             <input type="button" class="btn btn-success" value="Save" ng-click="saveEditProduct(selectedProduct)" />
@@ -231,6 +231,23 @@
                     Quantity to show:
                     <input type="text" ng-model="newProduct.StockQuantityToShow" class="form-control" />
                 </label>
+                <span class="button-checkbox">
+                    <input type="checkbox" 
+                           id="newProductRecommeded"
+                           ng-model="newProduct.isRecommended"
+                           class="hidden" 
+                           data-color="primary">
+                    <label for="newProductRecommeded" class="btn btn-primary">
+                        <i class="state-icon glyphicon glyphicon-check"
+                           ng-show="newProduct.isRecommended">
+                        </i>
+                        <i class="state-icon glyphicon glyphicon-unchecked"
+                           ng-show="!newProduct.isRecommended">
+                        </i>
+                        &nbsp;Recommended
+                        
+                    </label>
+                </span>
                 <div class="form-group">
                     <label class="control-label">
                         Description:
