@@ -296,6 +296,7 @@ namespace WebShop.Services
                 CategoryId = product.CategoryId,
                 StockQuantity = product.StockQuantity,
                 StockQuantityToShow = product.StockQuantityToShow,
+                isRecommended=product.isRecommended,
                 Photo = "/Avatar//" + filename,
             };
             try

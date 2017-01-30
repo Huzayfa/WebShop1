@@ -45,12 +45,12 @@
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -1194,56 +1194,64 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201611241112513_init.cs" />
-    <Compile Include="Migrations\201611241112513_init.Designer.cs">
+    <Compile Include="Migrations\201611241112513_init.designer.cs">
       <DependentUpon>201611241112513_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201611281032330_seedM.cs" />
-    <Compile Include="Migrations\201611281032330_seedM.Designer.cs">
+    <Compile Include="Migrations\201611281032330_seedM.designer.cs">
       <DependentUpon>201611281032330_seedM.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201611291233260_photofouser.cs" />
-    <Compile Include="Migrations\201611291233260_photofouser.Designer.cs">
+    <Compile Include="Migrations\201611291233260_photofouser.designer.cs">
       <DependentUpon>201611291233260_photofouser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612031856092_remove mandatory between product and category.cs" />
-    <Compile Include="Migrations\201612031856092_remove mandatory between product and category.Designer.cs">
+    <Compile Include="Migrations\201612031856092_remove mandatory between product and category.designer.cs">
       <DependentUpon>201612031856092_remove mandatory between product and category.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612041756510_relation between product and category id.cs" />
-    <Compile Include="Migrations\201612041756510_relation between product and category id.Designer.cs">
+    <Compile Include="Migrations\201612041756510_relation between product and category id.designer.cs">
       <DependentUpon>201612041756510_relation between product and category id.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612081349489_relation btwen order and customer%28users%29.cs" />
-    <Compile Include="Migrations\201612081349489_relation btwen order and customer%28users%29.Designer.cs">
+    <Compile Include="Migrations\201612081349489_relation btwen order and customer%28users%29.designer.cs">
       <DependentUpon>201612081349489_relation btwen order and customer%28users%29.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612091222116_totalprice in order.cs" />
-    <Compile Include="Migrations\201612091222116_totalprice in order.Designer.cs">
+    <Compile Include="Migrations\201612091222116_totalprice in order.designer.cs">
       <DependentUpon>201612091222116_totalprice in order.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612091248347_totalprice.cs" />
-    <Compile Include="Migrations\201612091248347_totalprice.Designer.cs">
+    <Compile Include="Migrations\201612091248347_totalprice.designer.cs">
       <DependentUpon>201612091248347_totalprice.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612291325279_address to the user.cs" />
-    <Compile Include="Migrations\201612291325279_address to the user.Designer.cs">
+    <Compile Include="Migrations\201612291325279_address to the user.designer.cs">
       <DependentUpon>201612291325279_address to the user.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201612291422344_product quantity.cs" />
-    <Compile Include="Migrations\201612291422344_product quantity.Designer.cs">
+    <Compile Include="Migrations\201612291422344_product quantity.designer.cs">
       <DependentUpon>201612291422344_product quantity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201701030916490_newLampaDatabase.cs" />
-    <Compile Include="Migrations\201701030916490_newLampaDatabase.Designer.cs">
+    <Compile Include="Migrations\201701030916490_newLampaDatabase.designer.cs">
       <DependentUpon>201701030916490_newLampaDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201701200855172_lennart1.cs" />
-    <Compile Include="Migrations\201701200855172_lennart1.Designer.cs">
+    <Compile Include="Migrations\201701200855172_lennart1.designer.cs">
       <DependentUpon>201701200855172_lennart1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201701200859212_lennart2.cs" />
-    <Compile Include="Migrations\201701200859212_lennart2.Designer.cs">
+    <Compile Include="Migrations\201701200859212_lennart2.designer.cs">
       <DependentUpon>201701200859212_lennart2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271021287_asdewe.cs" />
+    <Compile Include="Migrations\201701271021287_asdewe.Designer.cs">
+      <DependentUpon>201701271021287_asdewe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271022339_RecommendedProduct.cs" />
+    <Compile Include="Migrations\201701271022339_RecommendedProduct.Designer.cs">
+      <DependentUpon>201701271022339_RecommendedProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -1321,7 +1329,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611241112513_init.resx">
       <DependentUpon>201611241112513_init.cs</DependentUpon>
@@ -1361,6 +1368,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701200859212_lennart2.resx">
       <DependentUpon>201701200859212_lennart2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271021287_asdewe.resx">
+      <DependentUpon>201701271021287_asdewe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271022339_RecommendedProduct.resx">
+      <DependentUpon>201701271022339_RecommendedProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
