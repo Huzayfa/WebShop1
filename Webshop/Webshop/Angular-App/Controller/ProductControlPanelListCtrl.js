@@ -1,6 +1,6 @@
 ﻿
 'use strict'
-app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, $rootScope, pagingList) {
+app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList) {
     $scope.productsList = [];
     $scope.productsListPaged = [];
     $scope.pager = {};
@@ -8,15 +8,15 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
     $("body").css("cursor", "progress");
     //$("body").css("cursor", "wait");
     $http.get("/Product/Products", { cache: false }).then(function (response) {
-        
+
         angular.copy(response.data, $scope.productsList);
         angular.copy($scope.productsList, $scope.productsListPaged);
         $scope.setPage(1);
-        $("body").css("cursor","default");
+        $("body").css("cursor", "default");
     }
 
     );
-    
+
     $scope.categoriesList = [];
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
@@ -29,7 +29,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
 
     //Function For Select the page for paging
-    $scope.setPage=function (page) {
+    $scope.setPage = function (page) {
         if (page < 1 || page > $scope.pager.totalPages) {
             return;
         }
@@ -41,10 +41,10 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
     }
 
 
-    
+
 
     $scope.CreateProduct = function (newProduct) {
-        
+
         var fdata = new FormData();
         fdata.append("file", $scope.photoFile);
         fdata.append("Name", newProduct.Name);
@@ -54,7 +54,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         fdata.append('Description', newProduct.Description);
         fdata.append('StockQuantity', newProduct.StockQuantity);
         fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);
-        var promise=$http({
+        var promise = $http({
             method: 'POST',
             url: "Product/Create",
             headers: { 'Content-Type': undefined },
@@ -73,11 +73,11 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         })
             .error(function (error) {
                 $scope.status = 'Unable to load Create Product: ' + error.message;
-                
+
             });
-       
+
     }
-       
+
 
 
 
@@ -93,18 +93,17 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
     $scope.selectedProductDetails = " ";
 
 
-    $scope.fileNameChanged=function(elem)
-    {
+    $scope.fileNameChanged = function (elem) {
         $scope.photoFile = elem.files[0];
 
     }
 
     //Help Functions
-    var findProductInList = function (list,productId) {
+    var findProductInList = function (list, productId) {
 
         for (var i = 0; i < list.length; i++) {
             if (productId == list[i].Id) {
-                
+
                 return i;
             }
         }
@@ -127,21 +126,20 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     $scope.cancelEdit = function (productId) {
         var modal = $('#productDetailsModal');
-        if (modal != undefined)
-        {
-           modal.modal('hide');
+        if (modal != undefined) {
+            modal.modal('hide');
         }
-        
-            $scope.selectedProductDetails = " ";
-            $scope.editSelected = false;
-            $scope.detailsSelected = false;
-            $scope.selectedProductEditId = " ";     
-        
+
+        $scope.selectedProductDetails = " ";
+        $scope.editSelected = false;
+        $scope.detailsSelected = false;
+        $scope.selectedProductEditId = " ";
+
     }
 
     $scope.DeleteProduct = function (productId) {
-        $http.post('Product/Delete', JSON.stringify({ productId: productId })).then(function (response) {
-            var index = findProductInList($scope.productsList,productId);
+        $http.post('/Product/Delete', JSON.stringify({ productId: productId })).then(function (response) {
+            var index = findProductInList($scope.productsList, productId);
             if (index > -1) {
                 $scope.productsList.splice(index, 1);
             }
@@ -154,11 +152,32 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
 
     };
 
+
+    $scope.AddProducttoAccessories=function(accessory){
+        var newAccessories={};
+        newAccessories.Id=accessory.Id;
+        newAccessories.Name=accessory.Name;
+        $scope.accessoriesList.push(newAccessories);
+    }
+    $scope.getProductAccessories = function (productId) {
+        $scope.selectedProductAccessories = angular.copy(productId);
+        console.log(productId);
+        $scope.selectedProduct = {};
+        $scope.accessoriesList = [];
+        $http.get("/Product/ProductAccessories", { params: { productId: productId } }).then(
+            function (response) {
+                angular.copy(response.data, $scope.accessoriesList)
+            }
+
+            );
+    }
+
+
     //get Product By Id to Edit it
     $scope.EditProduct = function (productId) {
-   
+
         $scope.selectedProductEditId = angular.copy(productId);
-        
+
         $scope.selectedProduct = {};
         $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
@@ -169,11 +188,11 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
             });
         });
 
-        
-        
+
+
         $scope.editSelected = true;
         $scope.detailsSelected = false;
-        
+
         //setTimeout(function () {
         //    //var scrollPos = document.body.scrollTop;
         //    var element = document.getElementById("tableEditProduct" + productId);
@@ -183,7 +202,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         //    element.focus();
         //    //element.scrollIntoView(true);
         //}, 100);
-        
+
         //setTimeout(function () {
         //    var postScroll = document.getElementById("tableEditProduct" + productId);
         //    var element = $('#' + postScroll);
@@ -198,23 +217,23 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
         //setTimeout(function () {
         //    window.scrollTo(0, topPos - 100)
         //}, 20);
-        
+
         //document.getElementById('productTable').animate(topPos.top);
         //document.getElementById("tableEditProduct" + productId).scrollTop -= 10;
-       // $("body").animate({scrollTop: "tableEditProduct"+productId}, "slow");
+        // $("body").animate({scrollTop: "tableEditProduct"+productId}, "slow");
         //angular.element("body").animate({
         //    scrollTop: angular.element("tableEditProduct"+productId).top
         //}, 3000);
-    
-        
+
+
     }
 
 
 
     $scope.saveEditProduct = function (product) {
-        
+
         $http.post('Product/Edit', product).then(function (response) {
-            var index = findProductInList($scope.productsList,product.Id);
+            var index = findProductInList($scope.productsList, product.Id);
             if (index > -1) {
                 copyProduct(product, $scope.productsList[index]);
             }
@@ -227,19 +246,19 @@ app.controller('ProductControlPanelListCtrl', function ($timeout,$scope, $http, 
             $scope.selectedProductEditId = " ";
             $scope.selectedProductDetails = " ";
 
-          
+
         });
     }
 
     $scope.getProductDetails = function (productId) {
 
-        $scope.selectedProductDetails= angular.copy(productId);
+        $scope.selectedProductDetails = angular.copy(productId);
         $scope.editSelected = false;
         $scope.detailsSelected = true;
         $scope.selectedProductEditId = "";
-        
+
         $scope.selectedProduct = {};
-       
+
 
     }
 });

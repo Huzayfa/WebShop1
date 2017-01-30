@@ -312,6 +312,26 @@ namespace WebShop.Services
             return newProduct;
         }
 
+
+        public List<AccessoryViewModel> ProductAccessories(int? productId)
+        {
+            try
+            {
+               return  DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p=>
+                    new AccessoryViewModel()
+                    {
+                        Id=p.Id,
+                        Name=p.Name,
+                    }
+                    
+                    ).ToList();
+            }
+            catch
+            {
+                return new List<AccessoryViewModel>();
+            }
+
+        }
         #endregion
 
 

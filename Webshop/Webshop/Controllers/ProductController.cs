@@ -41,7 +41,17 @@ namespace WebShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return _rep.DeleteProduct(productId);
-            
+
+        }
+
+        [AllowAnonymous]
+        public ActionResult ProductAccessories(int? productId)
+        {
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return Json(_rep.ProductAccessories(productId),JsonRequestBehavior.AllowGet);
         }
 
 
