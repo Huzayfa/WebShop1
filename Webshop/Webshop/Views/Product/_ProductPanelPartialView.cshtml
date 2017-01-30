@@ -87,7 +87,23 @@
                                             Quantity to show : <input type="text" ng-model="selectedProduct.StockQuantityToShow" class="form-control" required />
                                         </label>
 
+                                        <span class="button-checkbox">
+                                            <input type="checkbox"
+                                                   id="editProductRecommeded"
+                                                   ng-model="selectedProduct.isRecommended"
+                                                   class="hidden"
+                                                   data-color="primary">
+                                            <label for="editProductRecommeded" class="btn btn-primary">
+                                                <i class="state-icon glyphicon glyphicon-check"
+                                                   ng-show="selectedProduct.isRecommended">
+                                                </i>
+                                                <i class="state-icon glyphicon glyphicon-unchecked"
+                                                   ng-show="!selectedProduct.isRecommended">
+                                                </i>
+                                                &nbsp;Recommended
 
+                                            </label>
+                                        </span>
 
 
                                         <div class="form-group">

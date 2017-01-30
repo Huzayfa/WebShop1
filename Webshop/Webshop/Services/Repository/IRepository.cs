@@ -51,7 +51,6 @@ namespace WebShop.Services
         ActionResult ConfirmShoping(List<Product> products);
         ActionResult EditOrder(Order user);
         List<Order> GetOrdersList();
-
-
+        List<ProductForCustomerViewModel> GetRecommedndedProductsList();
     }
 }

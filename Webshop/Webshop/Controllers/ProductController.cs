@@ -75,10 +75,17 @@ namespace WebShop.Controllers
         }
 
         //[AllowAnonymous]
-        //Get jeson List Of the User
         public JsonResult Products()
         {
             List<Product> productsList = _rep.GetProductsList();
+            return Json(productsList, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [AllowAnonymous]
+        public JsonResult RecommedndedProducts()
+        {
+            List<ProductForCustomerViewModel> productsList = _rep.GetRecommedndedProductsList();
             return Json(productsList, JsonRequestBehavior.AllowGet);
         }
 

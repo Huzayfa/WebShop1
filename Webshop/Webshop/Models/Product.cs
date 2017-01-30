@@ -51,6 +51,8 @@ namespace WebShop.Models
 
         public ICollection<OrderProduct> OrderProducts { get; set; }
 
+        //public ICollection<Product> Accesories { get; set; }
+
         public Product()
         {
             OrderProducts = new List<OrderProduct>();

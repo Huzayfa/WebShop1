@@ -204,6 +204,7 @@
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\CreateShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\LoginCtrl.js" />
@@ -228,6 +229,7 @@
     <Content Include="Angular-App\Service\PagingList.js" />
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
     <Content Include="Angular-App\Template\Directive\ProductDetailsPartialView.html" />
+    <Content Include="Angular-App\Template\RecommendedProducts.html" />
     <Content Include="Angular-App\Test\PagingAngular.js" />
     <Content Include="App_Data\WebShopDB.mdf" />
     <Content Include="App_Data\WebShopDB_log.ldf">

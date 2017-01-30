@@ -5,6 +5,7 @@
 /// <reference path="../angular-app/controller/loginctrl.js" />
 /// <reference path="../angular-app/controller/ordercontrolpanellistctrl.js" />
 /// <reference path="../angular-app/controller/productcontrolpanellistctrl.js" />
+/// <reference path="../angular-app/controller/recommendedproductctrl.js" />
 /// <reference path="../angular-app/controller/registershopusersctrl.js" />
 /// <reference path="../angular-app/controller/registeruserslistctrl.js" />
 /// <reference path="../angular-app/controller/shopcartctrl.js" />

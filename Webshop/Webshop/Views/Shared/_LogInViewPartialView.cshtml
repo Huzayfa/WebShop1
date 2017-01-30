@@ -9,7 +9,8 @@
         <ul class="nav navbar-nav navbar-right">
 
             <li>
-                @Html.ActionLink("Hello.. " + User.Identity.GetUserName(), "Index", "Home", new { }, new { })
+                @*@Html.ActionLink("Hello.. " + User.Identity.GetUserName(), "Index", "Home", new { }, new { })*@
+                <a href="#/">Hello.. @User.Identity.GetUserName()</a>
             </li>
             <li>
                 <a href="#/ShopCart">Webbshop</a>

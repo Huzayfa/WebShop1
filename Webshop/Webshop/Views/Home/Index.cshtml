@@ -5,24 +5,76 @@
 
 <h2>   </h2>
 
-<div >
-    <button onclick="f()" class="btn btn-danger">Test</button>
-   <div id="Div">
-       <script>
-           function f()
-           {
-               alert("Function");
-               document.getElementById("Div").innerHTML="";
-           }
-       </script>
-   </div>
+<div>
+    <script>
+        //var foo;
+        //try {
+        //    console.log(foo.length);
+        //}
+        //catch (err) {
+        //    console.log(err);
+        //}
+
+        //{
+        //    let block = "Block";
+
+        //}
+        //console.log(block);
+
+        var foo1 = 1;
+        var foo1 = 2;
+        foo();
+        var foo = 2;
+        
+        function foo() {
+            console.log(foo1);
+        }
+
+        function foo() {
+            console.log(foo1);
+        }
+        
+
+       
+        
+        var obj = {
+            Bar: "Barr"
+            ,
+
+            f: function () {
+                console.log(this.Bar);
+            }
+        };
+        obj.f();
+        var Bar = "Global Bar";
+        var f = obj.f;
+        f();
+
+
+        function baz()
+        {
+            var baz1 = "baz1";
+            var addd = "addd2";
+            test();
+        }
+        function test()
+        {
+            console.log(this.addd);
+        }
+        var addd = "addd";
+        baz();
+    </script>
+
+
     
-    <ng-view >
+
+   
+    <ng-view>
         Loooding Page......
     </ng-view>
 
     <div id="map" style="width:400px; height:500px">
 
     </div>
-    
+
 </div>
