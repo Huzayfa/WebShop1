@@ -422,14 +422,30 @@ namespace WebShop.Services
                     OrderProduct orderProduct = new OrderProduct()
                     {
                         ProductPrice = product.Price,
-                        Product = product,
+                        // Nedanstående rad tillagd
+                         ProductId = product.Id,
+                        // Nedanstående rad bortkommenterad
+                        // Product = product,
                         Order = order,
                         Quantity = product.Quantity,
-
                     };
+
+
                     order.TotalPrice += (product.Price * product.Quantity);
                     order.OrderProducts.Add(orderProduct);
                     DbContext.OrderProducts.Add(orderProduct);
+
+
+                    // - - - - -
+                    // Update stock quantity 
+                    var it = DbContext.Products.FirstOrDefault(x => x.Id == product.Id);
+                    if (it != null)
+                    {
+                     it.StockQuantity = it.StockQuantity - product.Quantity;
+                     it.StockQuantityToShow = it.StockQuantityToShow - product.Quantity;
+                    }
+                    // - - - - -
+
                 }
                 try
                 {
