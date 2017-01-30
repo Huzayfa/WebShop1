@@ -32,7 +32,7 @@ namespace WebShop.Services
         List<Product> GetProductsList();
         List<ProductForCustomerViewModel> GetProductsForCustomerList();
         Product CreateProduct(NewProductViewModel product);
-        
+        List<AccessoryViewModel> ProductAccessories(int? productId);
 
 
 
