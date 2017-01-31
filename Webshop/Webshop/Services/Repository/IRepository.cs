@@ -33,7 +33,7 @@ namespace WebShop.Services
         List<ProductForCustomerViewModel> GetProductsForCustomerList();
         Product CreateProduct(NewProductViewModel product);
         List<AccessoryViewModel> ProductAccessories(int? productId);
-
+        ActionResult AddAccessoryToProduct(int? productId, int? accessoryId);
 
 
         //Category Functions

@@ -1259,6 +1259,34 @@
     <Compile Include="Migrations\201701301417104_Accessories.Designer.cs">
       <DependentUpon>201701301417104_Accessories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701310940281_test.cs" />
+    <Compile Include="Migrations\201701310940281_test.Designer.cs">
+      <DependentUpon>201701310940281_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701310950118_accessories12.cs" />
+    <Compile Include="Migrations\201701310950118_accessories12.Designer.cs">
+      <DependentUpon>201701310950118_accessories12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701310951503_accessories122.cs" />
+    <Compile Include="Migrations\201701310951503_accessories122.Designer.cs">
+      <DependentUpon>201701310951503_accessories122.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701311020233_deleteAccessories.cs" />
+    <Compile Include="Migrations\201701311020233_deleteAccessories.Designer.cs">
+      <DependentUpon>201701311020233_deleteAccessories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701311038543_reAddAccessories.cs" />
+    <Compile Include="Migrations\201701311038543_reAddAccessories.Designer.cs">
+      <DependentUpon>201701311038543_reAddAccessories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701311041325_deleteAccessories1.cs" />
+    <Compile Include="Migrations\201701311041325_deleteAccessories1.Designer.cs">
+      <DependentUpon>201701311041325_deleteAccessories1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701311046100_addAccessories2.cs" />
+    <Compile Include="Migrations\201701311046100_addAccessories2.Designer.cs">
+      <DependentUpon>201701311046100_addAccessories2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
@@ -1384,6 +1412,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701301417104_Accessories.resx">
       <DependentUpon>201701301417104_Accessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310940281_test.resx">
+      <DependentUpon>201701310940281_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310950118_accessories12.resx">
+      <DependentUpon>201701310950118_accessories12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310951503_accessories122.resx">
+      <DependentUpon>201701310951503_accessories122.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701311020233_deleteAccessories.resx">
+      <DependentUpon>201701311020233_deleteAccessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701311038543_reAddAccessories.resx">
+      <DependentUpon>201701311038543_reAddAccessories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701311041325_deleteAccessories1.resx">
+      <DependentUpon>201701311041325_deleteAccessories1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701311046100_addAccessories2.resx">
+      <DependentUpon>201701311046100_addAccessories2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

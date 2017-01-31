@@ -215,6 +215,7 @@ namespace WebShop.Services
                 Name = product.Name,
                 Photo = product.Photo,
                 Price = product.Price,
+                isRecommended=product.isRecommended,
                 Quantity=product.Quantity,
                 Id=product.Id,
                 CategoryId=product.CategoryId,
@@ -338,18 +339,39 @@ namespace WebShop.Services
         }
 
 
+        public ActionResult AddAccessoryToProduct(int? productId, int? accessoryId)
+        {
+            var product=DbContext.Products.Find(productId);
+            if(product!=null)
+            {
+                var accessory = DbContext.Products.Find(accessoryId);
+                if(accessory!=null)
+                {
+                    product.Accessories.Add(accessory);
+                    accessory.AccessoryTo.Add(product);
+                    DbContext.Entry(product).State = EntityState.Modified;
+                    DbContext.Entry(accessory).State = EntityState.Modified;
+                    DbContext.SaveChanges();
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
         public List<AccessoryViewModel> ProductAccessories(int? productId)
         {
             try
             {
-               return  DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p=>
+                var acceesories=DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p =>
                     new AccessoryViewModel()
                     {
-                        Id=p.Id,
-                        Name=p.Name,
+                        Id = p.Id,
+                        Name = p.Name,
                     }
-                    
-                    ).ToList();
+
+                     ).ToList();
+                return acceesories;
+                //return new List<AccessoryViewModel>();
             }
             catch
             {

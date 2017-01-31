@@ -153,22 +153,40 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
     };
 
 
-    $scope.AddProducttoAccessories=function(accessory){
-        var newAccessories={};
-        newAccessories.Id=accessory.Id;
-        newAccessories.Name=accessory.Name;
-        $scope.accessoriesList.push(newAccessories);
+    $scope.AddProducttoAccessories = function (accessory) {
+        var newAccessories = {};
+        newAccessories.Id = accessory.Id;
+        newAccessories.Name = accessory.Name;
+        $http.post("/Product/AddAccessoryToProduct",
+            { productId: $scope.selectedProductId, accessoryId: accessory.Id }).then(
+            function (response) {
+
+                $scope.accessoriesList.push(newAccessories);
+                var index = findProductInList($scope.poductToAccessory, accessory.Id);
+
+                if (index > -1) {
+                    $scope.poductToAccessory.splice(index, 1);
+                }
+            });
+
+
     }
     $scope.getProductAccessories = function (productId) {
-        $scope.selectedProductAccessories = angular.copy(productId);
-        console.log(productId);
+        $scope.selectedProductId = angular.copy(productId);
         $scope.selectedProduct = {};
-        $scope.accessoriesList = [];
+        $scope.poductToAccessory = [];
+        angular.copy($scope.productsList, $scope.poductToAccessory);
+        var index = findProductInList($scope.productsList, productId);
+        if (index > -1) {
+
+            $scope.poductToAccessory.splice(index, 1);
+        }
         $http.get("/Product/ProductAccessories", { params: { productId: productId } }).then(
             function (response) {
+                $scope.accessoriesList = [];
+
                 angular.copy(response.data, $scope.accessoriesList)
             }
-
             );
     }
 
@@ -182,7 +200,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
             angular.copy(response.data, $scope.categoriesList);
-            $http.post('Product/ProductDetails', JSON.stringify({ productId: productId })).then(function (response) {
+            $http.post('Product/ProductDetails', { productId: productId }).then(function (response) {
 
                 angular.copy(response.data, $scope.selectedProduct);
             });
