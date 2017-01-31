@@ -10,6 +10,7 @@ using WebShop.Models.ShopUserModelView;
 using WebShop.Models.Account;
 using WebShop.Models.ProductViewModels;
 using Webshop.Models.ProductViewModels;
+using WebShop.Models.OrderViewModels;
 
 namespace WebShop.Services
 {
@@ -41,8 +42,11 @@ namespace WebShop.Services
         Category GetCategoryDetails(int? categoryId);
         
         ActionResult EditCategory(Category category);
-        object GetOrderDetails(int? orderId);
-        
+
+        // object GetOrderDetails(int? orderId);
+        OrderViewMoedel GetOrderDetails(int? orderId);
+
+
         List<Category> GetCategoriesList();
         Category CreateCategory(Category category);
 

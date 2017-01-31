@@ -1270,6 +1270,7 @@
     <Compile Include="Models\Identity\AppUserManager.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderProduct.cs" />
+    <Compile Include="Models\OrderViewModels\OrderProductViewModel.cs" />
     <Compile Include="Models\OrderViewModels\OrderViewMoedel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductViewModels\AccessoryViewModel.cs" />

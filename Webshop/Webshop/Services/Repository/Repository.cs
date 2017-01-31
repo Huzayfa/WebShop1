@@ -15,6 +15,7 @@ using WebShop.Models.Account;
 using Microsoft.Owin.Security;
 using WebShop.Models.ProductViewModels;
 using Webshop.Models.ProductViewModels;
+using WebShop.Models.OrderViewModels;
 
 namespace WebShop.Services
 {
@@ -543,17 +544,37 @@ namespace WebShop.Services
             
         }
 
-        public object GetOrderDetails(int? orderId)
+        public OrderViewMoedel GetOrderDetails(int? orderId)
         {
-            if (DbContext.Orders == null)
+                //    var order = DbContext.Orders.Find(orderId);
+                var order = DbContext.Orders.Include(u => u.OrderProducts).FirstOrDefault(o=>o.Id==orderId);
+
+            if (order == null)
             {
                 return null;
             }
             else
             {
-                var order = DbContext.Orders.Find(orderId);
-                return order;
+
+                return new OrderViewMoedel()
+                {
+                    Id = order.Id,
+                    OrderDate = order.OrderDate,
+                    DeliverDate = order.DeliverDate,
+                    TotalPrice = order.TotalPrice,
+                    orderProducts = order.OrderProducts.Select(op => new OrderProductViewModel
+                    {
+                        Id = op.Id,
+                        ProductId = op.ProductId,
+                        ProductPrice = op.ProductPrice,
+                        Quantity = op.Quantity,
+                        OrderId = op.OrderId,
+                    }).ToList(),
+
+                };
             }
+
+
         }
 
         public ActionResult EditOrder(Order order)
