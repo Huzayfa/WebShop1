@@ -19,6 +19,11 @@ namespace WebShop.Models.OrderViewModels
         [DataType(DataType.DateTime)]
         public DateTime DeliverDate { get; set; }
 
+        [Display(Name = "Total Price")]
+        public decimal TotalPrice { get; set; }
+
+        public ICollection<OrderProductViewModel> orderProducts;
+
 
     }
 }
