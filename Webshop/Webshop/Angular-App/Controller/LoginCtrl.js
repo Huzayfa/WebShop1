@@ -11,7 +11,7 @@ app.controller('LoginCtrl', function ($scope, $http, $cookies, $location,$timeou
             
             if (login)
             {
-                $window.location.href = "Home";
+                $window.location.href = "/Home";
                
             }
             else

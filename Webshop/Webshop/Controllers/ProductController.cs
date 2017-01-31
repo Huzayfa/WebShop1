@@ -41,7 +41,17 @@ namespace WebShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             return _rep.DeleteProduct(productId);
-            
+
+        }
+
+        [AllowAnonymous]
+        public ActionResult ProductAccessories(int? productId)
+        {
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return Json(_rep.ProductAccessories(productId),JsonRequestBehavior.AllowGet);
         }
 
 
@@ -75,10 +85,17 @@ namespace WebShop.Controllers
         }
 
         //[AllowAnonymous]
-        //Get jeson List Of the User
         public JsonResult Products()
         {
             List<Product> productsList = _rep.GetProductsList();
+            return Json(productsList, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [AllowAnonymous]
+        public JsonResult RecommedndedProducts()
+        {
+            List<ProductForCustomerViewModel> productsList = _rep.GetRecommedndedProductsList();
             return Json(productsList, JsonRequestBehavior.AllowGet);
         }
 

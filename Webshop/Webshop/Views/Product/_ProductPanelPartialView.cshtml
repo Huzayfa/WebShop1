@@ -87,7 +87,23 @@
                                             Quantity to show : <input type="text" ng-model="selectedProduct.StockQuantityToShow" class="form-control" required />
                                         </label>
 
+                                        <span class="button-checkbox">
+                                            <input type="checkbox"
+                                                   id="editProductRecommeded"
+                                                   ng-model="selectedProduct.isRecommended"
+                                                   class="hidden"
+                                                   data-color="primary">
+                                            <label for="editProductRecommeded" class="btn btn-primary">
+                                                <i class="state-icon glyphicon glyphicon-check"
+                                                   ng-show="selectedProduct.isRecommended">
+                                                </i>
+                                                <i class="state-icon glyphicon glyphicon-unchecked"
+                                                   ng-show="!selectedProduct.isRecommended">
+                                                </i>
+                                                &nbsp;Recommended
 
+                                            </label>
+                                        </span>
 
 
                                         <div class="form-group">
@@ -136,8 +152,8 @@
                         <div class="modal-header">
 
                             <button type="button" class="close"
-                                    @*data-dismiss="modal"*@
-                                    ng-click="cancelEdit(selectedProduct.Id)">
+                                    data-dismiss="modal"
+                                    >
                                 &times;
                             </button>
                             <h4 class="modal-title">Product Details</h4>
@@ -160,6 +176,73 @@
                 </div>
             </div>
 
+
+
+
+            <div id="productAccessoriesModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close"
+                                    data-dismiss="modal"
+                                    >
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Product Accessories</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <h2>Accessories For Product : selectedProduct.Id</h2>
+                                <div class="col-md-6">
+                                    <table>
+                                        <tr class="tableHeader">
+                                            <th ng-click="selectOrderBy('Id')" class="btn btn-link">
+                                                Id
+                                            </th>
+                                            <th ng-click="selectOrderBy('Name')" class="btn-link">
+                                                Name
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="product in productsListPaged | orderBy:selectedOrder">
+                                            <td ng-bind="product.Id"></td>
+                                            <td>{{product.Name}}</td>
+                                            <td class="productActions">
+                                                <button ng-click="AddProducttoAccessories(product)" class="btn btn-sm btn-link" value="Delete">Add To Accessories</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+                                    <table>
+                                        <tr class="tableHeader">
+                                            <th ng-click="selectOrderBy('Id')" class="btn btn-link">
+                                                Id
+                                            </th>
+                                            <th ng-click="selectOrderBy('Name')" class="btn-link">
+                                                Name
+                                            </th>
+                                        </tr>
+                                        <tr ng-repeat="product in accessoriesList | orderBy:selectedOrder">
+                                            <td ng-bind="product.Id"></td>
+                                            <td>{{product.Name}}</td>
+                                            <td class="productActions">
+                                                <button ng-click="DeleteProductFromAccessories(product.Id)" class="btn btn-sm btn-link" value="Delete">Remove From Accessories</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"
+                                        ng-click="cancelEdit(selectedProduct.Id)">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <table id="productTable" class="table table-bordered">
@@ -192,6 +275,11 @@
                                 data-target="#productDetailsModal">
                             Details
                         </button>
+                        <button ng-click="getProductAccessories(product.Id)" type="button" class="btn btn-sm btn-link"
+                                data-toggle="modal"
+                                data-target="#productAccessoriesModal">
+                            Accessories
+                        </button>                       
                     </td>
 
 

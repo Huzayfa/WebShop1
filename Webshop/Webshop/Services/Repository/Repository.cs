@@ -271,6 +271,31 @@ namespace WebShop.Services
             }
 
         }
+
+        public List<ProductForCustomerViewModel> GetRecommedndedProductsList()
+        {
+
+            IEnumerable<ProductForCustomerViewModel> products = DbContext.Products.Where(p=>p.isRecommended).Select(p =>
+                new ProductForCustomerViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Photo = p.Photo,
+                    Description = p.Description,
+                    StockQuantityToShow = p.StockQuantityToShow,
+                });
+
+            if (products != null)
+            {
+                return products.ToList();
+            }
+            else
+            {
+                return new List<ProductForCustomerViewModel>();
+            }
+        }
+
         public Product CreateProduct(NewProductViewModel product)
         {
             var files= HttpContext.Current.Request.Files;
@@ -312,6 +337,26 @@ namespace WebShop.Services
             return newProduct;
         }
 
+
+        public List<AccessoryViewModel> ProductAccessories(int? productId)
+        {
+            try
+            {
+               return  DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p=>
+                    new AccessoryViewModel()
+                    {
+                        Id=p.Id,
+                        Name=p.Name,
+                    }
+                    
+                    ).ToList();
+            }
+            catch
+            {
+                return new List<AccessoryViewModel>();
+            }
+
+        }
         #endregion
 
 
@@ -530,6 +575,8 @@ namespace WebShop.Services
                 return new List<Order>();
             }
         }
+
+       
 
 
         #endregion

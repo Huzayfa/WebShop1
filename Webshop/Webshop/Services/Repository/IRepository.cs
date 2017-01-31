@@ -32,7 +32,7 @@ namespace WebShop.Services
         List<Product> GetProductsList();
         List<ProductForCustomerViewModel> GetProductsForCustomerList();
         Product CreateProduct(NewProductViewModel product);
-        
+        List<AccessoryViewModel> ProductAccessories(int? productId);
 
 
 
@@ -51,7 +51,6 @@ namespace WebShop.Services
         ActionResult ConfirmShoping(List<Product> products);
         ActionResult EditOrder(Order user);
         List<Order> GetOrdersList();
-
-
+        List<ProductForCustomerViewModel> GetRecommedndedProductsList();
     }
 }

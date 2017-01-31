@@ -204,6 +204,7 @@
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\CreateShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\LoginCtrl.js" />
@@ -228,6 +229,7 @@
     <Content Include="Angular-App\Service\PagingList.js" />
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
     <Content Include="Angular-App\Template\Directive\ProductDetailsPartialView.html" />
+    <Content Include="Angular-App\Template\RecommendedProducts.html" />
     <Content Include="Angular-App\Test\PagingAngular.js" />
     <Content Include="App_Data\WebShopDB.mdf" />
     <Content Include="App_Data\WebShopDB_log.ldf">
@@ -1253,6 +1255,10 @@
     <Compile Include="Migrations\201701271022339_RecommendedProduct.Designer.cs">
       <DependentUpon>201701271022339_RecommendedProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701301417104_Accessories.cs" />
+    <Compile Include="Migrations\201701301417104_Accessories.Designer.cs">
+      <DependentUpon>201701301417104_Accessories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
@@ -1266,6 +1272,7 @@
     <Compile Include="Models\OrderProduct.cs" />
     <Compile Include="Models\OrderViewModels\OrderViewMoedel.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductViewModels\AccessoryViewModel.cs" />
     <Compile Include="Models\ProductViewModels\NewProductViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\ProductViewModels\ProductForCustomerViewModel.cs" />
@@ -1374,6 +1381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701271022339_RecommendedProduct.resx">
       <DependentUpon>201701271022339_RecommendedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701301417104_Accessories.resx">
+      <DependentUpon>201701301417104_Accessories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

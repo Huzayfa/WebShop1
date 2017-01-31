@@ -1,12 +1,14 @@
-﻿//(function()
+﻿/// <reference path="../Template/RecommendedProducts.html" />
+/// <reference path="../Template/RecommendedProducts.html" />
+//(function()
 //{
 // var app = angular.module("WebShop", ["ngRoute"]);
 app.config(function ($routeProvider) {
     $routeProvider.when("/", {
-        template: "<h1>Main Route Angular</h1>"
+        templateUrl: "/Angular-App/Template/RecommendedProducts.html?"+new Date()
 
     }).when("/Users", {
-        templateUrl: "/ShopUser/?" + Date.now(),
+        templateUrl: "/ShopUser/?" + new Date()
         // controller: "ShopUsersListCtrl"
 
 
