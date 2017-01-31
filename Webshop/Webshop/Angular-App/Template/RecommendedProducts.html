@@ -12,16 +12,22 @@
         <div class="col-md-6">
             <br>
             <!--class="carousel slide"-->
+            <script type="text/javascript">
+                
+                $(document).ready(function () {
+                    $('#myCarousel').carousel({ interval: 3000, cycle: true });
+                });
+            </script>
             <div id="myCarousel"
                  class="{{carouselSlide}}"
                  data-ride="carousel">
                 <!-- Indicators Need mg repat with $index-->
                 <!--<ol class="carousel-indicators">
-                <li data-target="myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="myCarousel" data-slide-to="1"></li>
-                <li data-target="myCarousel" data-slide-to="2"></li>
+                    <li data-target="myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="myCarousel" data-slide-to="1"></li>
+                    <li data-target="myCarousel" data-slide-to="2"></li>
 
-            </ol>-->
+                </ol>-->
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
 
@@ -61,7 +67,7 @@
             <div class="row">
                 <div ng-repeat="product in recommedndedProductsList"
                      class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                    
+
                     <div style="display:grid; margin:10px; border:groove;" class="panel panel-body">
                         <div id="ProductPhoto">
                             <a href="">
