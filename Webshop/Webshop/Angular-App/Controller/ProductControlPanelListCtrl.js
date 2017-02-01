@@ -1,12 +1,14 @@
 ﻿
 'use strict'
 app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList) {
+
     $scope.productsList = [];
     $scope.productsListPaged = [];
     $scope.pager = {};
     $scope.responseMessage = "";
-    $("body").css("cursor", "progress");
+    // $("body").css("cursor", "progress");
     //$("body").css("cursor", "wait");
+    $scope.$emit('Load');
     $http.get("/Product/Products", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.productsList);
@@ -15,7 +17,10 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         $("body").css("cursor", "default");
     }
 
-    );
+    ).finally(function ()
+    {
+        $scope.$emit('UNLoad');
+    });
 
     $scope.categoriesList = [];
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
@@ -175,17 +180,29 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         $scope.selectedProductId = angular.copy(productId);
         $scope.selectedProduct = {};
         $scope.poductToAccessory = [];
-        angular.copy($scope.productsList, $scope.poductToAccessory);
-        var index = findProductInList($scope.productsList, productId);
-        if (index > -1) {
+        //angular.copy($scope.productsList, $scope.poductToAccessory);
+        //var index = findProductInList($scope.productsList, productId);
+        //if (index > -1) {
 
-            $scope.poductToAccessory.splice(index, 1);
+        //    $scope.poductToAccessory.splice(index, 1);
+        //}
+        function createRecommendedProductList() {
+            var index = -1;
+            for (var i = 0; i < $scope.productsList.length; i++) {
+                if ($scope.productsList[i].Id != $scope.selectedProductId) {
+                    index = findProductInList($scope.accessoriesList, $scope.productsList[i].Id);
+                    if (index < 0) {
+                        $scope.poductToAccessory.push(angular.copy($scope.productsList[i]));
+                    }
+                }
+            }
         }
         $http.get("/Product/ProductAccessories", { params: { productId: productId } }).then(
             function (response) {
                 $scope.accessoriesList = [];
 
                 angular.copy(response.data, $scope.accessoriesList)
+                createRecommendedProductList();
             }
             );
     }

@@ -203,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
+    <Content Include="Angular-App\Controller\AppCtrl.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
@@ -381,6 +382,8 @@
     <Content Include="fonts\AngularValidationStyle.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ImageStyleSheet.css" />
+    <Content Include="fonts\Loader.css" />
+    <Content Include="fonts\Preloader_8.gif" />
     <Content Include="fonts\tableStyleSheeet.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
