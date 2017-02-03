@@ -1,5 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../angular-app/app/webshop.js" />
+/// <reference path="../angular-app/controller/appctrl.js" />
 /// <reference path="../angular-app/controller/categorycontrolpanellistctrl.js" />
 /// <reference path="../angular-app/controller/createshopusersctrl.js" />
 /// <reference path="../angular-app/controller/loginctrl.js" />

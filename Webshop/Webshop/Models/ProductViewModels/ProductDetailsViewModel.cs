@@ -26,6 +26,10 @@ namespace Webshop.Models.ProductViewModels
         //[NotMapped]
         public int Quantity { get; set; }
 
+
+        [Display(Name = "isRecommended")]
+        public bool isRecommended { get; set; }
+
         //Quantity In the Stock
         [Display(Name = "Stock quantity")]
         public int StockQuantity { get; set; }

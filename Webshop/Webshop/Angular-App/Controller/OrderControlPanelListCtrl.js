@@ -71,6 +71,7 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
     }
 
     $scope.getOrderDetails = function (orderId) {
+        $scope.selectedOrder = {};
         $scope.selectedOrder = orderServices.getOrderDetails(orderId);
         $scope.selectedOrderEditId = "";
         $scope.selectedOrderDetails = angular.copy(orderId);

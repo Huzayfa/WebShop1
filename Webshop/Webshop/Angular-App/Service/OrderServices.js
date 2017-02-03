@@ -22,16 +22,19 @@
 
     this.getOrderDetails = function (orderId) {
 
-        var order = {};
+        
         //$scope.selectedOrder = {};
-        $http.post('Order/OrderDetails', { orderId: orderId }).then(function (response) {
-
+       return $http.post('Order/OrderDetails',{ orderId: orderId }).then(function (response) {
+            var order = {};
             //$scope.selectedOrder = {};
+            
             response.data.OrderDate = toJavaScriptDate(response.data.OrderDate);
             response.data.DeliverDate = toJavaScriptDate(response.data.DeliverDate);
             angular.copy(response.data, order);
+            console.log(order);
+            return order;
         });
-        return order;
+        
     };
 
     this.DeleteOrder = function (orderId) {

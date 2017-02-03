@@ -28,5 +28,22 @@ namespace WebShop
         {
             return new AppContext();
         }
+
+        //Edit thye Many-toMany Relation to the product with accessories
+        //Just to be more clear
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Accessories)
+                .WithMany(p => p.AccessoryTo)
+                .Map(m =>
+                {
+                    m.MapLeftKey("AccToProductId");
+                    m.MapRightKey("AccessoryId");
+                    m.ToTable("ProductAccessories");
+                });
+
+        }
     }
 }

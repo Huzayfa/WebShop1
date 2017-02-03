@@ -25,6 +25,10 @@ namespace WebShop.Models
         [Display(Name="isRecommended")]
         public bool isRecommended { get; set; }
 
+
+        //[Display(Name = "isAccessory")]
+        //public bool isAccessory { get; set; }
+
         //Using this property to know how many product in the cart
         [NotMapped]
         public int Quantity { get; set; }
@@ -51,7 +55,8 @@ namespace WebShop.Models
 
         public ICollection<OrderProduct> OrderProducts { get; set; }
 
-
+        //[InverseProperty("")]
+        public ICollection<Product> AccessoryTo { get; set; }
         public ICollection<Product> Accessories { get; set; }
 
 
@@ -59,6 +64,7 @@ namespace WebShop.Models
         {
             OrderProducts = new List<OrderProduct>();
             Accessories = new List<Product>();
+            AccessoryTo = new List<Product>();
         }
 
     }
