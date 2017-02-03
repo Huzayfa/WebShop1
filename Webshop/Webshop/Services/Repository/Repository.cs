@@ -544,6 +544,38 @@ namespace WebShop.Services
             
         }
 
+        // Delete Order row
+        public ActionResult DeleteOrderRow(int? orderRowId)
+        {
+            if (orderRowId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var orderProduct = DbContext.OrderProducts.Find(orderRowId);
+                if (orderProduct == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                else
+                {
+                    var order = DbContext.Orders.Find(orderProduct.OrderId);
+                    if (order != null)
+                    {
+                        order.TotalPrice = order.TotalPrice - (orderProduct.ProductPrice * orderProduct.Quantity);
+                    }
+                    DbContext.OrderProducts.Remove(orderProduct);
+                    DbContext.SaveChanges();
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+
+
+        }
+
+
+
         public OrderViewMoedel GetOrderDetails(int? orderId)
         {
                 //    var order = DbContext.Orders.Find(orderId);

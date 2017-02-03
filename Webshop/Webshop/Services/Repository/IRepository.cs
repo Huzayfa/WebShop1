@@ -30,6 +30,7 @@ namespace WebShop.Services
         ProductDetailsViewModel GetProductDetails(int? productId);
         ActionResult EditProduct(Product product);
         ActionResult DeleteOrder(int? orderId);
+        ActionResult DeleteOrderRow(int? orderRowId);
         List<Product> GetProductsList();
         List<ProductForCustomerViewModel> GetProductsForCustomerList();
         Product CreateProduct(NewProductViewModel product);

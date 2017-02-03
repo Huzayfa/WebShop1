@@ -40,6 +40,20 @@ namespace WebShop.Controllers
         }
 
 
+        // Delete Order row
+        [HttpPost]
+        public ActionResult DeleteRow(int? orderRowId)
+        {
+
+            if (orderRowId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return _rep.DeleteOrderRow(orderRowId);
+
+        }
+
+
         //Get Edit User
 
         public ActionResult OrderDetails(int? orderId)

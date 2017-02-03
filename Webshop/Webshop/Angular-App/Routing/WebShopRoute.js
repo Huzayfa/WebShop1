@@ -28,8 +28,6 @@ app.config(function ($routeProvider) {
         templateUrl:"/Account/Login"
     }).when("/Orders", {
         templateUrl: "/Order/"
-    }).when("/OrderLines", {
-        templateUrl: "/OrderLines/"
     }).when("/Register", {
         templateUrl: "/RegisterUser/"
 
