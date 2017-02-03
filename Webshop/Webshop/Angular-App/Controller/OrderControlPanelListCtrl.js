@@ -11,6 +11,18 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
     $scope.selectedOrderEditId = " ";
     $scope.selectedOrderDetails = " ";
 
+    var findInList = function (list, Id) {
+
+        for (var i = 0; i < list.length; i++) {
+            if (Id == list[i].Id) {
+
+                return i;
+            }
+        }
+
+        return -1;
+
+    }
 
     $scope.cancelEdit = function (orderId) {
         $scope.editSelected = false;
@@ -36,7 +48,11 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         if (deleteOrderRow)
         {
             orderServices.DeleteOrderRow(orderRowId);
-
+            var index = findInList($scope.selectedOrder.orderProducts,orderRowId);
+            if(index>-1)
+            {
+                $scope.selectedOrder.orderProducts.splice(index, 1);
+            }
         //    var index = orderServices.findOrderInList(orderId, $scope.ordersList);
         //    if (index > -1) {
         //        $scope.ordersList.splice(index, 1);
