@@ -19,6 +19,7 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         $scope.selectedOrderDetails = " ";
     }
 
+
     $scope.DeleteOrder = function (orderId) {
         var deleteOrder = $window.confirm('Are you sure you want to delete?');
         if (deleteOrder) {
@@ -29,6 +30,20 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
             }
         }
     };
+
+    $scope.DeleteOrderRow = function (orderRowId) {
+        var deleteOrderRow = $window.confirm('Are you sure you want to delete this row?');
+        if (deleteOrderRow)
+        {
+            orderServices.DeleteOrderRow(orderRowId);
+
+        //    var index = orderServices.findOrderInList(orderId, $scope.ordersList);
+        //    if (index > -1) {
+        //        $scope.ordersList.splice(index, 1);
+        //    }
+        }
+    };
+
 
     //get order By Id to Edit it
     $scope.EditOrder = function (orderId) {

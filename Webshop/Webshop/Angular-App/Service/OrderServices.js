@@ -46,6 +46,15 @@
         });
     }
 
+    this.DeleteOrderRow = function (orderRowId) {
+
+        $http.post('Order/DeleteRow', JSON.stringify({ orderRowId: orderRowId })).then
+        (function (response) {
+
+        });
+    }
+
+
     this.copyOrder = function (sourceOrder, destinationOrder) {
         destinationOrder.Id = angular.copy(sourceOrder.Id);
         destinationOrder.TotalPrice = sourceOrder.TotalPrice;
