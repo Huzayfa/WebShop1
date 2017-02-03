@@ -189,7 +189,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
             var index = findProductInList($scope.accessoriesList, accessory.Id);
             if (index > -1) {
                 console.log("RemovedAccessory");
-                $scope.accessoriesList.splice(index, 1);
+                $scope.accessoriesList.splice(index,1);
                 $scope.poductToAccessory.push(accessory);
             }
             
@@ -308,6 +308,11 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
     $scope.getProductDetails = function (productId) {
 
+        
+        $http.post('Product/ProductDetails', { productId: productId }).then(function (response) {
+
+            angular.copy(response.data, $scope.selectedProduct);
+        });
         $scope.selectedProductDetails = angular.copy(productId);
         $scope.editSelected = false;
         $scope.detailsSelected = true;

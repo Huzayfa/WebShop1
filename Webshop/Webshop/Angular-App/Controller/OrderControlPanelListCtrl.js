@@ -22,14 +22,13 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
     $scope.DeleteOrder = function (orderId) {
         var deleteOrder = $window.confirm('Are you sure you want to delete?');
-        if (deleteOrder)
-        {
+        if (deleteOrder) {
             orderServices.DeleteOrder(orderId);
-            var index = orderServices.findOrderInList(orderId,$scope.ordersList);
+            var index = orderServices.findOrderInList(orderId, $scope.ordersList);
             if (index > -1) {
                 $scope.ordersList.splice(index, 1);
             }
-        }       
+        }
     };
 
     $scope.DeleteOrderRow = function (orderRowId) {
@@ -72,9 +71,11 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
     $scope.getOrderDetails = function (orderId) {
         $scope.selectedOrder = {};
-        $scope.selectedOrder = orderServices.getOrderDetails(orderId);
-        $scope.selectedOrderEditId = "";
+
+        $scope.selectedOrder=orderServices.getOrderDetails(orderId);
         $scope.selectedOrderDetails = angular.copy(orderId);
+        $scope.selectedOrderEditId = "";
+
         $scope.editSelected = false;
         $scope.detailsSelected = true;
     }

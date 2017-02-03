@@ -1,4 +1,4 @@
-﻿app.service('orderServices', function ($http, toJavaScriptDate) {
+﻿app.service('orderServices', function ($http,$q, toJavaScriptDate) {
 
     this.getOrdersList = function () {
         var orderList = [];
@@ -21,20 +21,21 @@
     }
 
     this.getOrderDetails = function (orderId) {
-
-        
+        var order = {};
+       // var promise = $q.defer();
         //$scope.selectedOrder = {};
-       return $http.post('Order/OrderDetails',{ orderId: orderId }).then(function (response) {
-            var order = {};
-            //$scope.selectedOrder = {};
-            
+      $http.post('Order/OrderDetails',{ orderId: orderId }).then(function (response) {
+         
+
             response.data.OrderDate = toJavaScriptDate(response.data.OrderDate);
             response.data.DeliverDate = toJavaScriptDate(response.data.DeliverDate);
-            angular.copy(response.data, order);
-            console.log(order);
-            return order;
-        });
-        
+          //promise.resolve(response);
+            angular.copy(response.data,order);
+            
+            
+      });
+      //return promise.promise;
+      return order;
     };
 
     this.DeleteOrder = function (orderId) {

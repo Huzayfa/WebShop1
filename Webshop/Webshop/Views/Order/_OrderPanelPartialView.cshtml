@@ -112,6 +112,7 @@
                         </div>
                         <div class="modal-body">
                             <order-details ng-if='detailsSelected'
+                                           selected-order="selectedOrder"
                                            selected-order-details="selectedOrderDetails"
                                            close="cancelEdit(order.Id)">
                             </order-details>
