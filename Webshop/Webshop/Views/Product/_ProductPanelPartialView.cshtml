@@ -193,7 +193,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">                                
-                                <div class="col-md-5 col-sm-5">
+                                <div class="col-md-5 col-xs-5 col-sm-5">
                                     <p><input type="text" ng-model="accessoryFilter"></p>
                                     <table>
                                         <tr class="tableHeader">
@@ -213,7 +213,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="col-md-offset-1 col-sm-offset-1 col-md-5 col-sm-5">
+                                <div class="col-md-offset-1 col-sm-offset-1  col-xs-offset-1 col-md-5 col-sm-5 col-xs-5">
                                     <h3>Product Accessories</h3>
                                     <table>
                                         <tr class="tableHeader">
@@ -224,11 +224,11 @@
                                                 Name
                                             </th>
                                         </tr>
-                                        <tr ng-repeat="product in accessoriesList | orderBy:selectedOrder">
-                                            <td ng-bind="product.Id"></td>
-                                            <td>{{product.Name}}</td>
+                                        <tr ng-repeat="accessory in accessoriesList | orderBy:selectedOrder">
+                                            <td ng-bind="accessory.Id"></td>
+                                            <td>{{accessory.Name}}</td>
                                             <td class="productActions">
-                                                <button ng-click="DeleteProductFromAccessories(product.Id)" class="btn btn-sm btn-link" value="Delete"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                                                <button ng-click="removeProductFromAccessories(accessory)" class="btn btn-sm btn-link" value="Delete"><i class="glyphicon glyphicon-remove-sign"></i></button>
                                             </td>
                                         </tr>
                                     </table>

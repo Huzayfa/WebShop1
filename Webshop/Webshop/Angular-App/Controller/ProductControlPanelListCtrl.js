@@ -17,8 +17,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         $("body").css("cursor", "default");
     }
 
-    ).finally(function ()
-    {
+    ).finally(function () {
         $scope.$emit('UNLoad');
     });
 
@@ -176,6 +175,28 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
 
     }
+
+    $scope.removeProductFromAccessories = function (accessory) {
+
+        $http.get("/Product/RemoveAccessory", {
+            params: {
+                productId: $scope.selectedProductId,
+                accessoryId: accessory.Id,
+            }
+        }).
+        success(function (response) {
+            
+            var index = findProductInList($scope.accessoriesList, accessory.Id);
+            if (index > -1) {
+                console.log("RemovedAccessory");
+                $scope.accessoriesList.splice(index, 1);
+                $scope.poductToAccessory.push(accessory);
+            }
+            
+        });
+
+    }
+
     $scope.getProductAccessories = function (productId) {
         $scope.selectedProductId = angular.copy(productId);
         $scope.selectedProduct = {};

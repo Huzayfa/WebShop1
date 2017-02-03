@@ -56,6 +56,19 @@ namespace WebShop.Controllers
             }
         }
 
+        public ActionResult RemoveAccessory(int? productId,int? accessoryId)
+        {
+            if (productId == null || accessoryId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                return _rep.RemoveAccessory(productId, accessoryId);
+            }
+        }
+
+
         [AllowAnonymous]
         public ActionResult ProductAccessories(int? productId)
         {

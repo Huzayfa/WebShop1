@@ -340,6 +340,26 @@ namespace WebShop.Services
         }
 
 
+        public ActionResult RemoveAccessory(int? productId, int? accessoryId)
+        {
+
+            var product = DbContext.Products.Include("Accessories").FirstOrDefault(p=>p.Id==productId);
+            if (product != null)
+            {
+                var accessory = DbContext.Products.Include("AccessoryTo").FirstOrDefault(p => p.Id == accessoryId);
+                if (accessory != null)
+                {
+                    product.Accessories.Remove(accessory);
+                    accessory.AccessoryTo.Remove(product);
+                    DbContext.Entry(product).State = EntityState.Modified;
+                    DbContext.Entry(accessory).State = EntityState.Modified;
+                    DbContext.SaveChanges();
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        }
+
         public ActionResult AddAccessoryToProduct(int? productId, int? accessoryId)
         {
             var product=DbContext.Products.Find(productId);
