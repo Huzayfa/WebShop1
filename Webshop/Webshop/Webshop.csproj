@@ -1361,6 +1361,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\RegisterUser\_RegisterUsersPartialView.cshtml" />
     <Content Include="Views\Shared\_RegisterShopUserPartialView.cshtml" />
+    <Content Include="Views\Product\_ProductCustomerAllDetailsPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

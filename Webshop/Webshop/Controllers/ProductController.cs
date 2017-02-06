@@ -25,12 +25,17 @@ namespace WebShop.Controllers
         }
 
 
-        // GET: Product
+        // GET: Products
         public ActionResult Index()
         {
             return PartialView("_ProductPanelPartialView");
         }
 
+        //Get 
+        public ActionResult ProductCustomerAllDetails()
+        {
+            return null;
+        }
 
         [HttpPost]
         public ActionResult Delete(int? productId)
