@@ -613,9 +613,52 @@ namespace WebShop.Services
                     return new HttpStatusCodeResult(HttpStatusCode.OK);
                 }
             }
-
-
         }
+
+
+        // Update Order row
+        public ActionResult UpdateOrderRow(OrderProduct row)
+        {
+            if (row == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var orderProduct = DbContext.OrderProducts.Find(row.Id);
+                if (orderProduct == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+                else
+                {
+                    decimal oldQP = orderProduct.Quantity * orderProduct.ProductPrice;
+                    orderProduct.ProductPrice = row.ProductPrice;
+                    orderProduct.Quantity = row.Quantity;
+                    DbContext.Entry(orderProduct).State = EntityState.Modified;
+                    DbContext.SaveChanges();
+
+                    var order = DbContext.Orders.Find(row.OrderId);
+                    order.TotalPrice = order.TotalPrice + (row.Quantity * row.ProductPrice - oldQP);
+
+                    //var orderRows = DbContext.OrderProducts.Where(x => x.OrderId == order.Id);
+                    //order.TotalPrice = 0;
+                    //foreach (var op in orderRows)
+                    //{
+                    //    if (op.OrderId == order.Id)
+                    //    {
+                    //        order.TotalPrice = order.TotalPrice + op.ProductPrice;
+                    //    }
+                    //}
+
+                    DbContext.Entry(order).State = EntityState.Modified;
+                    DbContext.SaveChanges();
+
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+            }
+        }
+
 
 
 
