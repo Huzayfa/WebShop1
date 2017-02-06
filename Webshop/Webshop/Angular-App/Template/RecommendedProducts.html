@@ -5,6 +5,12 @@
         margin: auto;
     }
 </style>
+<script type="text/javascript">
+
+                $(document).ready(function () {
+                    $('#myCarousel').carousel({ interval: 3000, cycle: true });
+                });
+</script>
 <h2> Wellcome To our Store</h2>
 
 <div ng-controller="RecommendedProductCtrl">
@@ -12,12 +18,7 @@
         <div class="col-md-6">
             <br>
             <!--class="carousel slide"-->
-            <script type="text/javascript">
-                
-                $(document).ready(function () {
-                    $('#myCarousel').carousel({ interval: 3000, cycle: true });
-                });
-            </script>
+            
             <div id="myCarousel"
                  class="{{carouselSlide}}"
                  data-ride="carousel">
