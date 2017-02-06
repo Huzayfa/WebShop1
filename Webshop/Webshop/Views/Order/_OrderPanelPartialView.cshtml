@@ -44,44 +44,41 @@
 
                             
                             <!-- Order rows -->
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th>
-                                        Id
-                                    </th>
-                                    <th>
-                                        Product id
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                    <th>
-                                        Quantity
-                                    </th>
-                                </tr>
-                                <tr ng-repeat="row in selectedOrder.orderProducts">
-                                    <td>{{row.Id}}</td>
-                                    <td>{{row.ProductId}}</td>
-                                    <td>{{row.ProductPrice}}</td>
-                                    <td>{{row.Quantity}}</td>
-                                    <td style="display:none" ng-bind="row.Id"></td>
-
-                                    <td>
-                                        <button ng-click="DeleteOrderRow(row.Id)"
-                                                class="btn btn-sm btn-link" value="Delete">
-                                            Delete
-                                        </button>
-                                    </td>
-
-                                    <td>
-                                        <button ng-click="UpdateOrderRow(row.Id)"
-                                                class="btn btn-sm btn-link" value="Save">
-                                            Save
-                                        </button>
-                                    </td>
-
-                                </tr>
-                            </table>
+                            <div class="md-md-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            Id
+                                        </th>
+                                        <th>
+                                            Product id
+                                        </th>
+                                        <th>
+                                            Price
+                                        </th>
+                                        <th>
+                                            Quantity
+                                        </th>
+                                    </tr>
+                                    <tr ng-repeat="row in selectedOrder.orderProducts">
+                                        <td>{{row.Id}}</td>
+                                        <td> {{row.ProductId}}</td>
+                                        <td><input type="number" min="0" ng-model="row.ProductPrice" class="input-sm" /></td>
+                                        <td><input type="number" min="0" ng-model="row.Quantity" class="input-sm" /></td>
+                                        <td style="display:none" ng-bind="row.Id"></td>
+                                        <td>
+                                            <button ng-click="DeleteOrderRow(row.Id)"
+                                                    class="btn btn-sm btn-link" value="Delete">
+                                                Delete
+                                            </button>
+                                            <button ng-click="UpdateOrderRow(row.Id)"
+                                                    class="btn btn-sm btn-link" value="Save">
+                                                Save
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                             <!-- End Order rows -->
 
 

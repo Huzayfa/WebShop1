@@ -607,6 +607,7 @@ namespace WebShop.Services
                     {
                         order.TotalPrice = order.TotalPrice - (orderProduct.ProductPrice * orderProduct.Quantity);
                     }
+                    DbContext.Entry(order).State = EntityState.Modified;
                     DbContext.OrderProducts.Remove(orderProduct);
                     DbContext.SaveChanges();
                     return new HttpStatusCodeResult(HttpStatusCode.OK);
