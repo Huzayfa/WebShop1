@@ -32,9 +32,24 @@ namespace WebShop.Controllers
         }
 
         //Get 
-        public ActionResult ProductCustomerAllDetails()
+        public ActionResult ProductCustomerAllDetails(int? productId)
         {
-            return null;
+            if(productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+               var product=_rep.GetProductCustomerAllDetails(productId);
+                if (product!=null)
+                {
+                    return Json(product, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                }
+            }
         }
 
         [HttpPost]

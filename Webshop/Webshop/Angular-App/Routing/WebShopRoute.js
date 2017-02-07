@@ -1,4 +1,6 @@
-﻿/// <reference path="../Template/RecommendedProducts.html" />
+﻿/// <reference path="../Template/Route/ProductCustomerAllDetailsPartialView.html" />
+/// <reference path="../Template/Route/ProductCustomerAllDetailsPartialView.html" />
+/// <reference path="../Template/RecommendedProducts.html" />
 /// <reference path="../Template/RecommendedProducts.html" />
 //(function()
 //{
@@ -31,6 +33,9 @@ app.config(function ($routeProvider) {
     }).when("/Register", {
         templateUrl: "/RegisterUser/"
 
+    }).when("/ProductCustomerAllDetails/:productId", {
+        templateUrl: "/Angular-App/Template/Route/ProductCustomerAllDetailsPartialView.html?",
+        controller: "ProductCustomerAllDetailsCtrl"
     }).otherwise({
 
         template: "<h1>Otherwise From Angular Route</h1>"
