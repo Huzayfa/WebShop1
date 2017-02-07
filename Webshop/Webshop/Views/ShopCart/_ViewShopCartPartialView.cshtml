@@ -78,7 +78,8 @@
                         Quantity
                         <input style="max-width:70px" type="number"
                                min="0"
-                               oninput="console.log(this.value.match(/\d*[0-9]/gmi)[0]); this.value = this.value.match(/\d*[0-9]/gmi)[0];"
+                               oninput="this.value = this.value.match(/\d*[0-9]/gmi);"
+                               
                                step="1"
                                max="1000"
                                class="small input-sm"

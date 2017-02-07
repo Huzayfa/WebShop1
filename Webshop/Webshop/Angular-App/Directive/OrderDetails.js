@@ -4,7 +4,7 @@
         //Controller Run just one time 
     };
     var link = function ($scope, $http, orderServices) {
-        //Controller Run just one time 
+        //Link Run just one time 
     };
     var templateUrl=function(){
         return 'Angular-App/Template/Directive/OrderDetailsPartialView.html?'+new Date();

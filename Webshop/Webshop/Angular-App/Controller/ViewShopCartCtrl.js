@@ -1,37 +1,38 @@
 ﻿'use strict'
-app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, cookieOptionService) {
+app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,cartService, cookieOptionService) {
 
-    //$scope.totalPrice = 0;
     
-    // $scope.cart = $cookies.getObject(cookieOptionService.cookieName);
-    $scope.cart =angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
-    //$window.sessionStorage.setItem(cookieOptionService.cookieName, cart);
-    if ($scope.cart === undefined || $scope.cart === null)
-    {
-        $scope.cart = [];
-    }
-    $scope.$watch('cart', function (neww, old) {
-        $scope.totalPrice = counteTotalPrice(neww);
-        $scope.cartLength = countProductQuantity(neww);
-    }, true)
+    $scope.cart = cartService.getCart();
    
-    var countProductQuantity=function(cart)
+    
+    $scope.$watch('cart', function (neww, old) {
+        console.log(neww);
+        cartService.setCart(neww);
+        counteTotalPriceQuantity(neww);
+        cartService.totalPrice = $scope.totalPrice;
+        cartService.cartLength = $scope.cartLength;
+    }, true);
+   
+    var counteTotalPriceQuantity = function (cart)
     {
+        $scope.totalPrice = 0;
+        $scope.cartLength = 0;
         if (cart === undefined || cart === null) {
-            return '';
+            return;
         }
         else {
-            var cartLength = 0;
+            
             for (var i = 0; i < cart.length; i++) {
-                cartLength += cart[i].Quantity;
+                $scope.totalPrice += cart[i].Quantity * cart[i].Price;
+                $scope.cartLength += cart[i].Quantity;
             }
-            return cartLength;
+            
         }
     }
 
     $scope.clearShopCart=function()
     {
-        //$cookies.putObject(cookieOptionService.cookieName, null);
+        
         $window.sessionStorage.setItem(cookieOptionService.cookieName,null);
         $scope.cartLength = '';
         $scope.cart = [];
@@ -55,21 +56,17 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies, co
     $scope.deleteProductFromCart=function(productId)
     {
         
-        //var cart = $cookies.getObject(cookieOptionService.cookieName);
-        var cart = angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
-        if (cart === undefined || cart === null)
+        if ($scope.cart === undefined || $scope.cart === null)
         {
             
             return;
         }
         else
         {
-            var index = findProductInCart(cart, productId);
+            var index = findProductInCart($scope.cart, productId);
             if (index > -1)
             {
                 cart.splice(index, 1);
-                $window.sessionStorage.setItem(cookieOptionService.cookieName, angular.toJson(cart));
-                $scope.cart =angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
                 //$cookies.putObject(cookieOptionService.cookieName, cart);
                // $scope.cart = $cookies.getObject(cookieOptionService.cookieName);
             }

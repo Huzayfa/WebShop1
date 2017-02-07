@@ -2,7 +2,7 @@
 app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cookieOptionService, cartService)
 {
 
-    $scope.cartLength = cartService.getCartLength();
+    $scope.cartLength = cartService.cartLength;
     $scope.productsList = [];
     $("body").css("cursor", "progress");
     $http.get("/Product/ProductsForCustomer", { cache: false }).then(function (response) {
