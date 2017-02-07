@@ -20,6 +20,15 @@
         });
     }
 
+    this.UpdateOrderRow = function (row) {
+        
+       return $http.post('Order/UpdateOrderRow', row).then(function (response) {
+
+        });
+    }
+
+
+
     this.getOrderDetails = function (orderId) {
         var order = {};
        // var promise = $q.defer();

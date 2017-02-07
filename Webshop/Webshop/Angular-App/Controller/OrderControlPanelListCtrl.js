@@ -53,12 +53,16 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
             {
                 $scope.selectedOrder.orderProducts.splice(index, 1);
             }
-        //    var index = orderServices.findOrderInList(orderId, $scope.ordersList);
-        //    if (index > -1) {
-        //        $scope.ordersList.splice(index, 1);
-        //    }
         }
     };
+
+    $scope.UpdateOrderRow = function (row) {
+        orderServices.UpdateOrderRow(row).then(function () { 
+            $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrder.Id);
+        });
+       
+    };
+
 
 
     //get order By Id to Edit it

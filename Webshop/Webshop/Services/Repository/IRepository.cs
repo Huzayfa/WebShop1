@@ -31,6 +31,7 @@ namespace WebShop.Services
         ActionResult EditProduct(Product product);
         ActionResult DeleteOrder(int? orderId);
         ActionResult DeleteOrderRow(int? orderRowId);
+        ActionResult UpdateOrderRow(OrderProduct row);
         List<Product> GetProductsList();
         List<ProductForCustomerViewModel> GetProductsForCustomerList();
         Product CreateProduct(NewProductViewModel product);

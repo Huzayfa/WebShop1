@@ -54,6 +54,21 @@ namespace WebShop.Controllers
         }
 
 
+        // Update Order row
+        [HttpPost]
+        public ActionResult UpdateOrderRow(OrderProduct row)
+        {
+
+            if (row == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            return _rep.UpdateOrderRow(row);
+
+        }
+
+
+
         //Get Edit User
 
         public ActionResult OrderDetails(int? orderId)
