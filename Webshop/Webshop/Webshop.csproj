@@ -385,6 +385,7 @@
     <Content Include="fonts\AngularValidationStyle.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ImageStyleSheet.css" />
+    <Content Include="fonts\lampaLoader.gif" />
     <Content Include="fonts\Loader.css" />
     <Content Include="fonts\Preloader_8.gif" />
     <Content Include="fonts\tableStyleSheeet.css" />
