@@ -58,16 +58,20 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
     $scope.UpdateOrderRow = function (row) {
         orderServices.UpdateOrderRow(row).then(function () { 
-            $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrder.Id);
-          //  console.log($scope.selectedOrderEditId);
+            console.log($scope.selectedOrder.Id);
             var index = findInList($scope.ordersList, $scope.selectedOrder.Id);
-            if(index>-1)
-            {
-                angular.copy($scope.selectedOrder.TotalPrice, $scope.ordersList[index].TotalPrice);
+            
+            $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrder.Id);
+            //  console.log($scope.selectedOrderEditId);
+            if (index > -1) {
+
+                $scope.ordersList[index].TotalPrice = angular.copy($scope.selectedOrder.TotalPrice);
+                console.log($scope.selectedOrder);
+                console.log($scope.ordersList);
             }
+            
           //  console.log(index);
-            console.log($scope.selectedOrder);
-            console.log($scope.ordersList);
+            
 
         });
        
