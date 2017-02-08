@@ -1,4 +1,4 @@
-﻿app.controller('ProductCustomerAllDetailsCtrl', function ($scope, $routeParams, $http) {
+﻿app.controller('ProductCustomerAllDetailsCtrl', function ($scope, $routeParams, $http,cartService) {
     console.log($routeParams.productId);
     var productId = $routeParams.productId;
     $scope.product = {};
@@ -13,5 +13,13 @@
         console.log(response.data);
         angular.copy(response.data, $scope.product);
     });
+
+    $scope.addToCart = function (product) {
+        var length = cartService.addToCart(product);
+        if (length > 0) {
+            $scope.cartLength = length;
+        }
+
+    }
 
 });

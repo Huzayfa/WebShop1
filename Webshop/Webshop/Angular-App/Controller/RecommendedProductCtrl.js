@@ -1,4 +1,4 @@
-﻿app.controller('RecommendedProductCtrl', function ($scope, $http, $timeout) {
+﻿app.controller('RecommendedProductCtrl', function ($scope, $http, $timeout,cartService) {
 
     $scope.recommedndedProductsList = [];
     
@@ -14,5 +14,12 @@
         $scope.$emit("UNLoad");
     }
     );
+    $scope.addToCart = function (product) {
+        var length = cartService.addToCart(product);
+        if (length > 0) {
+            $scope.cartLength = length;
+        }
+
+    }
 
 })

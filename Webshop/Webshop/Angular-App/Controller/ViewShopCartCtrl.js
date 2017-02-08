@@ -66,7 +66,7 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,car
             var index = findProductInCart($scope.cart, productId);
             if (index > -1)
             {
-                cart.splice(index, 1);
+                $scope.cart.splice(index, 1);
                 //$cookies.putObject(cookieOptionService.cookieName, cart);
                // $scope.cart = $cookies.getObject(cookieOptionService.cookieName);
             }
