@@ -30,21 +30,27 @@
 
 
     this.getOrderDetails = function (orderId) {
-        var order = {};
+       // var order = {};
+        var deferred = $q.defer();
        // var promise = $q.defer();
         //$scope.selectedOrder = {};
       $http.post('Order/OrderDetails',{ orderId: orderId }).then(function (response) {
-         
 
             response.data.OrderDate = toJavaScriptDate(response.data.OrderDate);
             response.data.DeliverDate = toJavaScriptDate(response.data.DeliverDate);
           //promise.resolve(response);
-            angular.copy(response.data,order);
+            
+            //angular.copy(response.data, order);
+            deferred.resolve(response.data);
             
             
-      });
+      },function(error) {
+            posts = error;
+            deferred.reject(error);
+          });
       //return promise.promise;
-      return order;
+      return deferred.promise;
+
     };
 
     this.DeleteOrder = function (orderId) {

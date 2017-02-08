@@ -58,20 +58,25 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
     $scope.UpdateOrderRow = function (row) {
         orderServices.UpdateOrderRow(row).then(function () { 
-            console.log($scope.selectedOrder.Id);
+            
             var index = findInList($scope.ordersList, $scope.selectedOrder.Id);
             
-            $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrder.Id);
-            //  console.log($scope.selectedOrderEditId);
-            if (index > -1) {
+            orderServices.getOrderDetails($scope.selectedOrder.Id).then(
+                function (data) {
+                    angular.copy(data,$scope.selectedOrder);
+                    var index = findInList($scope.ordersList, $scope.selectedOrder.Id);
+                    if (index > -1) {
 
-                $scope.ordersList[index].TotalPrice = angular.copy($scope.selectedOrder.TotalPrice);
-                console.log($scope.selectedOrder);
-                console.log($scope.ordersList);
-            }
-            
-          //  console.log(index);
-            
+                        $scope.ordersList[index].TotalPrice = angular.copy($scope.selectedOrder.TotalPrice);
+                    }
+                    
+
+                }
+                ,
+                function (erro) {
+
+                }
+                );           
 
         });
        
@@ -82,7 +87,16 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
     //get order By Id to Edit it
     $scope.EditOrder = function (orderId) {
-        $scope.selectedOrder = orderServices.getOrderDetails(orderId);
+        $scope.selectedOrder={};
+        orderServices.getOrderDetails(orderId).then(function (data) {
+            angular.copy(data,$scope.selectedOrder);
+        }
+        ,
+        function (error) {
+
+
+        });
+        //$scope.selectedOrder = orderServices.getOrderDetails(orderId);
         $scope.editSelected = true;
         $scope.detailsSelected = false;
         $scope.selectedOrderEditId = angular.copy(orderId);
@@ -107,7 +121,11 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
     $scope.getOrderDetails = function (orderId) {
         $scope.selectedOrder = {};
 
-        $scope.selectedOrder=orderServices.getOrderDetails(orderId);
+        orderServices.getOrderDetails(orderId).then(function (data) {
+            angular.copy(data,$scope.selectedOrder);
+        },
+        function (error) {
+        });
         $scope.selectedOrderDetails = angular.copy(orderId);
         $scope.selectedOrderEditId = "";
 
