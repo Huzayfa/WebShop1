@@ -60,14 +60,14 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         orderServices.UpdateOrderRow(row).then(function () { 
             $scope.selectedOrder = orderServices.getOrderDetails($scope.selectedOrder.Id);
           //  console.log($scope.selectedOrderEditId);
-          //  var index = findInList($scope.ordersList, $scope.selectedOrderEditId);
-          //  if(index>-1)
-          //  {
-          //      angular.copy($scope.selectedOrder, $scope.ordersList[index]);
-          //  }
+            var index = findInList($scope.ordersList, $scope.selectedOrder.Id);
+            if(index>-1)
+            {
+                angular.copy($scope.selectedOrder.TotalPrice, $scope.ordersList[index].TotalPrice);
+            }
           //  console.log(index);
-          //  console.log($scope.selectedOrder);
-          //  console.log($scope.ordersList);
+            console.log($scope.selectedOrder);
+            console.log($scope.ordersList);
 
         });
        
