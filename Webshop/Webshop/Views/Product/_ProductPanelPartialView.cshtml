@@ -152,8 +152,7 @@
                         <div class="modal-header">
 
                             <button type="button" class="close"
-                                    data-dismiss="modal"
-                                    >
+                                    data-dismiss="modal">
                                 &times;
                             </button>
                             <h4 class="modal-title">Product Details</h4>
@@ -185,14 +184,13 @@
 
                         <div class="modal-header">
                             <button type="button" class="close"
-                                    data-dismiss="modal"
-                                    >
+                                    data-dismiss="modal">
                                 &times;
                             </button>
                             <h4 class="modal-title">Product Accessories</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="row">                                
+                            <div class="row">
                                 <div class="col-md-5 col-xs-5 col-sm-5">
                                     <p><input type="text" ng-model="accessoryFilter"></p>
                                     <table>
@@ -208,7 +206,10 @@
                                             <td ng-bind="product.Id"></td>
                                             <td>{{product.Name}}</td>
                                             <td class="productActions">
-                                                <button ng-click="AddProducttoAccessories(product)" class="btn btn-sm btn-link" value="Delete"><i class="glyphicon glyphicon-circle-arrow-right" ></i></button>
+                                                <button ng-click="AddProducttoAccessories(product)" class="btn btn-sm btn-link" value="Delete">
+                                                <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                                    <i class="fa fa-arrow-circle-o-right"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </table>
@@ -228,7 +229,10 @@
                                             <td ng-bind="accessory.Id"></td>
                                             <td>{{accessory.Name}}</td>
                                             <td class="productActions">
-                                                <button ng-click="removeProductFromAccessories(accessory)" class="btn btn-sm btn-link" value="Delete"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                                                <button ng-click="removeProductFromAccessories(accessory)" class="btn btn-sm btn-link" value="Delete">
+                                                    
+                                                    <i class="fa fa-remove"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     </table>
@@ -280,7 +284,7 @@
                                 data-toggle="modal"
                                 data-target="#productAccessoriesModal">
                             Accessories
-                        </button>                       
+                        </button>
                     </td>
 
 
@@ -321,10 +325,10 @@
                     <input type="text" ng-model="newProduct.StockQuantityToShow" class="form-control" />
                 </label>
                 <span class="button-checkbox">
-                    <input type="checkbox" 
+                    <input type="checkbox"
                            id="newProductRecommeded"
                            ng-model="newProduct.isRecommended"
-                           class="hidden" 
+                           class="hidden"
                            data-color="primary">
                     <label for="newProductRecommeded" class="btn btn-primary">
                         <i class="state-icon glyphicon glyphicon-check"
@@ -334,7 +338,7 @@
                            ng-show="!newProduct.isRecommended">
                         </i>
                         &nbsp;Recommended
-                        
+
                     </label>
                 </span>
                 <div class="form-group">
