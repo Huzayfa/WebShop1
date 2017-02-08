@@ -1,26 +1,8 @@
 ﻿'use strict'
-app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cookieOptionService) {
+app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cookieOptionService, cartService)
+{
 
-    var cart = angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
-    /* using Cokki to save the Cart
-    var cart = $cookies.getObject(cookieOptionService.cookieName);
-        if (cart === undefined || cart === null) {
-            $scope.cartLength = ''; 
-        }
-        else {
-            $scope.cartLength = cart.length;
-        }
-      */
-
-    if (cart === undefined || cart === null) {
-        $scope.cartLength = '';
-    }
-    else {
-        $scope.cartLength = 0;
-        for (var i = 0; i < cart.length; i++) {
-            $scope.cartLength += cart[i].Quantity;
-        }
-    }
+    $scope.cartLength = cartService.cartLength;
     $scope.productsList = [];
     $("body").css("cursor", "progress");
     $http.get("/Product/ProductsForCustomer", { cache: false }).then(function (response) {
@@ -48,56 +30,11 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
 
 
     $scope.addToCart = function (product) {
-        //$cookies.put('customerCart', undefined);
-        var cart = angular.fromJson($window.sessionStorage[cookieOptionService.cookieName]);
-        /*var cart = $cookies.getObject(cookieOptionService.cookieName);*/
-        if (cart === undefined || cart === null) {
-            //var p = {};
-            //p.Id = angular.copy(product.Id);
-            //p.Quantity = 1;
-            //p.Price = angular.copy(product.Price)
-            product.Quantity = 1;
-            cart = [product];
-            $scope.cartLength = 1;
-            /* $cookies.putObject(cookieOptionService.cookieName,JSON.stringify(cart), {
-                 expires: cookieOptionService.exp
-             });
-             
-             $cookies.putObject(cookieOptionService.cookieName,cart,
-                { expires: cookieOptionService.exp }
-                 );
-             */
+        var length=cartService.addToCart(product);
+        if(length>0)
+        {
+            $scope.cartLength=length;
         }
-        else {
-            var index = findProductInList(product.Id, cart)
-            if (index == -1) {
-
-                //var p = {};
-                //p.Quantity = 1;
-                //p.Id = angular.copy(product.Id);
-                product.Quantity = 1;
-                //p.Price = angular.copy(product.Price)
-                cart.push(product);
-                $scope.cartLength += 1;
-                /* $cookies.putObject(cookieOptionService.cookieName, JSON.stringify(cart)
-                     , {
-                     expires: cookieOptionService.exp
-                 });*/
-
-            }
-            else {
-                cart[index].Quantity++;
-                $scope.cartLength += 1;
-                /* $cookies.putObject(cookieOptionService.cookieName, cart, {
-                     expires: cookieOptionService.exp
-                 });
-                 */
-            }
-
-
-        }
-
-        $window.sessionStorage.setItem(cookieOptionService.cookieName, angular.toJson(cart));
 
     }
 

@@ -59,22 +59,27 @@
     <div class="row text-center">
 
         <div ng-repeat="product in cart | orderBy:selectedOrder"
-             class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+             class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
             <div class="thumbnail"
                  @*style="display:grid; margin:10px; border:groove;"
                  class="center-block panel panel-body"*@
                  >
                 <div class="" id="ProductPhoto">
-
-                    <img ng-src="{{product.Photo}}" class="img-rounded"
-                         alt="Fjords" style="width:40%" />
+                    <a href="#/ProductCustomerAllDetails/{{product.Id}}">
+                        <img ng-src="{{product.Photo}}" class="img-rounded"
+                             alt="Fjords" 
+                             @*style="width:40%"*@
+                             style="height:15em"
+                              />
+                    </a>
                 </div>
                 <div class="caption">
                     <div>
                         Quantity
                         <input style="max-width:70px" type="number"
                                min="0"
-                               oninput="console.log(this.value.match(/\d*[0-9]/gmi)[0]); this.value = this.value.match(/\d*[0-9]/gmi)[0];"
+                               oninput="this.value = this.value.match(/\d*[0-9]/gmi);"
+                               
                                step="1"
                                max="1000"
                                class="small input-sm"

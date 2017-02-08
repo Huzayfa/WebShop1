@@ -37,10 +37,10 @@ namespace WebShop.Services
             {
                 return _dbContext ?? HttpContext.Current.GetOwinContext().Get<AppContext>();
             }
-           /* set
-            {
-                _dbContext = value;
-            }*/
+            /* set
+             {
+                 _dbContext = value;
+             }*/
         }
 
         private AppUserManager UserManager
@@ -55,7 +55,7 @@ namespace WebShop.Services
             }*/
         }
 
-        
+
 
         #endregion RepProperties
 
@@ -94,15 +94,15 @@ namespace WebShop.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                City=user.City,
-                Country=user.Country,
-                PhoneNumber=user.PhoneNumber,
-                PostNumber=user.PostNumber,
-                StreetAddress=user.StreetAddress,
+                City = user.City,
+                Country = user.Country,
+                PhoneNumber = user.PhoneNumber,
+                PostNumber = user.PostNumber,
+                StreetAddress = user.StreetAddress,
             };
-            
-            var result = await UserManager.CreateAsync(newUser,user.Password);
-            
+
+            var result = await UserManager.CreateAsync(newUser, user.Password);
+
             return result;
         }
 
@@ -133,14 +133,15 @@ namespace WebShop.Services
             else
             {
 
-                
+
                 return new UserDetailsViewModel()
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email,
                     Id = user.Id,
-                    orders = user.Orders.Select(o => new Models.OrderViewModels.OrderViewMoedel {
+                    orders = user.Orders.Select(o => new Models.OrderViewModels.OrderViewMoedel
+                    {
                         Id = o.Id,
                         OrderDate = o.OrderDate,
                     }).ToList(),
@@ -156,17 +157,17 @@ namespace WebShop.Services
 
         public ActionResult EditUser(UserDetailsViewModel user)
         {
-            var userEdit = UserManager.FindById(user.Id);           
+            var userEdit = UserManager.FindById(user.Id);
             userEdit.FirstName = user.FirstName;
             userEdit.LastName = user.LastName;
             userEdit.Email = user.Email;
-            userEdit.City = user.City;            
+            userEdit.City = user.City;
             userEdit.Country = user.Country;
             userEdit.PhoneNumber = user.PhoneNumber;
             userEdit.PostNumber = user.PostNumber;
             userEdit.StreetAddress = user.StreetAddress;
             var Result = UserManager.Update(userEdit);
-            if(Result.Succeeded)
+            if (Result.Succeeded)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.OK); ;
             }
@@ -174,11 +175,11 @@ namespace WebShop.Services
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-           
+
         }
 
 
-#endregion UserFunctions
+        #endregion UserFunctions
 
         #region ProductFunctions
 
@@ -190,8 +191,8 @@ namespace WebShop.Services
         public ActionResult DeleteProduct(int? productId)
         {
 
-            var product = DbContext.Products.Find(productId);
-            if(product==null)
+            var product = DbContext.Products.Include("AccessoryTo").Include("Accessories").Single(p=>p.Id==productId);
+            if (product == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
@@ -201,31 +202,66 @@ namespace WebShop.Services
                 DbContext.SaveChanges();
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            
+
         }
+
+        public Object GetProductCustomerAllDetails(int? productId)
+        {
+            var product = DbContext.Products.Include("Category").Include("Accessories").First(p => p.Id == productId);
+            if (product != null)
+            {
+                var productForCustomer = new
+                {
+                    Id = product.Id,
+                    Description = product.Description,
+                    product.Price,
+                    product.StockQuantityToShow,
+                    product.Photo,
+                    product.Name,
+                    CategoryName = product.Category.Name,
+                    Accessories=product.Accessories.Select(p=>new ProductForCustomerViewModel() {
+                        Id=p.Id,
+                        Price=p.Price,
+                        Photo=p.Photo,
+                        Name=p.Name,
+                        Description=p.Description,
+                        StockQuantityToShow=p.StockQuantityToShow,
+                    }),
+
+                };
+                return productForCustomer;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
 
         public ProductDetailsViewModel GetProductDetails(int? productId)
         {
             var product = DbContext.Products.Include("Category").SingleOrDefault(p => p.Id == productId);
 
 
-           var pView= new ProductDetailsViewModel()
+            var pView = new ProductDetailsViewModel()
             {
                 Category = product.Category.Name,
                 Description = product.Description,
                 Name = product.Name,
                 Photo = product.Photo,
                 Price = product.Price,
-                isRecommended=product.isRecommended,
-                Quantity=product.Quantity,
-                Id=product.Id,
-                CategoryId=product.CategoryId,
-                StockQuantity=product.StockQuantity,
-                StockQuantityToShow=product.StockQuantityToShow,
-                
+                isRecommended = product.isRecommended,
+                Quantity = product.Quantity,
+                Id = product.Id,
+                CategoryId = product.CategoryId,
+                StockQuantity = product.StockQuantity,
+                StockQuantityToShow = product.StockQuantityToShow,
+
             };
-            
-                
+
+
             return pView;
         }
 
@@ -238,9 +274,9 @@ namespace WebShop.Services
 
         public List<Product> GetProductsList()
         {
-            
-            IEnumerable < Product > products = DbContext.Products;
-            if(products!=null)
+
+            IEnumerable<Product> products = DbContext.Products;
+            if (products != null)
             {
                 return products.ToList();
             }
@@ -248,20 +284,21 @@ namespace WebShop.Services
             {
                 return new List<Product>();
             }
-            
+
         }
 
         public List<ProductForCustomerViewModel> GetProductsForCustomerList()
         {
 
             IEnumerable<ProductForCustomerViewModel> products = DbContext.Products.Select(p =>
-                new ProductForCustomerViewModel {
+                new ProductForCustomerViewModel
+                {
                     Id = p.Id,
                     Name = p.Name,
-                    Price=p.Price,
-                    Photo=p.Photo,
-                    Description=p.Description,
-                    StockQuantityToShow=p.StockQuantityToShow,
+                    Price = p.Price,
+                    Photo = p.Photo,
+                    Description = p.Description,
+                    StockQuantityToShow = p.StockQuantityToShow,
                 });
             if (products != null)
             {
@@ -277,16 +314,16 @@ namespace WebShop.Services
         public List<ProductForCustomerViewModel> GetRecommedndedProductsList()
         {
 
-            IEnumerable<ProductForCustomerViewModel> products = DbContext.Products.Where(p=>p.isRecommended).Select(p =>
-                new ProductForCustomerViewModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    Photo = p.Photo,
-                    Description = p.Description,
-                    StockQuantityToShow = p.StockQuantityToShow,
-                });
+            IEnumerable<ProductForCustomerViewModel> products = DbContext.Products.Where(p => p.isRecommended).Select(p =>
+                  new ProductForCustomerViewModel
+                  {
+                      Id = p.Id,
+                      Name = p.Name,
+                      Price = p.Price,
+                      Photo = p.Photo,
+                      Description = p.Description,
+                      StockQuantityToShow = p.StockQuantityToShow,
+                  });
 
             if (products != null)
             {
@@ -300,16 +337,16 @@ namespace WebShop.Services
 
         public Product CreateProduct(NewProductViewModel product)
         {
-            var files= HttpContext.Current.Request.Files;
+            var files = HttpContext.Current.Request.Files;
             string filename = "";
-            
+
             if (files.Count > 0)
             {
                 filename = files[0].FileName;
                 string path = HttpContext.Current.Server.MapPath("../Avatar//");
                 filename = Guid.NewGuid() + "." + filename.Split('.')[1];
                 files[0].SaveAs(path + filename);
-                
+
             }
             else
             {
@@ -323,7 +360,7 @@ namespace WebShop.Services
                 CategoryId = product.CategoryId,
                 StockQuantity = product.StockQuantity,
                 StockQuantityToShow = product.StockQuantityToShow,
-                isRecommended=product.isRecommended,
+                isRecommended = product.isRecommended,
                 Photo = "/Avatar//" + filename,
             };
             try
@@ -343,7 +380,7 @@ namespace WebShop.Services
         public ActionResult RemoveAccessory(int? productId, int? accessoryId)
         {
 
-            var product = DbContext.Products.Include("Accessories").FirstOrDefault(p=>p.Id==productId);
+            var product = DbContext.Products.Include("Accessories").FirstOrDefault(p => p.Id == productId);
             if (product != null)
             {
                 var accessory = DbContext.Products.Include("AccessoryTo").FirstOrDefault(p => p.Id == accessoryId);
@@ -362,11 +399,11 @@ namespace WebShop.Services
 
         public ActionResult AddAccessoryToProduct(int? productId, int? accessoryId)
         {
-            var product=DbContext.Products.Find(productId);
-            if(product!=null)
+            var product = DbContext.Products.Find(productId);
+            if (product != null)
             {
                 var accessory = DbContext.Products.Find(accessoryId);
-                if(accessory!=null)
+                if (accessory != null)
                 {
                     product.Accessories.Add(accessory);
                     accessory.AccessoryTo.Add(product);
@@ -383,12 +420,12 @@ namespace WebShop.Services
         {
             try
             {
-                var acceesories=DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p =>
-                    new AccessoryViewModel()
-                    {
-                        Id = p.Id,
-                        Name = p.Name,
-                    }
+                var acceesories = DbContext.Products.Include("Accessories").First(p => p.Id == productId).Accessories.Select(p =>
+                      new AccessoryViewModel()
+                      {
+                          Id = p.Id,
+                          Name = p.Name,
+                      }
 
                      ).ToList();
                 return acceesories;
@@ -435,7 +472,7 @@ namespace WebShop.Services
         //Get Category
         public Category GetCategoryDetails(int? categoryId)
         {
-            if(DbContext.Categories==null)
+            if (DbContext.Categories == null)
             {
                 return null;
             }
@@ -494,7 +531,7 @@ namespace WebShop.Services
 
         public ActionResult ConfirmShoping(List<Product> products)
         {
-            if(products==null || products.Count==0)
+            if (products == null || products.Count == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -512,7 +549,7 @@ namespace WebShop.Services
                     {
                         ProductPrice = product.Price,
                         // Nedanstående rad tillagd
-                         ProductId = product.Id,
+                        ProductId = product.Id,
                         // Nedanstående rad bortkommenterad
                         // Product = product,
                         Order = order,
@@ -530,8 +567,9 @@ namespace WebShop.Services
                     var it = DbContext.Products.FirstOrDefault(x => x.Id == product.Id);
                     if (it != null)
                     {
-                     it.StockQuantity = it.StockQuantity - product.Quantity;
-                     it.StockQuantityToShow = it.StockQuantityToShow - product.Quantity;
+                        it.StockQuantity = it.StockQuantity - product.Quantity;
+                        it.StockQuantityToShow = it.StockQuantityToShow - product.Quantity;
+                        DbContext.Entry(it).State = EntityState.Modified;
                     }
                     // - - - - -
 
@@ -547,7 +585,7 @@ namespace WebShop.Services
                 }
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-            
+
         }
 
         #endregion
@@ -560,7 +598,7 @@ namespace WebShop.Services
         /// <returns></returns>
         public ActionResult DeleteOrder(int? orderId)
         {
-            if(orderId==null)
+            if (orderId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -582,8 +620,8 @@ namespace WebShop.Services
                     return new HttpStatusCodeResult(HttpStatusCode.OK);
                 }
             }
-                
-            
+
+
         }
 
         // Delete Order row
@@ -664,8 +702,8 @@ namespace WebShop.Services
 
         public OrderViewMoedel GetOrderDetails(int? orderId)
         {
-                //    var order = DbContext.Orders.Find(orderId);
-                var order = DbContext.Orders.Include(u => u.OrderProducts).FirstOrDefault(o=>o.Id==orderId);
+            //    var order = DbContext.Orders.Find(orderId);
+            var order = DbContext.Orders.Include(u => u.OrderProducts).FirstOrDefault(o => o.Id == orderId);
 
             if (order == null)
             {
@@ -715,7 +753,7 @@ namespace WebShop.Services
             }
         }
 
-       
+
 
 
         #endregion

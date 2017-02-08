@@ -35,7 +35,7 @@
                     <div ng-repeat="product in recommedndedProductsList"
                          class="item"
                          ng-class="{'active': $index == 0}">
-                        <img ng-src={{product.Photo}} alt="{{product.Name}}" style="width:200px" width="160" height="445">
+                        <img ng-src={{product.Photo}} alt="{{product.Name}}" style="height:15em;width:200px">
                         <div class="carousel-caption .text-muted bg-warning" style="background:transparent 20%;">
                             <h3>{{product.Name}}</h3>
                             <div class="Mytooltip">
@@ -67,13 +67,13 @@
         <div class="container">
             <div class="row">
                 <div ng-repeat="product in recommedndedProductsList"
-                     class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                     class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
 
-                    <div style="display:grid; margin:10px; border:groove;" class="panel panel-body">
+                    <div class="thumbnail">
                         <div id="ProductPhoto">
-                            <a href="">
+                            <a href="#/ProductCustomerAllDetails/{{product.Id}}">
                                 <img ng-src="{{product.Photo}}" class="img-rounded"
-                                     alt="Fjords" style="height:8em; width:80%" />
+                                     alt="Fjords" style="height:15em;" />
                             </a>
                         </div>
                         <div>

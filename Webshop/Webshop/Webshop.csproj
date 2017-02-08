@@ -205,6 +205,8 @@
     <Content Include="Angular-App\App\WebShop.js" />
     <Content Include="Angular-App\Controller\AppCtrl.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\JavaScript.js" />
+    <Content Include="Angular-App\Controller\ProductCustomerAllDetailsCtrl.js" />
     <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
     <Content Include="Angular-App\Controller\CreateShopUsersCtrl.js" />
@@ -225,6 +227,7 @@
     <Content Include="Angular-App\JavaScript\SharedFunctions.js" />
     <Content Include="Angular-App\JavaScript\ViewShopCartFunctions.js" />
     <Content Include="Angular-App\Routing\WebShopRoute.js" />
+    <Content Include="Angular-App\Service\CartService.js" />
     <Content Include="Angular-App\Service\CookieOptionService.js" />
     <Content Include="Angular-App\Service\OrderServices.js" />
     <Content Include="Angular-App\Service\PagingList.js" />
@@ -1166,6 +1169,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Angular-App\Template\Route\ProductCustomerAllDetailsPartialView.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1-vsdoc.js" />

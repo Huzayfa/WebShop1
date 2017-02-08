@@ -38,6 +38,11 @@ namespace WebShop.Services
         List<AccessoryViewModel> ProductAccessories(int? productId);
         ActionResult AddAccessoryToProduct(int? productId, int? accessoryId);
         ActionResult RemoveAccessory(int? productId, int? accessoryId);
+        Object GetProductCustomerAllDetails(int? productId);
+
+
+
+
 
         //Category Functions
         ActionResult DeleteCategory(int? categoryId);

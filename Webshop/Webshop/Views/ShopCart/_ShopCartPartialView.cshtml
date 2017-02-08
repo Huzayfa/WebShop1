@@ -1,8 +1,8 @@
 ﻿
 <h2> Wellcome To our Store</h2>
 <div ng-controller="ShopCartCtrl">
-   
-    <div class="container" >
+
+    <div class="container">
         <div class="row">
             <a href="#/ViewShopCart" class="btn btn-default" ng-click="">
                 <span class="glyphicon glyphicon-shopping-cart">{{cartLength}}</span>  Go To Cart
@@ -10,12 +10,12 @@
         </div>
         <div class="row">
             <div ng-repeat="product in productsList | orderBy:selectedOrder"
-                 class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                <div style="display:grid; margin:10px; border:groove;"  class="panel panel-body">
+                 class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+                <div class="thumbnail">
                     <div id="ProductPhoto">
-                        <a href="">
+                        <a href="#/ProductCustomerAllDetails/{{product.Id}}">
                             <img ng-src="{{product.Photo}}" class="img-rounded"
-                                 alt="Fjords" style="height:8em; width:80%" />
+                                 alt="Fjords" style="height:15em" />
                         </a>
                     </div>
                     <div>

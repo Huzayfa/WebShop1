@@ -1,0 +1,64 @@
+﻿<div class="row">
+
+    <div class="col-md-4 col-sm-4">
+        <h5>{{product.Name}}</h5>
+        <p style="background-color:lightgray">
+            {{product.Description}}
+        </p>
+
+        <div>
+            <span>Price:{{product.Price}}</span>
+        </div>
+
+        <div style="display:none" ng-bind="product.Id"></div>
+
+        <button ng-click="addToCart(product)" class="btn btn-xs btn-primary" value="Delete">Add To Cart</button>
+    </div>
+
+
+
+    <div class="col-md-8 col-sm-8">
+        <div id="ProductPhoto">
+            <a href="">
+                <img ng-src="{{product.Photo}}" class="img-rounded"
+                     alt="Fjords" style="height:25em;" />
+            </a>
+        </div>
+    </div>
+   
+
+
+
+</div>
+
+<div>
+    <h4 style="color:green;border-bottom:dotted,thick">Accessories</h4>
+</div>
+
+<div ng-repeat="accessory in product.Accessories| orderBy:selectedOrder"
+     class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
+    <div class="thumbnail">
+        <div id="ProductPhoto">
+            <a href="">
+                <img ng-src="{{accessory.Photo}}" class="img-rounded"
+                     alt="Fjords" style="height:15em;" />
+            </a>
+        </div>
+        <div>
+            <h5>{{accessory.Name}}</h5>
+            <div class="Mytooltip">
+                Description
+                <span class="Mytooltiptext" ng-model="accessory.Description">
+                    {{accessory.Description}}
+                </span>
+            </div>
+        </div>
+        <div>
+            <span>Price:{{accessory.Price}}</span>
+        </div>
+
+        <div style="display:none" ng-bind="accessory.Id"></div>
+
+        <button ng-click="addToCart(accessory)" class="btn btn-xs btn-primary" value="Delete">Add To Cart</button>
+    </div>
+</div>
