@@ -203,9 +203,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
+    <Content Include="Angular-App\Controller\OrderConfirmControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\AppCtrl.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\AboutControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\JavaScript.js" />
+    <Content Include="Angular-App\Controller\ContactControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\ProductCustomerAllDetailsCtrl.js" />
     <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterShopUsersCtrl.js" />
@@ -1191,8 +1194,10 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1366,6 +1371,9 @@
     <Content Include="Views\RegisterUser\_RegisterUsersPartialView.cshtml" />
     <Content Include="Views\Shared\_RegisterShopUserPartialView.cshtml" />
     <Content Include="Views\Product\_ProductCustomerAllDetailsPartialView.cshtml" />
+    <Content Include="Views\Contact\_ContactPanelPartialView.cshtml" />
+    <Content Include="Views\About\_AboutPanelPartialView.cshtml" />
+    <Content Include="Views\ShopCart\_OrderConfirmPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1444,6 +1452,7 @@
       <DependentUpon>201701311046100_addAccessories2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

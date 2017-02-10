@@ -1,0 +1,45 @@
+﻿<div class="container">
+    <div class="row" ng-controller="OrderConfirmControlPanelCtrl">
+        <div class="col-md-10 col-lg-10">
+
+            <h1>Order Confirmation</h1>
+
+            <div class="row">
+                <div>
+                    <!--<button type="button" ng-click="close()" class="close">&times;</button>-->
+                    <label>Order Date : {{selectedOrder.OrderDate | date : 'dd-MMMM-yyyy'}}</label>
+                    <label>Deliver Date : {{selectedOrder.DeliverDate | date : 'dd-MMMM-yyyy'}}</label>
+                    <label>Total Price : {{selectedOrder.TotalPrice}}</label>
+                </div>
+            </div>
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Product id
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                </tr>
+                <tr ng-repeat="row in selectedOrder.orderProducts">
+                    <td>{{row.Id}}</td>
+                    <td>{{row.ProductId}}</td>
+                    <td>{{row.ProductPrice}}</td>
+                    <td>{{row.Quantity}}</td>
+                    <td style="display:none" ng-bind="row.Id"></td>
+                </tr>
+            </table>
+
+
+
+   
+        </div>
+    </div>
+</div>

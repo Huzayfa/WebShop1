@@ -70,7 +70,11 @@ namespace WebShop.Controllers
 
             }
             //return Content("");
-            return _rep.ConfirmShoping(products);
+             return _rep.ConfirmShoping(products);
+            // _rep.ConfirmShoping(products);
+
+           // return PartialView("_OrderConfirmPartialView");
+
 
         }
 

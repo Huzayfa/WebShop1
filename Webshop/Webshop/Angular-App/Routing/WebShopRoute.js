@@ -32,6 +32,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/Order/"
     }).when("/Register", {
         templateUrl: "/RegisterUser/"
+    }).when("/Contact", {
+        templateUrl: "/Contact/"
+    }).when("/About", {
+        templateUrl: "/About/"
+
 
     }).when("/ProductCustomerAllDetails/:productId", {
         templateUrl: "/Angular-App/Template/Route/ProductCustomerAllDetailsPartialView.html?",
