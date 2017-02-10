@@ -1,41 +1,63 @@
 ﻿<div class="container">
     <div class="row" ng-controller="OrderConfirmControlPanelCtrl">
+
+
+       <div class="row" id="ConfirmShopingForm">
+
+
+            <!-- Modal -->
+            <button style="display:none" id="ShowLoginModal" type="button" data-toggle="modal" data-target="#logInModal">Open Modal</button>
+
+            <div class="modal fade" id="logInModal" role="dialog" style="display:none">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Please Login</h4>
+                        </div>
+                        <div class="modal-body">
+                            @Html.Action("Login","Account","test")
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            @using (Ajax.BeginForm("ConfirmShoping", "ShopCart", new { }, new AjaxOptions
+            {
+                HttpMethod = "Post",
+                // OnSuccess = "",
+
+
+            }
+                                            , new { id = "ConfirmShoping" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <span class="glyphicon glyphicon-shopping-cart">{{cartLength}}</span>
+
+
+                <button type="button" onclick="getCart()" class="btn btn-success"
+                        value="Confirm Shoping">
+                    Confirm Shoping
+                </button>
+                @*<button type="submit" class="btn btn-success" value="Confirm Shoping"
+                            ng-click="confirmShoping()">
+                        Confirm Shoping
+                    </button>*@
+            }
+        </div>
         <div class="col-md-10 col-lg-10">
 
             <h1>Order Confirmation</h1>
 
-            <div class="row">
-                <div>
-                    <!--<button type="button" ng-click="close()" class="close">&times;</button>-->
-                    <label>Order Date : {{selectedOrder.OrderDate | date : 'dd-MMMM-yyyy'}}</label>
-                    <label>Deliver Date : {{selectedOrder.DeliverDate | date : 'dd-MMMM-yyyy'}}</label>
-                    <label>Total Price : {{selectedOrder.TotalPrice}}</label>
-                </div>
-            </div>
 
-            <table class="table table-bordered">
-                <tr>
-                    <th>
-                        Id
-                    </th>
-                    <th>
-                        Product id
-                    </th>
-                    <th>
-                        Price
-                    </th>
-                    <th>
-                        Quantity
-                    </th>
-                </tr>
-                <tr ng-repeat="row in selectedOrder.orderProducts">
-                    <td>{{row.Id}}</td>
-                    <td>{{row.ProductId}}</td>
-                    <td>{{row.ProductPrice}}</td>
-                    <td>{{row.Quantity}}</td>
-                    <td style="display:none" ng-bind="row.Id"></td>
-                </tr>
-            </table>
 
 
 

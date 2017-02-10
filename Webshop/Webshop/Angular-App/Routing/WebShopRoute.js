@@ -41,8 +41,12 @@ app.config(function ($routeProvider) {
     }).when("/ProductCustomerAllDetails/:productId", {
         templateUrl: "/Angular-App/Template/Route/ProductCustomerAllDetailsPartialView.html?",
         controller: "ProductCustomerAllDetailsCtrl"
-    }).otherwise({
+    }).when("/OrderConfirm", {
+        templateUrl: "/ShopCart/OrderConfirm/"
 
+    }
+    ).otherwise({
+        templateUrl:"",
         template: "<h1>Otherwise From Angular Route</h1>"
     });
 }
