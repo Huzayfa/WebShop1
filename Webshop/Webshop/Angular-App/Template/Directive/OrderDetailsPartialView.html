@@ -4,30 +4,33 @@
         <label>Order Date : {{selectedOrder.OrderDate | date : 'dd-MMMM-yyyy'}}</label>
         <label>Deliver Date : {{selectedOrder.DeliverDate | date : 'dd-MMMM-yyyy'}}</label>
         <label>Total Price : {{selectedOrder.TotalPrice}}</label>
+        <label>Customer Name: {{selectedOrder.CustomerName}}</label>
+        <label>Customer Email: {{selectedOrder.CustomerEmail}}</label>
     </div>
 </div>
-
-<table class="table table-bordered">
-    <tr>
-        <th> 
-            Id
-        </th>
-        <th>
-            Product id
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Quantity
-        </th>
-    </tr>
-    <tr ng-repeat="row in selectedOrder.orderProducts">
+<div class="row">
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Product id
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Quantity
+            </th>
+        </tr>
+        <tr ng-repeat="row in selectedOrder.orderProducts">
             <td>{{row.Id}}</td>
             <td>{{row.ProductId}}</td>
             <td>{{row.ProductPrice}}</td>
             <td>{{row.Quantity}}</td>
             <td style="display:none" ng-bind="row.Id"></td>
-     </tr>
-</table>
+        </tr>
+    </table>
+</div>
 

@@ -22,6 +22,11 @@ namespace WebShop.Models.OrderViewModels
         [Display(Name = "Total Price")]
         public decimal TotalPrice { get; set; }
 
+
+        public string CustomerEmail { get; internal set; }
+        
+        public string CustomerName { get; internal set; }
+
         public ICollection<OrderProductViewModel> orderProducts;
 
 

@@ -32,6 +32,7 @@ namespace WebShop.Controllers
         }
 
         //Get 
+        [AllowAnonymous]
         public ActionResult ProductCustomerAllDetails(int? productId)
         {
             if(productId == null)

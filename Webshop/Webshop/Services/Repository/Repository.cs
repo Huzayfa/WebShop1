@@ -703,7 +703,7 @@ namespace WebShop.Services
         public OrderViewMoedel GetOrderDetails(int? orderId)
         {
             //    var order = DbContext.Orders.Find(orderId);
-            var order = DbContext.Orders.Include(u => u.OrderProducts).FirstOrDefault(o => o.Id == orderId);
+            var order = DbContext.Orders.Include(u => u.OrderProducts).Include(o=>o.Customer).FirstOrDefault(o => o.Id == orderId);
 
             if (order == null)
             {
@@ -711,13 +711,15 @@ namespace WebShop.Services
             }
             else
             {
-
+               // var user = UserManager.GetEmail(order.CustomerId);
                 return new OrderViewMoedel()
                 {
                     Id = order.Id,
                     OrderDate = order.OrderDate,
                     DeliverDate = order.DeliverDate,
                     TotalPrice = order.TotalPrice,
+                    CustomerName = order.Customer.FullName,
+                    CustomerEmail=order.Customer.Email,
                     orderProducts = order.OrderProducts.Select(op => new OrderProductViewModel
                     {
                         Id = op.Id,
