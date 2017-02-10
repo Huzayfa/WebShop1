@@ -22,7 +22,7 @@ namespace WebShop.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Message = "Wellcome To Our Web Shop";
+            ViewBag.Message = "Welcome To Our Web Shop";
             return View();
         }
     }
