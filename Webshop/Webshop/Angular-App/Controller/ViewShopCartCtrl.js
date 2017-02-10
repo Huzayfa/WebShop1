@@ -1,10 +1,11 @@
 ﻿'use strict'
 app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,cartService, cookieOptionService) {
 
+    $scope.cartLength = cartService.cartLength;
     
     $scope.cart = cartService.getCart();
    
-    
+   
     $scope.$watch('cart', function (neww, old) {
         console.log(neww);
         cartService.setCart(neww);
@@ -30,13 +31,7 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,car
         }
     }
 
-    $scope.clearShopCart=function()
-    {
-        
-        $window.sessionStorage.setItem(cookieOptionService.cookieName,null);
-        $scope.cartLength = '';
-        $scope.cart = [];
-    }
+   
     /*
     $scope.confirmShoping=function()
     {

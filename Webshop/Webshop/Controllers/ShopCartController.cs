@@ -45,6 +45,15 @@ namespace WebShop.Controllers
             }
         }
 
+
+        public ActionResult OrderConfirm()
+        {
+            return PartialView("_OrderConfirmPartialView");
+        }
+
+
+
+
         //Confirm the Order
         [Authorize]
         [ValidateAntiForgeryToken]
