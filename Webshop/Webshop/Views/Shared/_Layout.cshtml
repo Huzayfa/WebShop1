@@ -34,10 +34,16 @@
 
     @Html.Partial("_NavBarPartialView")
     <div class="body-content" ng-controller="AppCtrl">
+        <div ng-show="Loading">
+            <img  src="~/fonts/lampaLoader.gif"
+                 class="img-circle imgloader" />
+        </div>
+      
         <div ng-show="Loading" class="loader">
             
-                 @* <img src="~/fonts/Preloader_8.gif" class="" style="width:30px;height:30px"/>*@
+                 
          </div>
+        
         <div>
             @RenderBody()
         </div>
@@ -88,7 +94,8 @@
 
 
 
-    
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @*Including the style sheet*@
     <link href="~/fonts/AngularValidationStyle.css" rel="stylesheet" />
     <link href="~/fonts/tableStyleSheeet.css" rel="stylesheet" />
