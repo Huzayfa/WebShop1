@@ -1,6 +1,6 @@
 ﻿
 'use strict'
-app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList) {
+app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList,toaster) {
     $scope.newProduct = {};
     $scope.newProduct.isRecommended = false;
     $scope.newProduct.Description = "";
@@ -19,6 +19,9 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         angular.copy($scope.productsList, $scope.productsListPaged);
         $scope.setPage(1);
         //$("body").css("cursor", "default");
+    },
+    function (err) {
+
     }
 
     ).finally(function () {
@@ -29,6 +32,10 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.categoriesList);
+    }
+    ,
+    function () {
+
     }
 
     );
@@ -48,11 +55,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         $scope.productsListPaged = $scope.productsList.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
     }
 
-
-
-
     $scope.CreateProduct = function (newProduct) {
-        console.log(newProduct);
         var fdata = new FormData();
         fdata.append("file", $scope.photoFile);
         fdata.append("Name", newProduct.Name);
@@ -74,14 +77,15 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
             copyProduct(response, product);
             $scope.productsList.push(product);
             $scope.productsListPaged.push(product);
-            $scope.responseMessage = "Product Created";
-            $timeout(function () {
-                $scope.responseMessage = "";
-
-            }, 3000);
-        })
-            .error(function (error) {
-                $scope.status = 'Unable to load Create Product: ' + error.message;
+            toaster.pop('success', "success","New Product Created");
+            
+        }).error(function (error) {
+            //$scope.status = 'Unable to load Create Product: ' + error.message;
+            //.pop('success', "title", "text");
+            //console.log(error.message);
+            toaster.pop('error',"Error","Erro");
+            //toaster.pop('warning', "title", "text");
+            //toaster.pop('note', "title", "text");
 
             });
 
