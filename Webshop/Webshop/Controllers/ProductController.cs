@@ -123,10 +123,17 @@ namespace WebShop.Controllers
 
         //Post
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit([Bind(Exclude ="Category")] Product product)
         {
-
-            return _rep.EditProduct(product);
+            
+            if (ModelState.IsValid)
+            {
+                return _rep.EditProduct(product);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
         }
 

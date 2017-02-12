@@ -16,6 +16,7 @@ using Microsoft.Owin.Security;
 using WebShop.Models.ProductViewModels;
 using Webshop.Models.ProductViewModels;
 using WebShop.Models.OrderViewModels;
+using System.IO;
 
 namespace WebShop.Services
 {
@@ -191,13 +192,16 @@ namespace WebShop.Services
         public ActionResult DeleteProduct(int? productId)
         {
 
-            var product = DbContext.Products.Include("AccessoryTo").Include("Accessories").Single(p=>p.Id==productId);
+            var product = DbContext.Products.Include("AccessoryTo").Include("Accessories").Single(p => p.Id == productId);
             if (product == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             else
             {
+                string path = HttpContext.Current.Server.MapPath("../Avatar//");
+                var recentFileName = product.Photo;
+                File.Delete(path + recentFileName.Split('/')[3]);
                 DbContext.Products.Remove(product);
                 DbContext.SaveChanges();
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
@@ -219,13 +223,14 @@ namespace WebShop.Services
                     product.Photo,
                     product.Name,
                     CategoryName = product.Category.Name,
-                    Accessories=product.Accessories.Select(p=>new ProductForCustomerViewModel() {
-                        Id=p.Id,
-                        Price=p.Price,
-                        Photo=p.Photo,
-                        Name=p.Name,
-                        Description=p.Description,
-                        StockQuantityToShow=p.StockQuantityToShow,
+                    Accessories = product.Accessories.Select(p => new ProductForCustomerViewModel()
+                    {
+                        Id = p.Id,
+                        Price = p.Price,
+                        Photo = p.Photo,
+                        Name = p.Name,
+                        Description = p.Description,
+                        StockQuantityToShow = p.StockQuantityToShow,
                     }),
 
                 };
@@ -267,6 +272,37 @@ namespace WebShop.Services
 
         public ActionResult EditProduct(Product product)
         {
+            var files = HttpContext.Current.Request.Files;
+            string filename = "";
+            if (files.Count > 0)
+            {
+                filename = files[0].FileName;
+
+                var fileExtention = filename.Split('.')[1].ToLower();
+                switch (fileExtention)
+                {
+                    case "gif":
+                        filename = Guid.NewGuid() + "." + "gif";
+                        break;
+                    case "jpeg":
+                        filename = Guid.NewGuid() + "." + "jpeg";
+                        break;
+                    case "png":
+                        filename = Guid.NewGuid() + "." + "png";
+                        break;
+                    default:
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+
+                }
+                //var recentProduct=DbContext.Products.Find(product.Id);
+                string path = HttpContext.Current.Server.MapPath("../Avatar//");
+                var recentFileName = product.Photo;
+                File.Delete(path + recentFileName.Split('/')[3]);
+                files[0].SaveAs(path + filename);
+                product.Photo = "/Avatar//" + filename;
+                // File.Delete(recentFileName);
+            }
             DbContext.Entry(product).State = EntityState.Modified;
             DbContext.SaveChanges();
             return new HttpStatusCodeResult(HttpStatusCode.OK);
@@ -344,7 +380,24 @@ namespace WebShop.Services
             {
                 filename = files[0].FileName;
                 string path = HttpContext.Current.Server.MapPath("../Avatar//");
-                filename = Guid.NewGuid() + "." + filename.Split('.')[1];
+                var fileExtention = filename.Split('.')[1].ToLower();
+                switch (fileExtention)
+                {
+                    case "gif":
+                        filename = Guid.NewGuid() + "." + "gif";
+                        break;
+                    case "jpeg":
+                    case "jpg":
+                        filename = Guid.NewGuid() + "." + "jpeg";
+                        break;
+                    case "png":
+                        filename = Guid.NewGuid() + "." + "png";
+                        break;
+                    default:
+                        return null;
+
+
+                }
                 files[0].SaveAs(path + filename);
 
             }
@@ -703,7 +756,7 @@ namespace WebShop.Services
         public OrderViewMoedel GetOrderDetails(int? orderId)
         {
             //    var order = DbContext.Orders.Find(orderId);
-            var order = DbContext.Orders.Include(u => u.OrderProducts).Include(o=>o.Customer).FirstOrDefault(o => o.Id == orderId);
+            var order = DbContext.Orders.Include(u => u.OrderProducts).Include(o => o.Customer).FirstOrDefault(o => o.Id == orderId);
 
             if (order == null)
             {
@@ -711,7 +764,7 @@ namespace WebShop.Services
             }
             else
             {
-               // var user = UserManager.GetEmail(order.CustomerId);
+                // var user = UserManager.GetEmail(order.CustomerId);
                 return new OrderViewMoedel()
                 {
                     Id = order.Id,
@@ -719,7 +772,7 @@ namespace WebShop.Services
                     DeliverDate = order.DeliverDate,
                     TotalPrice = order.TotalPrice,
                     CustomerName = order.Customer.FullName,
-                    CustomerEmail=order.Customer.Email,
+                    CustomerEmail = order.Customer.Email,
                     orderProducts = order.OrderProducts.Select(op => new OrderProductViewModel
                     {
                         Id = op.Id,

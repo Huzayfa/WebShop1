@@ -1,10 +1,14 @@
 ﻿
 'use strict'
 app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList) {
+    $scope.newProduct = {};
+    $scope.newProduct.isRecommended = false;
+    $scope.newProduct.Description = "";
 
     $scope.productsList = [];
     $scope.productsListPaged = [];
     $scope.pager = {};
+    $scope.photoChamged = false;
     $scope.responseMessage = "";
     // $("body").css("cursor", "progress");
     //$("body").css("cursor", "wait");
@@ -14,7 +18,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         angular.copy(response.data, $scope.productsList);
         angular.copy($scope.productsList, $scope.productsListPaged);
         $scope.setPage(1);
-        $("body").css("cursor", "default");
+        //$("body").css("cursor", "default");
     }
 
     ).finally(function () {
@@ -29,7 +33,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
     );
 
-    $scope.newProduct = {};
+   
 
 
     //Function For Select the page for paging
@@ -48,11 +52,12 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
 
     $scope.CreateProduct = function (newProduct) {
-
+        console.log(newProduct);
         var fdata = new FormData();
         fdata.append("file", $scope.photoFile);
         fdata.append("Name", newProduct.Name);
         fdata.append('CategoryId', newProduct.CategoryId);
+        fdata.append('Category', null);
         fdata.append('Price', newProduct.Price);
         fdata.append("isRecommended", newProduct.isRecommended);
         fdata.append('Description', newProduct.Description);
@@ -99,6 +104,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
     $scope.fileNameChanged = function (elem) {
         $scope.photoFile = elem.files[0];
+        $scope.photoChamged = true;
 
     }
 
@@ -185,14 +191,14 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
             }
         }).
         success(function (response) {
-            
+
             var index = findProductInList($scope.accessoriesList, accessory.Id);
             if (index > -1) {
                 console.log("RemovedAccessory");
-                $scope.accessoriesList.splice(index,1);
+                $scope.accessoriesList.splice(index, 1);
                 $scope.poductToAccessory.push(accessory);
             }
-            
+
         });
 
     }
@@ -287,30 +293,67 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
 
 
     $scope.saveEditProduct = function (product) {
-
-        $http.post('Product/Edit', product).then(function (response) {
-            var index = findProductInList($scope.productsList, product.Id);
-            if (index > -1) {
-                copyProduct(product, $scope.productsList[index]);
+        
+        if ($scope.photoChamged) {
+            $scope.photoChamged = false;
+            var fdata = new FormData();
+            fdata.append("Id", product.Id);
+            fdata.append("Photo", product.Photo);
+            fdata.append("file", $scope.photoFile);
+            fdata.append("Name", product.Name);
+            fdata.append('CategoryId', product.CategoryId);
+            fdata.append('Price', product.Price);
+            fdata.append("isRecommended", product.isRecommended);
+            fdata.append('Description', product.Description);
+            fdata.append('StockQuantity', product.StockQuantity);
+            fdata.append('StockQuantityToShow', product.StockQuantityToShow);
+            $http({
+                method: 'POST',
+                url: "/Product/Edit",
+                headers: { 'Content-Type': undefined },
+                data: fdata,
+            }).then(function (response) {
+                var index = findProductInList($scope.productsList, product.Id);
+                if (index > -1) {
+                    copyProduct(product, $scope.productsList[index]);
+                }
+                var modal = $("#editProductModal");
+                if (modal != undefined) {
+                    modal.modal('hide');
+                }
+                $scope.editSelected = false;
+                $scope.detailsSelected = false;
+                $scope.selectedProductEditId = " ";
+                $scope.selectedProductDetails = " ";
+                $scope.photoFile = "";
             }
-            var modal = $("#editProductModal");
-            if (modal != undefined) {
-                modal.modal('hide');
-            }
-            $scope.editSelected = false;
-            $scope.detailsSelected = false;
-            $scope.selectedProductEditId = " ";
-            $scope.selectedProductDetails = " ";
+
+            ,
+            function () { });
+        }
+        else {
+            $http.post('/Product/Edit', product).then(function (response) {
+                var index = findProductInList($scope.productsList, product.Id);
+                if (index > -1) {
+                    copyProduct(product, $scope.productsList[index]);
+                }
+                var modal = $("#editProductModal");
+                if (modal != undefined) {
+                    modal.modal('hide');
+                }
+                $scope.editSelected = false;
+                $scope.detailsSelected = false;
+                $scope.selectedProductEditId = " ";
+                $scope.selectedProductDetails = " ";
 
 
-        });
+            });
+        }
+
     }
 
     $scope.getProductDetails = function (productId) {
-
-        
-        $http.post('Product/ProductDetails', { productId: productId }).then(function (response) {
-
+        $http.post('/Product/ProductDetails', { productId: productId }).then(function (response) {
             angular.copy(response.data, $scope.selectedProduct);
         });
         $scope.selectedProductDetails = angular.copy(productId);
