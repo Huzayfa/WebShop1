@@ -47,9 +47,9 @@ namespace WebShop.Models.ProductViewModels
 
         public string Photo { get; set; }
 
-        [ForeignKey("Category")]
+        
         public int? CategoryId { get; set; }
-        public Category Category { get; set; }
+        
         public NewProductViewModel() :base()
         {
             //photoFile = new List<HttpPostedFileBase>();

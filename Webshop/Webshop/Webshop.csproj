@@ -385,6 +385,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\toaster.css" />
+    <Content Include="Content\toaster.min.css" />
     <Content Include="Content\ToolTip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\AngularValidationStyle.css" />
@@ -1182,6 +1184,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\toaster.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
@@ -1195,6 +1198,8 @@
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Scripts\toaster.js" />
+    <Content Include="Scripts\toaster.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

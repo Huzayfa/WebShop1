@@ -7,7 +7,6 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,car
    
    
     $scope.$watch('cart', function (neww, old) {
-        console.log(neww);
         cartService.setCart(neww);
         counteTotalPriceQuantity(neww);
         cartService.totalPrice = $scope.totalPrice;

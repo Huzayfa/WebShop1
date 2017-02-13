@@ -108,7 +108,7 @@
 
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <img class="img-rounded" id="photoPreveiw{{selectedProduct.Id}}"
+                                                <img class="img-rounded" id="editProductPhotoPreveiw"
                                                      style="width:20em"
                                                      ng-src="{{selectedProduct.Photo}}" alt="your image" />
                                             </div>
@@ -117,7 +117,7 @@
                                         <input type="button" value="Upload Picture" onclick="$('#upLoadEditProductPic').click()" class="btn btn-success" />
                                         @*<input ng-model="vm.p.photo" type="file" />*@
                                         <input name="newProductPhoto{{selectedProduct.Id}}" id="upLoadEditProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
-                                               onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
+                                               onchange="readImgURL(this,'#editProductPhotoPreveiw'), angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
 
 
                                         <div class="form-group">
@@ -296,6 +296,7 @@
 
 
         <div class="col-md-4">
+            
             <b class="message-Invalide">{{responseMessage}} </b>
             <form name="CreateNewProductForm" class="form" novalidate>
 
@@ -347,12 +348,12 @@
                         <textarea rows="4" cols="50" name="Description" id="Description" class="form-control" ng-model="newProduct.Description"></textarea>
                     </label>
                 </div>
-                <img id="photoPreveiw" src="#" alt="your image" />
+                <img id="newProductPhotoPreveiw" src="#" alt="your image" />
                 <br />
                 <input type="button" value="Upload Picture" onclick="$('#upLoadNewProductPic').click()" class="btn btn-success" />
                 @*<input ng-model="vm.p.photo" type="file" />*@
                 <input name="newProductPhoto" id="upLoadNewProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
-                       onchange="readImgURL(this),angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="productPhoto" />
+                       onchange="readImgURL(this, '#newProductPhotoPreveiw'), angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="newProductPhoto" />
                 <br />
                 <input type="button" class="btn btn-success" value="Save" ng-click="CreateProduct(newProduct)" />
 

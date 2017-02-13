@@ -22,7 +22,7 @@ namespace WebShop.Models
         [Range(0,Double.MaxValue,ErrorMessage ="Try Valid Price")]
         public decimal Price { get; set; }
 
-        [Display(Name="isRecommended")]
+        [Display(Name= "isRecommended")]
         public bool isRecommended { get; set; }
 
 

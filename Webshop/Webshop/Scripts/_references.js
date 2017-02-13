@@ -55,3 +55,4 @@
 /// <reference path="jquery-ui-1.12.1.js" />
 /// <reference path="lodash.js" />
 /// <reference path="modernizr-2.6.2.js" />
+/// <reference path="toaster.min.js" />

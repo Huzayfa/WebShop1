@@ -9,6 +9,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/fonts/Loader.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/toaster.min.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     
     <script src="~/Scripts/jquery-3.1.1.min.js"></script>
@@ -21,7 +22,7 @@
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script src="~/Scripts/angular-cookies.min.js"></script>
-
+    <script src="~/Scripts/toaster.min.js"></script>
 
 
 
@@ -34,15 +35,16 @@
 
     @Html.Partial("_NavBarPartialView")
     <div class="body-content" ng-controller="AppCtrl">
-        <div ng-show="Loading">
+        <div ng-show="Loading" class="loader">
             <img  src="~/fonts/lampaLoader.gif"
                  class="img-circle imgloader" />
         </div>
       
-        <div ng-show="Loading" class="loader">
+       @* <div ng-show="Loading" class="loader">
             
                  
-         </div>
+         </div>*@
+        <toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
         
         <div>
             @RenderBody()
@@ -98,6 +100,7 @@
 
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @*Including the style sheet*@
+    
     <link href="~/fonts/AngularValidationStyle.css" rel="stylesheet" />
     <link href="~/fonts/tableStyleSheeet.css" rel="stylesheet" />
 </body>
