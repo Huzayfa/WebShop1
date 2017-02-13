@@ -177,6 +177,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="angular2\app\app.component.ts" />
     <TypeScriptCompile Include="angular2\app\app.module.ts" />
+    <TypeScriptCompile Include="angular2\app\course.service.ts" />
+    <TypeScriptCompile Include="angular2\app\courses.component.ts" />
     <TypeScriptCompile Include="angular2\app\home\welcome.component.ts" />
     <TypeScriptCompile Include="angular2\app\main.ts" />
   </ItemGroup>

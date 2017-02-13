@@ -7,9 +7,10 @@
             <a href="#/ViewShopCart" class="btn btn-default" ng-click="">
                 <span class="glyphicon glyphicon-shopping-cart">{{cartLength}}</span>  Go To Cart
             </a>
+            <input type="text" ng-model="productFilter" />
         </div>
         <div class="row">
-            <div ng-repeat="product in productsList | orderBy:selectedOrder"
+            <div ng-repeat="product in productsList | filter :{Name:productFilter} | orderBy:selectedOrder"
                  class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
                 <div class="thumbnail">
                     <div id="ProductPhoto">

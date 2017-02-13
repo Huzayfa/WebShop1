@@ -1,16 +1,20 @@
 ﻿'use strict'
 app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,cartService, cookieOptionService) {
 
-    $scope.cartLength = cartService.cartLength;
+    $scope.cartLength = 0;
     
+    $scope.totalPrice = 0;
+    cartService.counteTotalPriceQuantity();
+    $scope.cartLength = cartService.cartLength;
+    $scope.totalPrice = cartService.totalPrice;
     $scope.cart = cartService.getCart();
    
    
     $scope.$watch('cart', function (neww, old) {
         cartService.setCart(neww);
-        counteTotalPriceQuantity(neww);
-        cartService.totalPrice = $scope.totalPrice;
-        cartService.cartLength = $scope.cartLength;
+        cartService.counteTotalPriceQuantity();
+        $scope.cartLength = cartService.cartLength;
+        $scope.totalPrice = cartService.totalPrice;
     }, true);
    
     var counteTotalPriceQuantity = function (cart)

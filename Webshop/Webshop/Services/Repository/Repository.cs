@@ -771,8 +771,8 @@ namespace WebShop.Services
                     OrderDate = order.OrderDate,
                     DeliverDate = order.DeliverDate,
                     TotalPrice = order.TotalPrice,
-                    CustomerName = order.Customer.FullName,
-                    CustomerEmail = order.Customer.Email,
+                    CustomerName = order.Customer != null ? order.Customer.FullName:"",
+                    CustomerEmail = order.Customer!=null? order.Customer.Email : "",
                     orderProducts = order.OrderProducts.Select(op => new OrderProductViewModel
                     {
                         Id = op.Id,

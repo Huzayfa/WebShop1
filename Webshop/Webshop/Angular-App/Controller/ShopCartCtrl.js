@@ -1,7 +1,7 @@
 ﻿'use strict'
 app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cookieOptionService, cartService)
 {
-
+    cartService.counteTotalPriceQuantity();
     $scope.cartLength = cartService.cartLength;
     $scope.productsList = [];
     $("body").css("cursor", "progress");
@@ -30,10 +30,11 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
 
 
     $scope.addToCart = function (product) {
-        var length=cartService.addToCart(product);
+        cartService.addToCart(product);
+        cartService.counteTotalPriceQuantity();
         if(length>0)
         {
-            $scope.cartLength=length;
+            $scope.cartLength = cartService.cartLength;
         }
 
     }

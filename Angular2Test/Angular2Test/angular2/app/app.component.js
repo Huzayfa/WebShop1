@@ -9,13 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var courses_component_1 = require('./courses.component');
 var AppComponent = (function () {
     function AppComponent() {
+        this.pageTitle = "Angular2 Page Title";
     }
     AppComponent = __decorate([
         core_1.Component({
             selector: 'pm-app',
-            template: "\n        <h1>Angular2: Getting Started</h1>\n    "
+            template: "\n        <h1>{{pageTitle}}</h1>\n        <h2>Angular2: Getting Started</h2>\n        <courses></courses>\n    ",
+            directives: [courses_component_1.CoursesComponent],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -1,5 +1,5 @@
 ﻿'use strict'
-app.controller('LoginCtrl', function ($scope, $http, $cookies, $location,$timeout, $window) {
+app.controller('LoginCtrl', function ($scope, $http, $cookies, $location, $timeout, $window, toaster) {
     $scope.responseMessage="";
     $scope.userLoginVieModel = {};
     var path = $location.absUrl();
@@ -20,13 +20,10 @@ app.controller('LoginCtrl', function ($scope, $http, $cookies, $location,$timeou
                
                 $window.location.reload();
             }
-           // $scope.$apply(function () {  });
         }).error(function (error) {
-            $scope.responseMessage = "UserName Or Password Is not Valid";
-            $timeout(function () {
-                $scope.responseMessage = "";
-
-            },3000);
+            
+            toaster.pop('error', "Error", "UserName Or PAssword Is not correct");
+            
         });
     };
 
