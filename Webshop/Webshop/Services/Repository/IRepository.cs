@@ -11,22 +11,29 @@ using WebShop.Models.Account;
 using WebShop.Models.ProductViewModels;
 using Webshop.Models.ProductViewModels;
 using WebShop.Models.OrderViewModels;
+using Webshop.Models;
 
 namespace WebShop.Services
 {
     public interface IRepository
     {
-        
+
+        //Contact Functions
+        ContactData GetContactInformations();
+        ActionResult EditContactInformations(ContactData newContact);
+
         List<UserForViewList> GetShoUserList();
         List<UserForViewList> GetRegUserList();
         Task<IdentityResult> CreateUser(ShopUserCreateViewModel user);
         ActionResult DeleteUser(string userId);
+        
         UserDetailsViewModel GetUserDetails(string userId);
         ActionResult EditUser(UserDetailsViewModel user);
 
 
         //Product Functions
         ActionResult DeleteProduct(int? productId);
+        
         ProductDetailsViewModel GetProductDetails(int? productId);
         ActionResult EditProduct(Product product);
         ActionResult DeleteOrder(int? orderId);

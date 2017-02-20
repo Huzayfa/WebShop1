@@ -73,6 +73,7 @@ namespace WebShop.Controllers
 
 
         //Get jeson List Of the User
+        [AllowAnonymous]
         public JsonResult Categories()
         {
             List<Category> categoriesList = _rep.GetCategoriesList();

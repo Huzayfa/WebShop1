@@ -8,7 +8,13 @@ app.controller('ViewShopCartCtrl', function ($window,$scope, $http, $cookies,car
     $scope.cartLength = cartService.cartLength;
     $scope.totalPrice = cartService.totalPrice;
     $scope.cart = cartService.getCart();
-   
+    $scope.printToCart = function (printSectionId) {
+        var innerContents = document.getElementById(printSectionId).innerHTML;
+        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><style> table { page-break-inside:auto; } td    { border:1px solid lightgray; } tr    { page-break-inside:auto; }</style></head><body onload="window.print()">' + innerContents + '</body></html>');
+        popupWinindow.document.close();
+    }
    
     $scope.$watch('cart', function (neww, old) {
         cartService.setCart(neww);

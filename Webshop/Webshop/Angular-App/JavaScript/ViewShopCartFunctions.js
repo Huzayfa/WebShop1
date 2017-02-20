@@ -4,7 +4,7 @@
 
     var form = $('#ConfirmShoping');
     var token = $('input[name="__RequestVerificationToken"]', form).val();
-    console.log(token);
+   
     $.ajax({
         url: window.location.origin +'/ShopCart/IsLogedIn',
         type: 'Get',

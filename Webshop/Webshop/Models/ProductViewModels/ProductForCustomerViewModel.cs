@@ -24,6 +24,8 @@ namespace Webshop.Models.ProductViewModels
         //Using this property to know how many product in the cart
         public int Quantity { get; set; }
 
+        public int CategoryId { get; set; }
+
         //Quantity to show to the Customers
         [Display(Name = "Stock quantity to show")]
         public int StockQuantityToShow { get; set; }

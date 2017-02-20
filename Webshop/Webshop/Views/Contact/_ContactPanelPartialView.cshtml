@@ -1,99 +1,98 @@
-﻿<div class="container">
+﻿
     <div class="row" ng-controller="ContactControlPanelCtrl">
         <div class="col-md-10 col-lg-10">
-
+            contactInformations
             <h1>Contact us</h1>
 
             <p>
-            <strong>Visit address:</strong> 
-            <br>
-            <br>
-            Fagrabäcksvägen 18 
-            <br>
-            352 40 VÄXJÖ
-            <br>
-            <br>
+                <strong>Visit address:</strong>
+                <br>
+                <br>
+                Fagrabäcksvägen 18
+                <br>
+                352 40 VÄXJÖ
+                <br>
+                <br>
             </p>
 
             <p>
-            <strong>Our shop in Växjö is open:</strong>
+                <strong>Our shop in Växjö is open:</strong>
             </p>
 
             <p>
-            <strong>Mon - Fri:</strong> 
-            10.00 - 18.00
-            <br>
-            <strong>Saturday:</strong>
-            10.00 - 15.00
-            <br>
-            <strong>Sunday      :</strong> 
-            11:00 - 15:00
-            </p>
-
-            <p>
-                <strong>
-                Our customerservice e-shopping is open:
-                </strong>
+                <strong>Mon - Fri:</strong>
+                {{contactInformations.OpningWorkDays}}
+                <br>
+                <strong>Saturday:</strong>
+                {{contactInformations.OpningSaturday}}
+                <br>
+                <strong>Sunday:</strong>
+                {{contactInformations.OpningSunday}}
             </p>
 
             <p>
                 <strong>
-                Mon - Fri:
+                    Our customerservice e-shopping is open:
                 </strong>
-                10.00 - 17.00
+            </p>
+            <p>
+                <strong>
+                    Mon - Sun:
+                </strong>
+                {{contactInformations.OpningCustomerService}}
             </p>
 
 
 
             <p>
-            <br>
+                <br>
                 Please send us a mail if you have any questions
             </p>
 
             <p>
-            <strong>
-                Telephone:</strong> 
-            <a href="tel:070-4410621">
-                070-4410621
-                <br>
+                <strong>
+                    Telephone:
+                </strong>
+                <a href="tel:{{contactInformations.Telephone}}">
+                    {{contactInformations.Telephone}}
+                    <br>
                 </a>
 
                 <strong>
                     Vxl:
                 </strong>
-                <a href="tel:0470-571072">
-                    0470-571072
+                <a href="tel:{{contactInformations.Vxl}}">
+                    {{contactInformations.Vxl}}
                     <br>
                 </a>
 
                 <strong>
                     Fax:
                 </strong>
-                <a href="tel:0735-275485">
-                    0735-275485
+                <a href="tel:{{contactInformations.Fax}}">
+                    {{contactInformations.Fax}}
                     <br>
                 </a>
 
                 <strong>
                     Mobil:
                 </strong>
-                <a href="tel:0735-405710">
-                    0735-405710
+                <a href="tel:{{contactInformations.Mobil}}">
+                    {{contactInformations.Mobil}}
                     <br>
                 </a>
 
 
 
-                 <strong>
-                Mail:
+                <strong>
+                    EMail:
                 </strong>
-            <a href="mailto:christopher.stinnerbom@hotmail.com">christopher.stinnerbom@hotmail.com</a>
-            <br>
-            <br>
+                <a href="{{contactInformations.EMail}}">{{contactInformations.EMail}}</a>
+                <br>
+                <br>
             </p>
 
 
-   
+
         </div>
     </div>
-</div>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Webshop.Models;
 using WebShop.Models;
 
 namespace WebShop
@@ -17,6 +18,8 @@ namespace WebShop
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+
+        public DbSet<ContactData> ContactData { get; set; }
 
        // public DbSet<ShopUser> Users { get; set; }
 

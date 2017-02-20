@@ -45,7 +45,11 @@ app.config(function ($routeProvider) {
         templateUrl: "/ShopCart/OrderConfirm/"
 
     }
-    ).otherwise({
+    ).when("/AdminContact",
+    {
+        templateUrl: "/Contact/AdminContact/",
+
+    }).otherwise({
         templateUrl:"",
         template: "<h1>Otherwise From Angular Route</h1>"
     });

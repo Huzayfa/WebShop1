@@ -1313,11 +1313,21 @@
     <Compile Include="Migrations\201701311046100_addAccessories2.Designer.cs">
       <DependentUpon>201701311046100_addAccessories2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702201132371_Product Quantity Minus.cs" />
+    <Compile Include="Migrations\201702201132371_Product Quantity Minus.Designer.cs">
+      <DependentUpon>201702201132371_Product Quantity Minus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702201423127_ConatctInfoAdded.cs" />
+    <Compile Include="Migrations\201702201423127_ConatctInfoAdded.Designer.cs">
+      <DependentUpon>201702201423127_ConatctInfoAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ContactData.cs" />
+    <Compile Include="Models\Events.cs" />
     <Compile Include="Models\Identity\AppRole.cs" />
     <Compile Include="Models\Identity\AppRoleManager.cs" />
     <Compile Include="Models\Identity\AppSignInManager.cs" />
@@ -1388,6 +1398,7 @@
     <Content Include="Views\Contact\_ContactPanelPartialView.cshtml" />
     <Content Include="Views\About\_AboutPanelPartialView.cshtml" />
     <Content Include="Views\ShopCart\_OrderConfirmPartialView.cshtml" />
+    <Content Include="Views\Contact\_AdminContactPanelPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1464,6 +1475,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701311046100_addAccessories2.resx">
       <DependentUpon>201701311046100_addAccessories2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201132371_Product Quantity Minus.resx">
+      <DependentUpon>201702201132371_Product Quantity Minus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702201423127_ConatctInfoAdded.resx">
+      <DependentUpon>201702201423127_ConatctInfoAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

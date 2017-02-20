@@ -66,6 +66,7 @@ app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http,
         fdata.append('Description', newProduct.Description);
         fdata.append('StockQuantity', newProduct.StockQuantity);
         fdata.append('StockQuantityToShow', newProduct.StockQuantityToShow);
+        console.log(fdata);
         var promise = $http({
             method: 'POST',
             url: "Product/Create",

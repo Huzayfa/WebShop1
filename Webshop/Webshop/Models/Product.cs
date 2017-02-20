@@ -35,7 +35,7 @@ namespace WebShop.Models
 
 
         //Quantity In the Stock
-        [Range(0,Int32.MaxValue,ErrorMessage ="Try Valid Quantity")]
+        //[Range(0,Int32.MaxValue,ErrorMessage ="Try Valid Quantity")]
         public int StockQuantity { get; set; }
 
 

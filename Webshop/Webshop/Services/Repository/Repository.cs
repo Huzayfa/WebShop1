@@ -17,6 +17,7 @@ using WebShop.Models.ProductViewModels;
 using Webshop.Models.ProductViewModels;
 using WebShop.Models.OrderViewModels;
 using System.IO;
+using Webshop.Models;
 
 namespace WebShop.Services
 {
@@ -330,6 +331,7 @@ namespace WebShop.Services
                 new ProductForCustomerViewModel
                 {
                     Id = p.Id,
+                    CategoryId=p.CategoryId!=null ? (int)p.CategoryId : 0,
                     Name = p.Name,
                     Price = p.Price,
                     Photo = p.Photo,
@@ -621,7 +623,7 @@ namespace WebShop.Services
                     if (it != null)
                     {
                         it.StockQuantity = it.StockQuantity - product.Quantity;
-                        it.StockQuantityToShow = it.StockQuantityToShow - product.Quantity;
+                        //it.StockQuantityToShow = it.StockQuantityToShow - product.Quantity;
                         DbContext.Entry(it).State = EntityState.Modified;
                     }
                     // - - - - -
@@ -813,5 +815,34 @@ namespace WebShop.Services
 
         #endregion
 
+
+        public ContactData GetContactInformations()
+        {
+            return DbContext.ContactData.FirstOrDefault();
+        }
+        public ActionResult EditContactInformations(ContactData newContact)
+        {
+            try
+            {
+                
+                if(newContact.Id == 0)
+                {
+                    DbContext.ContactData.Add(newContact);
+                }
+                else
+                {
+                    
+                    DbContext.Entry(newContact).State = EntityState.Modified;
+                    
+                }
+                DbContext.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch(Exception e)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
+        }
     }
 }

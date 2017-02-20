@@ -4,12 +4,24 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
     cartService.counteTotalPriceQuantity();
     $scope.cartLength = cartService.cartLength;
     $scope.productsList = [];
+    $scope.categoriesList = [];
     $("body").css("cursor", "progress");
     $http.get("/Product/ProductsForCustomer", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.productsList);
-
+       
         $("body").css("cursor", "default");
+
+    }
+
+    );
+    $http.get("/Category/Categories", { cache: false }).then(function (response) {
+
+        angular.copy(response.data, $scope.categoriesList);
+        console.log($scope.categoriesList);
+    }
+    ,
+    function () {
 
     }
 
