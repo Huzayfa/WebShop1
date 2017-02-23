@@ -1,6 +1,8 @@
 ﻿
 'use strict'
-app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList,toaster) {
+app.controller('ProductControlPanelListCtrl', function ($timeout, $scope, $http, $rootScope, pagingList, toaster) {
+
+    $scope.gPlace;
     $scope.newProduct = {};
     $scope.newProduct.isRecommended = false;
     $scope.newProduct.Description = "";

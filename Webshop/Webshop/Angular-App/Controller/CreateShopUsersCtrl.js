@@ -28,7 +28,7 @@
                   
                 }
             }, 3000);
-           // angular.copy(response.data, $scope.selectedProduct);
+           
         });
        
     }

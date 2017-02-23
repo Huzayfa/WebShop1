@@ -2,6 +2,7 @@
 'use strict'
 app.controller('ShopUsersListCtrl', function ($scope, toJavaScriptDate, $http) {
     $scope.usersList = [];
+    $scope.gPlace;
     $("body").css("cursor", "progress");
     $http.get("/ShopUser/ShopUsers",{cache:false}).then(function (response) {
 

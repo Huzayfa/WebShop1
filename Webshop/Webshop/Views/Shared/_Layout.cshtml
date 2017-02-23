@@ -49,12 +49,15 @@
         <div>
             @RenderBody()
         </div>
+        
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My WebShop</p>
         </footer>
     </div>
 
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm61-xZS8nyY0q_b1rEn34Kh2SmoXDdIQ&&callback="></script>
 
 
     
@@ -88,20 +91,15 @@
     <script src="~/Angular-App/Directive/OrderDetails.js"></script>
     <script src="~/Angular-App/Controller/OrderConfirmControlPanelCtrl.js"></script>
     <script src="~/Angular-App/Controller/ContactControlPanelCtrl.js"></script>
-    @* try Google Maps*@
+    <script src="~/Angular-App/Directive/GooglePlace.js"></script>
+
     
-    @*google Map*@
-    <script src="~/Angular-App/JavaScript/GoogleMaps.js"></script>
 
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm61-xZS8nyY0q_b1rEn34Kh2SmoXDdIQ&callback=initMap"></script>
-
-
+    <script src="~/Angular-App/Directive/ShopeGoogleMapCtrl.js"></script>
 
 
 
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    @*Including the style sheet*@
     
     <link href="~/fonts/AngularValidationStyle.css" rel="stylesheet" />
     <link href="~/fonts/tableStyleSheeet.css" rel="stylesheet" />

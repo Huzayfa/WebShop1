@@ -1,6 +1,5 @@
-﻿img{
+﻿.product-list-image{
     min-width:20px;
     min-height:20px;
-    max-width:200px;
-    max-height:250px;
+    max-height:120px;
 }

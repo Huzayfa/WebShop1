@@ -1,98 +1,108 @@
 ﻿
-    <div class="row" ng-controller="ContactControlPanelCtrl">
-        <div class="col-md-10 col-lg-10">
-            contactInformations
-            <h1>Contact us</h1>
+<div class="row" ng-controller="ContactControlPanelCtrl">
+    <div class="col-md-10 col-lg-10">
+        contactInformations
+        <h1>Contact us</h1>
 
-            <p>
-                <strong>Visit address:</strong>
+        <p>
+            <strong>Visit address:</strong>
+            <br>
+            <br>
+            Fagrabäcksvägen 18
+            <br>
+            352 40 VÄXJÖ
+            <br>
+            <br>
+            {{contactInformations.Address}}
+        </p>
+
+        <p>
+            <strong>Our shop in Växjö is open:</strong>
+        </p>
+
+        <p>
+            <strong>Mon - Fri:</strong>
+            {{contactInformations.OpningWorkDays}}
+            <br>
+            <strong>Saturday:</strong>
+            {{contactInformations.OpningSaturday}}
+            <br>
+            <strong>Sunday:</strong>
+            {{contactInformations.OpningSunday}}
+        </p>
+
+        <p>
+            <strong>
+                Our customerservice e-shopping is open:
+            </strong>
+        </p>
+        <p>
+            <strong>
+                Mon - Sun:
+            </strong>
+            {{contactInformations.OpningCustomerService}}
+        </p>
+
+
+
+        <p>
+            <br>
+            Please send us a mail if you have any questions
+        </p>
+
+        <p>
+            <strong>
+                Telephone:
+            </strong>
+            <a href="tel:{{contactInformations.Telephone}}">
+                {{contactInformations.Telephone}}
                 <br>
+            </a>
+
+            <strong>
+                Vxl:
+            </strong>
+            <a href="tel:{{contactInformations.Vxl}}">
+                {{contactInformations.Vxl}}
                 <br>
-                Fagrabäcksvägen 18
+            </a>
+
+            <strong>
+                Fax:
+            </strong>
+            <a href="tel:{{contactInformations.Fax}}">
+                {{contactInformations.Fax}}
                 <br>
-                352 40 VÄXJÖ
+            </a>
+
+            <strong>
+                Mobil:
+            </strong>
+            <a href="tel:{{contactInformations.Mobil}}">
+                {{contactInformations.Mobil}}
                 <br>
-                <br>
-            </p>
-
-            <p>
-                <strong>Our shop in Växjö is open:</strong>
-            </p>
-
-            <p>
-                <strong>Mon - Fri:</strong>
-                {{contactInformations.OpningWorkDays}}
-                <br>
-                <strong>Saturday:</strong>
-                {{contactInformations.OpningSaturday}}
-                <br>
-                <strong>Sunday:</strong>
-                {{contactInformations.OpningSunday}}
-            </p>
-
-            <p>
-                <strong>
-                    Our customerservice e-shopping is open:
-                </strong>
-            </p>
-            <p>
-                <strong>
-                    Mon - Sun:
-                </strong>
-                {{contactInformations.OpningCustomerService}}
-            </p>
+            </a>
 
 
 
-            <p>
-                <br>
-                Please send us a mail if you have any questions
-            </p>
-
-            <p>
-                <strong>
-                    Telephone:
-                </strong>
-                <a href="tel:{{contactInformations.Telephone}}">
-                    {{contactInformations.Telephone}}
-                    <br>
-                </a>
-
-                <strong>
-                    Vxl:
-                </strong>
-                <a href="tel:{{contactInformations.Vxl}}">
-                    {{contactInformations.Vxl}}
-                    <br>
-                </a>
-
-                <strong>
-                    Fax:
-                </strong>
-                <a href="tel:{{contactInformations.Fax}}">
-                    {{contactInformations.Fax}}
-                    <br>
-                </a>
-
-                <strong>
-                    Mobil:
-                </strong>
-                <a href="tel:{{contactInformations.Mobil}}">
-                    {{contactInformations.Mobil}}
-                    <br>
-                </a>
+            <strong>
+                EMail:
+            </strong>
+            <a href="{{contactInformations.EMail}}">{{contactInformations.EMail}}</a>
+            <br>
+            <br>
+        </p>
 
 
 
-                <strong>
-                    EMail:
-                </strong>
-                <a href="{{contactInformations.EMail}}">{{contactInformations.EMail}}</a>
-                <br>
-                <br>
-            </p>
-
-
-
-        </div>
     </div>
+    <style>
+        #map {
+            height: 420px;
+            width: 600px;
+        }
+    </style>
+    <div >
+        <div shope-Google-Map></div>
+    </div>
+</div>

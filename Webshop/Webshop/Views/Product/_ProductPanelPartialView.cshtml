@@ -208,7 +208,7 @@
                                             <td class="productActions">
                                                 <button ng-click="AddProducttoAccessories(product)" class="btn btn-sm btn-link" value="Delete">
                                                 <i class="glyphicon glyphicon-circle-arrow-right"></i>
-                                                    <i class="fa fa-arrow-circle-o-right"></i>
+                             
                                                 </button>
                                             </td>
                                         </tr>
@@ -355,6 +355,7 @@
                 <input name="newProductPhoto" id="upLoadNewProductPic" type="file" accept="image/gif, image/jpeg, image/png" ng-hide='true'
                        onchange="readImgURL(this, '#newProductPhotoPreveiw'), angular.element(this).scope().fileNameChanged(this)" value="Uplaod Pic" file-model="newProductPhoto" />
                 <br />
+       
                 <input type="button" class="btn btn-success" value="Save" ng-click="CreateProduct(newProduct)" />
 
             </form>

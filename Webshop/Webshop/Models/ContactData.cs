@@ -11,6 +11,8 @@ namespace Webshop.Models
         [Key]
         public int Id { get; set; }
 
+        public string Address { get; set; }
+
         public string OpningWorkDays { get; set; }
 
         public string OpningSaturday { get; set; }
@@ -22,6 +24,8 @@ namespace Webshop.Models
         
 
         public string Telephone { get; set; }
+
+        public string Fax { get; set; }
 
         public string Vxl { get; set; }
 

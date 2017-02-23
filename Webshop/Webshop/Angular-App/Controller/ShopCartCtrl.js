@@ -18,7 +18,7 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
     $http.get("/Category/Categories", { cache: false }).then(function (response) {
 
         angular.copy(response.data, $scope.categoriesList);
-        console.log($scope.categoriesList);
+
     }
     ,
     function () {
@@ -50,9 +50,5 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
         }
 
     }
-
-
-
-
 
 });

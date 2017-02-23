@@ -7,40 +7,37 @@
             <a href="#/ViewShopCart" class="btn btn-default" ng-click="">
                 <span class="glyphicon glyphicon-shopping-cart">{{cartLength}}</span>  Go To Cart
             </a>
-            <input type="text" ng-model="productFilter" />
-            <select name="categorySelect" id="categorySelect" ng-model="categoryFilter">
+            <input type="text" ng-model="productFilter" class="input-sm" />
+            <select class="input-sm" name="categorySelect" id="categorySelect" ng-model="categoryFilter">
+                <option value=''>Show All</option>
                 <option ng-repeat="category in categoriesList" value="{{category.Id}}">{{category.Name}}</option>
             </select>
+           
         </div>
+        <br />
         <div class="row">
             <div ng-repeat="product in productsList | filter :{Name:productFilter} |filter :{CategoryId:categoryFilter} | orderBy:selectedOrder"
-                 class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
-                <div class="thumbnail">
-                    <div id="ProductPhoto">
-                        <a href="#/ProductCustomerAllDetails/{{product.Id}}">
-                            <img ng-src="{{product.Photo}}" class="img-rounded "
-                                 alt="Fjords" style="height:12em" />
-                        </a>
-                    </div>
-                    <div>
+                 class="col-lg-4 col-md-3 col-sm-3 col-xs-12 text-center">
+                <div class="thumbnail" style="background-color:lightgray; height:18em" >
+                    <a href="#/ProductCustomerAllDetails/{{product.Id}}">
+                        <img ng-src="{{product.Photo}}" class="product-list-image img-rounded"
+                             width="200" height="400" />
+                    </a>
+                    <p>
                         <h5>{{product.Name}}</h5>
-                        <div class="Mytooltip">
+                        <strong class="Mytooltip">
                             Description
                             <span class="Mytooltiptext" ng-model="product.Description">
                                 {{product.Description}}
                             </span>
-                        </div>
-                    </div>
-                    <div>
+                        </strong>
+                        <br />
                         <span>Price:{{product.Price}}</span>
-                    </div>
-
-                    <div style="display:none" ng-bind="product.Id"></div>
-
+                    </p>
                     <button ng-click="addToCart(product)" class="btn btn-xs btn-primary" value="Add">Add To Cart</button>
                 </div>
             </div>
-            <div class="clearfix visible-xs"></div>
+           
         </div>
     </div>
 </div>

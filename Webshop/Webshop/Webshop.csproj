@@ -220,8 +220,10 @@
     <Content Include="Angular-App\Controller\RegisterUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ViewShopCartCtrl.js" />
+    <Content Include="Angular-App\Directive\GooglePlace.js" />
     <Content Include="Angular-App\Directive\OrderDetails.js" />
     <Content Include="Angular-App\Directive\ProductDetails.js" />
+    <Content Include="Angular-App\Directive\ShopeGoogleMapCtrl.js" />
     <Content Include="Angular-App\Directive\UploadPhotoDirective.js" />
     <Content Include="Angular-App\Factory\toJavaScriptDate.js" />
     <Content Include="Angular-App\Filter\MyDateFilter.js" />
@@ -1321,6 +1323,14 @@
     <Compile Include="Migrations\201702201423127_ConatctInfoAdded.Designer.cs">
       <DependentUpon>201702201423127_ConatctInfoAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702220934313_Fax to Contact.cs" />
+    <Compile Include="Migrations\201702220934313_Fax to Contact.Designer.cs">
+      <DependentUpon>201702220934313_Fax to Contact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702230936241_address to contactdata.cs" />
+    <Compile Include="Migrations\201702230936241_address to contactdata.Designer.cs">
+      <DependentUpon>201702230936241_address to contactdata.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
@@ -1481,6 +1491,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702201423127_ConatctInfoAdded.resx">
       <DependentUpon>201702201423127_ConatctInfoAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702220934313_Fax to Contact.resx">
+      <DependentUpon>201702220934313_Fax to Contact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702230936241_address to contactdata.resx">
+      <DependentUpon>201702230936241_address to contactdata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

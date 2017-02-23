@@ -1,15 +1,12 @@
 ﻿
 'use strict'
-app.controller('ContactControlPanelCtrl', function ($window, $scope, $http) {
+app.controller('ContactControlPanelCtrl', function ($window, $scope, $http, toaster) {
 
     $scope.contact = "Contact information ";
     $scope.contactInformations = {};
     $http.get("/Contact/GetContactInformations", { cache: false }).then(function (response) {
         angular.copy(response.data, $scope.contactInformations);
-        
-
     }
-
     );
     $scope.save = function () {
         var promise = $http({
