@@ -808,9 +808,24 @@ namespace WebShop.Services
         #endregion
 
 
+       
+
+
         public ContactData GetContactInformations()
         {
             return DbContext.ContactData.FirstOrDefault();
+        }
+        public string GetCompanyAddress()
+        {
+            var contactdata=DbContext.ContactData.FirstOrDefault();
+            if(contactdata != null)
+            {
+                return contactdata.Address;
+            }
+            else
+            {
+                return null;
+            }
         }
         public ActionResult EditContactInformations(ContactData newContact)
         {

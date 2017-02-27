@@ -228,12 +228,14 @@
     <Content Include="Angular-App\Factory\toJavaScriptDate.js" />
     <Content Include="Angular-App\Filter\MyDateFilter.js" />
     <Content Include="Angular-App\Filter\PagingList.js" />
+    <Content Include="Angular-App\JavaScript\GeneralData.js" />
     <Content Include="Angular-App\JavaScript\GoogleMaps.js" />
     <Content Include="Angular-App\JavaScript\SharedFunctions.js" />
     <Content Include="Angular-App\JavaScript\ViewShopCartFunctions.js" />
     <Content Include="Angular-App\Routing\WebShopRoute.js" />
     <Content Include="Angular-App\Service\CartService.js" />
     <Content Include="Angular-App\Service\CookieOptionService.js" />
+    <Content Include="Angular-App\Service\GeneralDataService.js" />
     <Content Include="Angular-App\Service\OrderServices.js" />
     <Content Include="Angular-App\Service\PagingList.js" />
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
@@ -345,6 +347,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\GoogleMapStyle.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -1499,7 +1502,9 @@
       <DependentUpon>201702230936241_address to contactdata.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\GeneralData\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -20,6 +20,7 @@ namespace WebShop.Services
 
         //Contact Functions
         ContactData GetContactInformations();
+        string GetCompanyAddress();
         ActionResult EditContactInformations(ContactData newContact);
 
         List<UserForViewList> GetShoUserList();
@@ -64,6 +65,8 @@ namespace WebShop.Services
         List<Category> GetCategoriesList();
         Category CreateCategory(Category category);
 
+
+       
 
         //Shoping Cart Functions
         ActionResult ConfirmShoping(List<Product> products);

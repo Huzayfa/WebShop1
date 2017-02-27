@@ -1,7 +1,8 @@
-﻿app.directive('shopeGoogleMap', function () {
+﻿app.directive('shopeGoogleMap', function (generalDataService) {
     var address = 'Fagrabäcksvägen 18, 352 40 Växjö, Sverige';
-
+   
     return {
+
         link: function (scope, element, attrs, model) {
            
             // Create a map object and specify the DOM element for display.
@@ -11,6 +12,7 @@
                 scrollwheel: true,
                 zoom: 15
             });
+            //Id For Css ;)
             element.attr('id', 'map');
             var geocoder = new google.maps.Geocoder();
             //var myLatLng = { lat: 56.8790044, lng: 14.8058522 };
@@ -19,39 +21,44 @@
             //    map: map,
             //    title: 'Our lampshop'
             //});
-            var address = 'Fagrabäcksvägen 18, 352 40 Växjö, Sverige';
-            google.maps.event.trigger(map, 'resize');
+            generalDataService.GetAddress().then(function (data) {
+                console.log(data);
+                google.maps.event.trigger(map, 'resize');
+                address = data;
+                if (geocoder) {
+                    geocoder.geocode({ 'address': address }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                map.setCenter(results[0].geometry.location);
 
-            if (geocoder) {
-                geocoder.geocode({ 'address': address }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-                            map.setCenter(results[0].geometry.location);
+                                var infowindow = new google.maps.InfoWindow(
+                                    {
+                                        content: '<b>' + address + '</b>',
+                                        size: new google.maps.Size(150, 50)
+                                    });
 
-                            var infowindow = new google.maps.InfoWindow(
-                                {
-                                    content: '<b>' + address + '</b>',
-                                    size: new google.maps.Size(150, 50)
+                                var marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                    map: map,
+                                    title: address
+                                });
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.open(map, marker);
                                 });
 
-                            var marker = new google.maps.Marker({
-                                position: results[0].geometry.location,
-                                map: map,
-                                title: address
-                            });
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infowindow.open(map, marker);
-                            });
-
+                            } else {
+                                alert("No results found");
+                            }
                         } else {
-                            alert("No results found");
+                            alert("Geocode was not successful for the following reason: " + status);
                         }
-                    } else {
-                        alert("Geocode was not successful for the following reason: " + status);
-                    }
-                });
-            }
+                    });
 
+
+                }
+
+            }
+            );
         }
     }
 });

@@ -10,7 +10,7 @@ using WebShop.Services;
 
 namespace WebShop.Controllers
 {
-   // [Authorize(Roles = "Admin")]
+   
     public class ContactController : Controller
     {
         private IRepository _rep;
@@ -44,6 +44,11 @@ namespace WebShop.Controllers
         public ActionResult EditContactInformations(ContactData newContact)
         {
             return _rep.EditContactInformations(newContact);
+        }
+
+        public ActionResult GetAddress()
+        {
+            return Json(_rep.GetCompanyAddress(),JsonRequestBehavior.AllowGet);
         }
 
     }
