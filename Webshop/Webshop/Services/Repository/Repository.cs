@@ -65,7 +65,7 @@ namespace WebShop.Services
         #region UserFunctions
         public List<UserForViewList> GetShoUserList()
         {
-            IQueryable<UserForViewList> query = DbContext.Users.Select(u => new UserForViewList { FullName = u.FirstName + " " + u.LastName, Email = u.Email, Id = u.Id });
+            IQueryable<UserForViewList> query = DbContext.Users.AsNoTracking().Select(u => new UserForViewList { FullName = u.FirstName + " " + u.LastName, Email = u.Email, Id = u.Id });
             List<UserForViewList> shopUsers = query.ToList();
             return shopUsers;
         }
@@ -552,7 +552,7 @@ namespace WebShop.Services
         public List<Category> GetCategoriesList()
         {
 
-            IEnumerable<Category> categories = DbContext.Categories;
+            IEnumerable<Category> categories = DbContext.Categories.AsNoTracking();
             if (categories != null)
             {
                 return categories.ToList();
@@ -750,7 +750,7 @@ namespace WebShop.Services
         public OrderViewMoedel GetOrderDetails(int? orderId)
         {
             //    var order = DbContext.Orders.Find(orderId);
-            var order = DbContext.Orders.Include(u => u.OrderProducts).Include(o => o.Customer).FirstOrDefault(o => o.Id == orderId);
+            var order = DbContext.Orders.AsNoTracking().Include(u => u.OrderProducts).Include(o => o.Customer).FirstOrDefault(o => o.Id == orderId);
 
             if (order == null)
             {
@@ -791,7 +791,7 @@ namespace WebShop.Services
 
         public List<Order> GetOrdersList()
         {
-            IEnumerable<Order> orders = DbContext.Orders;
+            IEnumerable<Order> orders = DbContext.Orders.AsNoTracking();
             if (orders != null)
             {
                 return orders.ToList();
