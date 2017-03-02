@@ -18,11 +18,12 @@
         <div class="row">
             <div ng-repeat="product in productsList | filter :{Name:productFilter} |filter :{CategoryId:categoryFilter} | orderBy:selectedOrder"
                  class="col-lg-4 col-md-3 col-sm-3 col-xs-12 text-center">
-                <div class="thumbnail" style="background-color:lightgray; height:18em" >
+                <div class="thumbnail" style="background-color:#f5f2f2; height:24em" >
                     <a href="#/ProductCustomerAllDetails/{{product.Id}}">
                         <img ng-src="{{product.Photo}}" class="product-list-image img-rounded"
-                             width="200" height="400" />
+                             width="150" height="200" />
                     </a>
+                    <br />
                     <p>
                         <h5>{{product.Name}}</h5>
                         <strong class="Mytooltip">

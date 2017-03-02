@@ -13,25 +13,37 @@
                 <a href="#/">Hello.. @User.Identity.GetUserName()</a>
             </li>
             <li>
-                <a href="#/ShopCart">Webbshop</a>
+                <a href="#/ShopCart" data-target=".navbar-collapse" data-toggle="collapse">Webbshop</a>
             </li>                        
             @if (User.IsInRole("Admin"))
             {
+
+
                 <li>
-                    <a href="#/Users">Users</a>
+                    <a href="#/Users" data-target=".navbar-collapse" data-toggle="collapse">Users</a>
                 </li>
-                <li>
-                    <a href="#/Products">Products</a>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                        Managements
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#/Products" data-target=".navbar-collapse" data-toggle="collapse">Products</a>
+                        </li>
+                        <li>
+                            <a href="#/Category" data-target=".navbar-collapse" data-toggle="collapse">Categories</a>
+                        </li>
+                        <li>
+                            <a href="#/Orders" data-target=".navbar-collapse" data-toggle="collapse">Orders</a>
+                        </li>
+                        <li>
+                            <a href="#/AdminContact" data-target=".navbar-collapse" data-toggle="collapse">AdminContact</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="#/Category">Categories</a>
-                </li>
-                <li>
-                    <a href="#/Orders">Orders</a>
-                </li>
-                <li>
-                    <a href="#/AdminContact">AdminContact</a>
-                </li>
+               
+                
             }
             <li>
                 <a href="javascript:window.localStorage.clear(),document.getElementById('LogOutForm').submit()">LogOff</a>
