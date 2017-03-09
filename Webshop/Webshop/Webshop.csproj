@@ -257,6 +257,8 @@
     <Content Include="Avatar\f5fea1e8-7da1-41b9-81e9-67e29183d773.jpg" />
     <Content Include="Avatar\fccf350e-1cf4-43cf-beda-090518321c7b.jpg" />
     <Content Include="Avatar\image-not-available.jpg" />
+    <Content Include="Avatar\Logo\4a4fe4c2dc3de3fd16728914ae4fac21.jpg" />
+    <Content Include="Avatar\Logo\laddaned.png" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
     <Content Include="bin\EntityFramework.SqlServer.xml" />
