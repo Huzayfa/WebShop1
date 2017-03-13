@@ -1,12 +1,18 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color:black !important;
+    color:gold !important;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.nav-bar-header-fex{
+    padding-bottom:2em;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -18,21 +24,37 @@ textarea {
 
 #header {
     padding: 5px 0;
-    width: 960px;
+    /*width: 960px;*/
     top: 0;
+    color:black !important;
+    background-color:gold !important;
+    opacity:0.9 !important;
     margin: auto;
+    /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
 }
 header{
-    background-color: #f6f6f6;
+    /*ackground-color: ;*/
     min-height: 75px;
 }
 
-.logo{
+
+.navbar>a{
+    color:black;
+}
+.nav-searchform{
+    border-top:none !important;
+    border-bottom:none !important;
+}
+
+
+/*.logo{
     background-image:url(../Avatar/Logo/laddaned.png);
     
     width:60px;
     height:60px;
     background-repeat:no-repeat;
-}  
+}*/
+
+
  
 

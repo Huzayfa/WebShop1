@@ -1,33 +1,38 @@
 ﻿
 
 <header>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" style="padding-top:10px">
 
-            <div class="row">
-                <section>
-                    <div class="logo col-sm-3 col-md-3">
-                        <a href="/"></a>
+            <div class="row topheader">
+               
+                    <div class="logo col-xs-4 col-sm-3 col-md-3">
+                        <a href="/">
+                            <img style="height:3em" class="img-rounded" src="~/Avatar/Logo/laddaned.png" />
+                        </a>
                     </div>
-                    <div class="col-sm-3 col-md-3">
-                        <ul>
+                    @*<div class="hidden-xs col-sm-3 col-md-3">
+                        <ul class="nav navbar-nav">
                             <li><a href="/kundservice-kundtjanst-vanliga-fragor-7607">Kundtjänst 033-10 85 00</a></li>
                             <li>
                                 <a href="" data-bind="click: accountPopupOpener">Mina sidor</a>
                             </li>
                             <li><a href="" data-bind="click: newsletterDialogOpener">Nyhetsbrev</a></li>
                         </ul>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                        <form class="navbar-form pull-right" role="search">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>*@
 
+                    <div class="col-xs-6 col-sm-3 col-md-3  pull-right">
+                        <form class="navbar-form nav-searchform" role="search">
+                            <div class="input-group">
+                                <input  style="color:black; background-color:goldenrod;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
+                                <div class="input-group-btn">
+                                    <button style="background-color:goldenrod;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
+                                </div>
                             </div>
                         </form>
                     </div>
-                </section>
+
+                
             </div>
 
             <div class="navbar-header">
@@ -36,13 +41,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+               
                 @Html.Partial("_LogInViewPartialView")
 
             </div>
         </div>
     </div>
 </header>
+<div class="nav-bar-header-fex" ></div>
