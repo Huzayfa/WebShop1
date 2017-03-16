@@ -1,35 +1,112 @@
 ﻿<div class="row">
 
-    <div class="col-md-4 col-sm-4">
-        <h5>{{product.Name}}</h5>
-        <p style="background-color:lightgray">
+    <div id="ProductPhoto" class="col-md-6 col-sm-6">
+
+        <!-- Lets make a simple image magnifier -->
+        <div class="magnify">
+
+            <!-- This is the magnifying glass which will contain the original/large version -->
+            <div class="large" style="background:url('http://localhost:50931{{product.Photo}}') no-repeat;
+	"></div>
+
+            <!-- This is the small image -->
+            <img  ng-src="{{product.Photo}}" class="small product-list-image img-rounded"
+                 /> 
+        </div>
+    </div>
+   
+    
+    <div class="col-md-6 col-sm-6 pull-left" >
+        <h2 style="margin-top:0px !important;">{{product.Name}}</h2>
+        <h5>Cartegory:{{product.CategoryName}}</h5>
+        <p >
             {{product.Description}}
         </p>
 
         <div>
             <span>Price:{{product.Price}}</span>
         </div>
-
-        <div style="display:none" ng-bind="product.Id"></div>
-
-        <button ng-click="addToCart(product)" class="btn btn-xs btn-primary" value="Delete">Add To Cart</button>
+        <button ng-click="addToCart(product)"
+                 class="btn btn-xs btn-primary" 
+               style="background-color:gold;color:black" value="Delete">Add To Cart</button>
     </div>
 
 
 
-    <div class="col-md-8 col-sm-8">
-        <div id="ProductPhoto">
-            <a href="">
-                <img ng-src="{{product.Photo}}" class="img-rounded"
-                     alt="Fjords" style="height:25em;" />
-            </a>
-        </div>
-    </div>
+    
    
 
 
 
 </div>
+
+<script>
+    $(document).ready(function () {
+
+        var native_width = 0;
+        var native_height = 0;
+
+        //Now the mousemove function
+        $(".magnify").mousemove(function (e) {
+            //When the user hovers on the image, the script will first calculate
+            //the native dimensions if they don't exist. Only after the native dimensions
+            //are available, the script will show the zoomed version.
+            var image_object = new Image();
+            image_object.src = $(".small").attr("src");
+            
+            if(!native_width && !native_height) {
+                //This will create a new image object with the same image as that in .small
+                //We cannot directly get the dimensions from .small because of the 
+                //width specified to 200px in the html. To get the actual dimensions we have
+                //created this image object.
+                
+                
+                //This code is wrapped in the .load function which is important.
+                //width and height of the object would return 0 if accessed before 
+                //the image gets loaded.
+                native_width = image_object.width;
+                native_height = image_object.height;
+            }
+            else {
+                //x/y coordinates of the mouse
+                //This is the position of .magnify with respect to the document.
+                var magnify_offset = $(this).offset();
+                //We will deduct the positions of .magnify from the mouse positions with
+                //respect to the document to get the mouse positions with respect to the 
+                //container(.magnify)
+                var mx = e.pageX - magnify_offset.left;
+                var my = e.pageY - magnify_offset.top;
+
+                //Finally the code to fade out the glass if the mouse is outside the container
+                if (mx < $(this).width() && my < $(this).height() && mx > 0 && my > 0) {
+                    $(".large").fadeIn(100);
+                }
+                else {
+                    $(".large").fadeOut(100);
+                }
+                if ($(".large").is(":visible")) {
+                    //The background position of .large will be changed according to the position
+                    //of the mouse over the .small image. So we will get the ratio of the pixel
+                    //under the mouse pointer with respect to the image and use that to position the 
+                    //large image inside the magnifying glass
+                    var rx = Math.round(mx / $(".small").width() * native_width - $(".large").width() / 2) * -1;
+                    var ry = Math.round(my / $(".small").height() * native_height - $(".large").height() / 2) * -1;
+                    var bgp = rx + "px " + ry + "px";
+
+                    //Time to move the magnifying glass with the mouse
+                    var px = mx - $(".large").width() / 2;
+                    var py = my - $(".large").height() / 2;
+                    //Now the glass moves with the mouse
+                    //The logic is to deduct half of the glass's width and height from the 
+                    //mouse coordinates to place it with its center at the mouse coordinates
+                    console.log(image_object.src);
+                    //If you hover on the image now, you should see the magnifying glass in action
+                    $(".large").css({ left: px, top: py, backgroundPosition: bgp,  });
+                }
+            }
+        })
+    })
+</script>
 
 <div>
     <h4 style="color:green;border-bottom:dotted,thick">Accessories</h4>

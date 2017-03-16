@@ -2,4 +2,15 @@
     min-width:20px;
     min-height:20px;
     max-height:200px;
+    max-width:200px;
+    
 }
+@media only screen and (max-width:350px) {
+    .product-list-image{
+    min-width:20px;
+    min-height:20px;
+    max-height:200px;
+    max-width:150px;
+    
+}
+    }
