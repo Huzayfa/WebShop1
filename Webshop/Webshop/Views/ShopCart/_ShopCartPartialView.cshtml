@@ -18,8 +18,8 @@
         <div class="row">
             <div ng-repeat="product in productsList | filter :{Name:productFilter} |filter :{CategoryId:categoryFilter} | orderBy:selectedOrder"
                  class="col-lg-4 col-md-3 col-sm-6 col-xs-12 text-center">
-                <div class="thumbnail ui-widget-shadow" style="color:gold !important;
-                                       border:none !important;             background-color:#0a0a0a; box-shadow: 2px 2px 9px gold; height:24em">
+                <div class="thumbnail ui-widget-shadow" style="color:black !important;
+                                       border:none !important;             background-color:#ffffff; box-shadow: 2px 2px 9px black; height:24em">
                     <a href="#/ProductCustomerAllDetails/{{product.Id}}">
                         <div style="height:200px;">
                             <img ng-src="{{product.Photo}}" class="product-list-image img-rounded" />
@@ -39,8 +39,7 @@
                     </p>
                     <button ng-click="addToCart(product)"
                             class="btn btn-xs btn-primary" value="Add"
-                            style="background-color:gold;
-                                    color:black;">
+                            >
                         Add To Cart
                     </button>
                 </div>

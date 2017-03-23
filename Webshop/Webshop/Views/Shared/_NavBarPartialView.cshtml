@@ -4,38 +4,32 @@
 }*@
 <header>
     <div id="header" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container" style="padding-top:10px">
+        <div class="container" style="padding-top:5px">
 
-            <div class="row topheader">
+            @*<div class="row topheader" style="margin:0 !important; padding:0 !important;">
                
-                    <div class="logo col-xs-4 col-sm-3 col-md-3">
+                    <div class="logo col-xs-4 col-sm-3 col-md-3"
+                         style="margin:0; padding:0;">
                         <a href="/">
                             <img style="height:3em" class="img-rounded" src="~/Avatar/Logo/laddaned.png" />
                         </a>
                     </div>
-                    @*<div class="hidden-xs col-sm-3 col-md-3">
-                        <ul class="nav navbar-nav">
-                            <li><a href="/kundservice-kundtjanst-vanliga-fragor-7607">Kundtjänst 033-10 85 00</a></li>
-                            <li>
-                                <a href="" data-bind="click: accountPopupOpener">Mina sidor</a>
-                            </li>
-                            <li><a href="" data-bind="click: newsletterDialogOpener">Nyhetsbrev</a></li>
-                        </ul>
-                    </div>*@
+                    
 
-                    <div class="col-xs-6 col-sm-3 col-md-3  pull-right">
+                    <div class="col-xs-6 col-sm-3 col-md-3  pull-right"
+                         style="margin:0 !important; padding:0 !important;">
                         <form class="navbar-form nav-searchform" role="search">
                             <div class="input-group">
-                                <input  style="color:black; background-color:goldenrod;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
+                                <input  style="color:black; background-color:#95e9df;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
                                 <div class="input-group-btn">
-                                    <button style="background-color:goldenrod;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
+                                    <button style="background-color:#95e9df;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
                                 </div>
                             </div>
                         </form>
                     </div>
 
                 
-            </div>
+            </div>*@
 
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,13 +37,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})
+                <div class="logo"
+                     style="margin:0; padding:0;">
+                    <a href="/">
+                        <img style="height:3em" class="img-rounded" src="~/Avatar/Logo/laddaned.png" />
+                    </a>
+                </div>
+               @* @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})*@
             </div>
             <div class="navbar-collapse collapse">
                
                 @Html.Partial("_LogInViewPartialView")
-
+                
+                    <form class="navbar-form nav-searchform" role="search">
+                        <div class="input-group">
+                            <input style="color:black; background-color:#95e9df;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
+                            <div class="input-group-btn">
+                                <button style="background-color:#95e9df;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+               
             </div>
+            
         </div>
     </div>
 </header>

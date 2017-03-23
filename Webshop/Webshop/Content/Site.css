@@ -1,8 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color:#2f2f24 !important;
-    color:gold !important;
+    background-color:white !important;
+    color:black !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,10 +24,10 @@ textarea {
 
 #header {
     padding: 5px 0;
-    /*width: 960px;*/
+    /*width: 960px; #136ad5*/
     top: 0;
     color:black !important;
-    background-color:gold !important;
+    background-color:royalblue !important;
     opacity:0.9 !important;
     margin: auto;
     /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
@@ -36,7 +36,13 @@ header{
     /*ackground-color: ;*/
     min-height: 75px;
 }
-
+.navbar-inverse .navbar-nav > li > a {
+    color: black;
+}
+.navbar-inverse .navbar-brand
+{
+    color:black;
+}
 
 .navbar>a{
     color:black;

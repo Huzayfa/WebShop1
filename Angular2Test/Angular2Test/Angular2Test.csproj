@@ -119,6 +119,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Angular2Readme-IMPORTANT.txt" />
     <Content Include="angular2\app\app.component.css" />
     <Content Include="angular2\app\home\welcome.component.html" />
     <Content Include="angular2\app\shared\star.component.css" />
@@ -130,12 +131,22 @@
     <Content Include="Global.asax" />
     <Content Include="angular2\index.html" />
     <Content Include="angular2\systemjs.config.js" />
+    <Content Include="index-JustForReference-DeleteIt.html" />
+    <Content Include="Scripts\App\app.component.html" />
+    <Content Include="Scripts\App\app.component.js" />
+    <Content Include="Scripts\App\app.module.js" />
+    <Content Include="Scripts\App\main.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\App\main.js.map" />
+    <Content Include="Scripts\App\app.module.js.map" />
+    <Content Include="Scripts\App\app.component.js.map" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +174,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="typings.json" />
+    <Content Include="tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -177,10 +190,13 @@
   <ItemGroup>
     <TypeScriptCompile Include="angular2\app\app.component.ts" />
     <TypeScriptCompile Include="angular2\app\app.module.ts" />
-    <TypeScriptCompile Include="angular2\app\course.service.ts" />
-    <TypeScriptCompile Include="angular2\app\courses.component.ts" />
+    <TypeScriptCompile Include="angular2\app\Courses\course.service.ts" />
+    <TypeScriptCompile Include="angular2\app\Courses\courses.component.ts" />
     <TypeScriptCompile Include="angular2\app\home\welcome.component.ts" />
     <TypeScriptCompile Include="angular2\app\main.ts" />
+    <TypeScriptCompile Include="Scripts\App\app.component.ts" />
+    <TypeScriptCompile Include="Scripts\App\app.module.ts" />
+    <TypeScriptCompile Include="Scripts\App\main.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

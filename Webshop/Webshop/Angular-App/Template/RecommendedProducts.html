@@ -11,17 +11,21 @@
                     $('#myCarousel').carousel({ interval: 3000, cycle: true });
                 });
 </script>
-<h2> Welcome To our Store</h2>
+<h2> Welcome to our store</h2>
 
 <div ng-controller="RecommendedProductCtrl">
-    <div class="container">
-        <div class="col-md-6">
+    <div class="container" >
+        <div class="col-md-12" 
+             >
             <br>
             <!--class="carousel slide"-->
             
             <div id="myCarousel"
                  class="{{carouselSlide}}"
-                 data-ride="carousel">
+                 data-ride="carousel"
+                 
+                 style="border-style:groove !important; border-color:#ecf5f3 !important;"
+                 >
                 <!-- Indicators Need mg repat with $index-->
                 <!--<ol class="carousel-indicators">
                     <li data-target="myCarousel" data-slide-to="0" class="active"></li>
@@ -30,11 +34,14 @@
 
                 </ol>-->
                 <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
+                <div class="carousel-inner" role="listbox" >
 
                     <div ng-repeat="product in recommedndedProductsList"
                          class="item"
-                         ng-class="{'active': $index == 0}">
+                         ng-class="{'active': $index == 0}"
+                         
+                         
+                         >
                         <img ng-src={{product.Photo}} alt="{{product.Name}}" style="height:15em;width:200px">
                         <div class="carousel-caption .text-muted bg-warning" style="background:transparent 20%;">
                             <h3>{{product.Name}}</h3>
