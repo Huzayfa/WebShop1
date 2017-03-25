@@ -4,13 +4,14 @@
 
     var form = $('#ConfirmShoping');
     var token = $('input[name="__RequestVerificationToken"]', form).val();
-   
+    console.log(scope.cart);
     $.ajax({
         url: window.location.origin +'/ShopCart/IsLogedIn',
         type: 'Get',
         success: function (result , statusText,status) {
 
             console.log(status.status);
+            
             $.ajax({
                 url: form.attr('action'),
                 type: 'POST',

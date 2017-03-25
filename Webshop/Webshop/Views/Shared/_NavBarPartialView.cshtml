@@ -3,7 +3,7 @@
 !important
 }*@
 <header>
-    <div id="header" class="navbar navbar-inverse navbar-fixed-top">
+    <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" style="padding-top:5px">
 
             @*<div class="row topheader" style="margin:0 !important; padding:0 !important;">
@@ -43,24 +43,30 @@
                         <img style="height:3em" class="img-rounded" src="~/Avatar/Logo/laddaned.png" />
                     </a>
                 </div>
+                
+                
                @* @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})*@
             </div>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <input style="color:black; background-color:#95e9df;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <button style="background-color:#95e9df;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
             <div class="navbar-collapse collapse">
                
                 @Html.Partial("_LogInViewPartialView")
-                
-                    <form class="navbar-form nav-searchform" role="search">
-                        <div class="input-group">
-                            <input style="color:black; background-color:#95e9df;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
-                            <div class="input-group-btn">
-                                <button style="background-color:#95e9df;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
                
+                    
+                
+                    
+                
             </div>
             
+            
         </div>
-    </div>
+    </nav>
 </header>
 <div class="nav-bar-header-fex" ></div>

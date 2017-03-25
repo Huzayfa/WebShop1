@@ -89,7 +89,10 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
     $scope.EditOrder = function (orderId) {
         $scope.selectedOrder={};
         orderServices.getOrderDetails(orderId).then(function (data) {
-            angular.copy(data,$scope.selectedOrder);
+            angular.copy(data, $scope.selectedOrder);
+            $scope.editSelected = true;
+            $scope.detailsSelected = false;
+            $scope.selectedOrderEditId = angular.copy(orderId);
         }
         ,
         function (error) {
@@ -97,9 +100,7 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
 
         });
         //$scope.selectedOrder = orderServices.getOrderDetails(orderId);
-        $scope.editSelected = true;
-        $scope.detailsSelected = false;
-        $scope.selectedOrderEditId = angular.copy(orderId);
+       
     }
 
     $scope.saveEditOrder = function (order) {
@@ -122,15 +123,18 @@ app.controller('OrderControlPanelListCtrl', function ($window, $scope, $http, $t
         $scope.selectedOrder = {};
 
         orderServices.getOrderDetails(orderId).then(function (data) {
-            angular.copy(data,$scope.selectedOrder);
+            angular.copy(data, $scope.selectedOrder);
+            $scope.selectedOrderDetails = angular.copy(orderId);
+            $scope.selectedOrderEditId = "";
+
+            $scope.editSelected = false;
+            $scope.detailsSelected = true;
+            console.log($scope.selectedOrder);
         },
         function (error) {
-        });
-        $scope.selectedOrderDetails = angular.copy(orderId);
-        $scope.selectedOrderEditId = "";
 
-        $scope.editSelected = false;
-        $scope.detailsSelected = true;
+        });
+        
     }
 
 }

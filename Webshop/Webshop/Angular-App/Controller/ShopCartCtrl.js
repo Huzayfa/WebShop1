@@ -44,10 +44,9 @@ app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cooki
     $scope.addToCart = function (product) {
         cartService.addToCart(product);
         cartService.counteTotalPriceQuantity();
-        if(length>0)
-        {
+       
             $scope.cartLength = cartService.cartLength;
-        }
+        
 
     }
 
