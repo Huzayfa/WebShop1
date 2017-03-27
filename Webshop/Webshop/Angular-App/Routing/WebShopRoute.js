@@ -49,6 +49,10 @@ app.config(function ($routeProvider) {
     {
         templateUrl: "/Contact/AdminContact/",
 
+    }).when("/AdminAboutUs",
+    {
+        templateUrl: "/About/AdminAboutUs/",
+
     }).otherwise({
         templateUrl:"",
         template: "<h1>Otherwise From Angular Route</h1>"

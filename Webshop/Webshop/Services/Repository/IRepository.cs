@@ -73,5 +73,8 @@ namespace WebShop.Services
         ActionResult EditOrder(Order user);
         List<Order> GetOrdersList();
         List<ProductForCustomerViewModel> GetRecommedndedProductsList();
+
+        AboutUs getAboutUsData();
+        ActionResult EditAboutUsData(AboutUs newData);
     }
 }

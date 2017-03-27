@@ -203,11 +203,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Angular-App\App\WebShop.js" />
+    <Content Include="Angular-App\Controller\AboutUsControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\OrderConfirmControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\AppCtrl.js" />
     <Content Include="Angular-App\Controller\CategoryControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\AboutControlPanelCtrl.js" />
-    <Content Include="Angular-App\Controller\JavaScript.js" />
     <Content Include="Angular-App\Controller\ContactControlPanelCtrl.js" />
     <Content Include="Angular-App\Controller\ProductCustomerAllDetailsCtrl.js" />
     <Content Include="Angular-App\Controller\RecommendedProductCtrl.js" />
@@ -220,6 +220,7 @@
     <Content Include="Angular-App\Controller\RegisterUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ViewShopCartCtrl.js" />
+    <Content Include="Angular-App\Directive\AngularTrix.js" />
     <Content Include="Angular-App\Directive\GooglePlace.js" />
     <Content Include="Angular-App\Directive\OrderDetails.js" />
     <Content Include="Angular-App\Directive\ProductDetails.js" />
@@ -1338,9 +1339,14 @@
     <Compile Include="Migrations\201702230936241_address to contactdata.Designer.cs">
       <DependentUpon>201702230936241_address to contactdata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703271157536_aboutus.cs" />
+    <Compile Include="Migrations\201703271157536_aboutus.Designer.cs">
+      <DependentUpon>201703271157536_aboutus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AdminUser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\RoleNames.cs" />
+    <Compile Include="Models\AboutUs.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ContactData.cs" />
@@ -1416,6 +1422,7 @@
     <Content Include="Views\About\_AboutPanelPartialView.cshtml" />
     <Content Include="Views\ShopCart\_OrderConfirmPartialView.cshtml" />
     <Content Include="Views\Contact\_AdminContactPanelPartialView.cshtml" />
+    <Content Include="Views\About\_AdminAboutUsPanelPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1504,6 +1511,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702230936241_address to contactdata.resx">
       <DependentUpon>201702230936241_address to contactdata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703271157536_aboutus.resx">
+      <DependentUpon>201703271157536_aboutus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

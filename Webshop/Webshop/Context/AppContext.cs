@@ -21,6 +21,8 @@ namespace WebShop
 
         public DbSet<ContactData> ContactData { get; set; }
 
+        public DbSet<AboutUs> AboutUs { get; set; }
+
         // public DbSet<ShopUser> Users { get; set; }
 
         public AppContext() : base("WebShopDB", throwIfV1Schema: false)        {

@@ -1,6 +1,9 @@
 ﻿app.controller('AppCtrl', function ($scope, $rootScope) {
-    console.log()
+    
+ 
    
+
+
     $rootScope.$on('$locationChangeStart', function (event, toState, toParams, fromState, fromParams) {
         $scope.Loading = true;
     });

@@ -808,7 +808,40 @@ namespace WebShop.Services
         #endregion
 
 
-       
+
+        public AboutUs getAboutUsData()
+        {
+            var aboutUs = DbContext.AboutUs.FirstOrDefault();
+
+
+            return (aboutUs!=null ? aboutUs : new AboutUs() { Id = 0, Content="" });
+        }
+
+        public ActionResult EditAboutUsData(AboutUs newData)
+        {
+            try
+            {
+                var aboutUsData = DbContext.AboutUs.FirstOrDefault();
+                if (aboutUsData == null)
+                {
+                    DbContext.AboutUs.Add(newData);
+                }
+                else
+                {
+                    aboutUsData.Content = newData.Content;
+                    DbContext.Entry(aboutUsData).State = EntityState.Modified;
+
+                }
+                DbContext.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+        }
+
 
 
         public ContactData GetContactInformations()
