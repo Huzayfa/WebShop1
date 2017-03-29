@@ -1,16 +1,19 @@
 ﻿
 
-app.controller('AboutUsControlPanelCtrl', function ($scope, $http) {
+app.controller('AboutUsControlPanelCtrl', function ($sce,$scope, $http) {
 
 
     $scope.data = {
-        text: "hello"
+        text: $sce.trustAsHtml("hello"),
     }
 
+
+    
+
     $http.get("/About/GetAboutUsInformations", { cache: false }).then(function (response) {
-        console.log(response.data.Content);
         //angular.copy(response.data.Content, $scope.data.text);
-        $scope.data.text = response.data.Content;
+        $scope.data.text = $sce.trustAsHtml(response.data.Content);
+        console.log($scope.data.text);
        
     }
 
