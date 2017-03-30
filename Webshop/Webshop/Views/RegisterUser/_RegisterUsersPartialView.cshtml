@@ -4,7 +4,7 @@
         <div class="col-md-8  table-bordered" ng-controller="RegisterUsersListCtrl">
             <div class="row table-bordered ">
                 <div class="col-xs-6 col-sm-4 col-md-4 btn-link" ng-click="selectOrderBy('FullName')">
-                    <h4>FullName</h4>
+                    <h4>fullständiga namn</h4>
                 </div>
                 <div class="col-xs-6 col-sm-4 col-md-4 btn-link" ng-click="selectOrderBy('Email')">
                     <h4>Email</h4>
@@ -18,23 +18,23 @@
                     {{user.Email}}
                 </div>
                 <div class="col-xs-12 col-md-4">
-                    <button ng-click="DeleteUser(user.Id)" class="btn btn-sm btn-link" value="Delete">Delete</button>
-                    <button ng-click="EditUser(user.Id)" class="btn btn-sm btn-link" value="Delete">Edit</button>
-                    <button ng-click="getUserDetails(user.Id)" class="btn btn-sm btn-link">Details</button>
+                    <button ng-click="DeleteUser(user.Id)" class="btn btn-sm btn-link" value="Delete">Ta Bort</button>
+                    <button ng-click="EditUser(user.Id)" class="btn btn-sm btn-link" value="Delete">Redigera</button>
+                    <button ng-click="getUserDetails(user.Id)" class="btn btn-sm btn-link">Detaljer</button>
                 </div>
                 <br />
                 <div class="col-md-12" ng-if='(user.Id==selectedUserEditId)&&editSelected '>
 
                     <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
-                    <h3>Edit User</h3>
+                    <h3>Redigera Användare</h3>
                     <form name="EditUserForm" class="form" novalidate>
 
 
                         <label class="control-label">
-                            FirstName: <input type="text" ng-model="selectedUser.FirstName" class="form-control" required />
+                            Förnamn: <input type="text" ng-model="selectedUser.FirstName" class="form-control" required />
                         </label>
                         <label class="control-label">
-                            Last Name : <input type="text" ng-model="selectedUser.LastName" class="form-control" required />
+                            Efternamn: <input type="text" ng-model="selectedUser.LastName" class="form-control" required />
                         </label>
                         <label class="control-label">
                             Email : <input type="text" ng-model="selectedUser.Email" class="form-control" required />
@@ -42,7 +42,7 @@
 
 
                         <label id="StreetAddress" class="control-label">
-                            StreetAddress:
+                            Gatuadress:
                             <input type="text" name="StreetAddress" ng-model="selectedUser.StreetAddress" class="form-control" required />
                             <span style="color:red" ng-show="EditUserForm.StreetAddress.$dirty && newUserForm.StreetAddress.$invalid">
                                 <span class="message-Invalide" ng-show="EditUserForm.StreetAddress.$error.required">StreetAddress is required.</span>
@@ -51,7 +51,7 @@
                         </label>
 
                         <label id="PostNumber" class="control-label">
-                            Post Number:
+                            Post Nummer:
                             <input type="text" name="PostNumber" ng-model="selectedUser.PostNumber" class="form-control" required />
                             <span style="color:red" ng-show="EditUserForm.PostNumber.$dirty && newUserForm.PostNumber.$invalid">
                                 <span class="message-Invalide" ng-show="EditUserForm.PostNumber.$error.required">Post Number is required.</span>
@@ -60,7 +60,7 @@
                         </label>
 
                         <label id="CityName" class="control-label">
-                            City Name:
+                            Stadens namn:
                             <input type="text" name="CityName" ng-model="selectedUser.City" class="form-control" required />
                             <span style="color:red" ng-show="EditUserForm.CityName.$dirty && newUserForm.CityName.$invalid">
                                 <span class="message-Invalide" ng-show="EditUserForm.CityName.$error.required">City Name is required.</span>
@@ -69,7 +69,7 @@
                         </label>
 
                         <label id="CountryName" class="control-label">
-                            Country Name:
+                            Lands Namn:
                             <input type="text" name="CountryName" ng-model="selectedUser.Country" class="form-control" required />
                             <span style="color:red" ng-show="EditUserForm.CountryName.$dirty && newUserForm.CountryName.$invalid">
                                 <span class="message-Invalide" ng-show="EditUserForm.CountryName.$error.required">Country Name is required.</span>
@@ -87,7 +87,7 @@
                         </label>
 
                         <label id="PhoneNumber" class="control-label">
-                            PhoneNumber:
+                            PhoneNummer:
                             <input type="text" name="PhoneNumber" ng-model="selectedUser.PhoneNumber" class="form-control" />
                             <span style="color:red" ng-show="EditUserForm.PhoneNumber.$dirty && newUserForm.PhoneNumber.$invalid">
 
@@ -104,7 +104,7 @@
                     <div class="row">
                         
                         <button type="button" ng-click="cancelEdit(user.Id)" class="close">&times;</button>
-                        <h3> User Details</h3>
+                        <h3> Användaruppgifter</h3>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -112,7 +112,7 @@
                                 <tbody>
                                     <tr>
                                         <th>
-                                            FirstName
+                                            Förnamn
                                         </th>
                                         <td>
                                             {{selectedUser.FirstName}}
@@ -120,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Last Name
+                                            Efternamn
                                         </th>
                                         <td>
                                             {{selectedUser.LastName}}
@@ -136,7 +136,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            PhoneNumber
+                                            PhoneNumbe
                                         </th>
                                         <td>
                                             {{selectedUser.PhoneNumber}}
@@ -161,7 +161,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            PostNumber
+                                            PostNummer
                                         </th>
                                         <td>
                                             {{selectedUser.PostNumber}}
@@ -169,7 +169,7 @@
                                     </tr>
                                     <tr>
                                         <th>
-                                            Country
+                                            Land
                                         </th>
                                         <td>
                                             {{selectedUser.Country}}
@@ -181,12 +181,12 @@
                         </div>
                        
                         <div class="col-sm-6">
-                            <h3>Number Of orders : {{selectedUser.orders.length}}</h3>
+                            <h3>Antalet beställningar : {{selectedUser.orders.length}}</h3>
                             <ul>
                                 <li ng-repeat="order in selectedUser.orders">
 
-                                    <label>Order Number: {{order.Id}} </label>
-                                    <label>Order Date: <b>{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</b></label>
+                                    <label>Ordernummer: {{order.Id}} </label>
+                                    <label>Orderdatum: <b>{{order.OrderDate  | date : 'dd-MMMM-yyyy' }}</b></label>
                                 </li>
 
                             </ul>

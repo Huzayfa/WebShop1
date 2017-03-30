@@ -5,34 +5,34 @@
         <form class="form-horizontal" ng-submit="login()">
            @* @Html.ValidationMessage(Model)*@
             <div class="form-group">
-                <label class="control-label col-sm-4 col-md-4" for="userName">UserName:</label>
+                <label class="control-label col-sm-4 col-md-4" for="userName">Användarnamn:</label>
                 <div class="col-sm-8 col-md-8">
                     <input id="userName" type="text" 
                           ng-model="userLoginVieModel.userName" 
                            class="form-control col-sm-8 col-md-8"
-                            placeholder="Enter User Name" />
+                            placeholder="Skriv in ditt användarnamn" />
                 </div>
 
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-4 col-md-4" for="passWord">PassWord :</label>
+                <label class="control-label col-sm-4 col-md-4" for="passWord">Lösenord :</label>
                 <div class="col-sm-8 col-md-8">
                     <input id="passWord" type="password" 
-                           ng-model="userLoginVieModel.passWord" class="form-control" placeholder="Password" />
+                           ng-model="userLoginVieModel.passWord" class="form-control" placeholder="Lösenord" />
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-4 col-md-8">
                     <div class="checkbox">
                         <label><input type="checkbox" 
-                              ng-model="userLoginVieModel.RememberMe"/>Remeber me </label>
+                              ng-model="userLoginVieModel.RememberMe"/>Kom ihåg mig </label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-4 col-md-10">
-                    <input type="submit" class="btn btn-success" value="LogIn" 
+                    <input type="submit" class="btn btn-success" value="Logga In" 
                            @*ng-click="login()"*@
                            />
                 </div>

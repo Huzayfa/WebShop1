@@ -6,11 +6,11 @@
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "LogOutForm" }))
     {
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-left">
 
             <li>
                 @*@Html.ActionLink("Hello.. " + User.Identity.GetUserName(), "Index", "Home", new { }, new { })*@
-                <a href="#/">Hello.. @User.Identity.GetUserName()</a>
+                <a href="#/" data-target=".navbar-collapse" data-toggle="collapse">Hej.. @User.Identity.GetUserName()</a>
             </li>
             <li>
                 <a href="#/ShopCart" data-target=".navbar-collapse" data-toggle="collapse">Webbshop</a>
@@ -27,22 +27,22 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#/Users" data-target=".navbar-collapse" data-toggle="collapse">Users</a>
+                            <a href="#/Users" data-target=".navbar-collapse" data-toggle="collapse">Använder</a>
                         </li>
                         <li>
-                            <a href="#/Products" data-target=".navbar-collapse" data-toggle="collapse">Products</a>
+                            <a href="#/Products" data-target=".navbar-collapse" data-toggle="collapse">Produkter</a>
                         </li>
                         <li>
-                            <a href="#/Category" data-target=".navbar-collapse" data-toggle="collapse">Categories</a>
+                            <a href="#/Category" data-target=".navbar-collapse" data-toggle="collapse">kategorier</a>
                         </li>
                         <li>
-                            <a href="#/Orders" data-target=".navbar-collapse" data-toggle="collapse">Orders</a>
+                            <a href="#/Orders" data-target=".navbar-collapse" data-toggle="collapse">Order</a>
                         </li>
                         <li>
-                            <a href="#/AdminContact" data-target=".navbar-collapse" data-toggle="collapse">AdminContact</a>
+                            <a href="#/AdminContact" data-target=".navbar-collapse" data-toggle="collapse">AdminKontact</a>
                         </li>
                         <li>
-                            <a href="#/AdminAboutUs" data-target=".navbar-collapse" data-toggle="collapse">AdminAboutUs</a>
+                            <a href="#/AdminAboutUs" data-target=".navbar-collapse" data-toggle="collapse">AdminOmOss</a>
                         </li>
                     </ul>
                 </li>
@@ -50,21 +50,21 @@
                 
             }
             <li>
-                <a href="javascript:window.localStorage.clear(),document.getElementById('LogOutForm').submit()">LogOff</a>
+                <a href="javascript:window.localStorage.clear(),document.getElementById('LogOutForm').submit()">Logga ut</a>
             </li>
 
             @if (!User.IsInRole("Admin"))
             {
                 <li>
-                    <a href="#/Register">Register</a>
+                    <a href="#/Register" data-target=".navbar-collapse" data-toggle="collapse">Registrera</a>
                 </li>
             }
 
             <li>
-                <a href="#/Contact">Contact</a>
+                <a href="#/Contact" data-target=".navbar-collapse" data-toggle="collapse">Kontact</a>
             </li>
             <li>
-                <a href="#/About">About us</a>
+                <a href="#/About" data-target=".navbar-collapse" data-toggle="collapse">Om Oss</a>
             </li>
             
 
@@ -75,21 +75,21 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="#/ShopCart">ShopCart</a>
+            <a href="#/ShopCart" data-target=".navbar-collapse" data-toggle="collapse">Shop varukorgen</a>
         </li>
         <li>
             @*Html.ActionLink("LogIn", "LogIn", "Account", new { }, new { })*@
-            <a href="#Login">LogIn</a>
+            <a href="#Login" data-target=".navbar-collapse" data-toggle="collapse">Logga In</a>
         </li>
         <li>
             @* Html.ActionLink("Register", "Register", "Account", new { }, new { }) *@
-            <a href="#/Register">Register</a>
+            <a href="#/Register" data-target=".navbar-collapse" data-toggle="collapse">Registrera</a>
         </li>
         <li>
-            <a href="#/Contact">Contact</a>
+            <a href="#/Contact" data-target=".navbar-collapse" data-toggle="collapse">Kontact</a>
         </li>
         <li>
-            <a href="#/About">About us</a>
+            <a href="#/About" data-target=".navbar-collapse" data-toggle="collapse">Om Oss</a>
         </li>
 
     </ul>

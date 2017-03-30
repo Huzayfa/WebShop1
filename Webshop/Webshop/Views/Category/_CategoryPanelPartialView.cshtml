@@ -15,22 +15,22 @@
                     <div class="modal-content ">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Edit Category</h4>
+                            <h4 class="modal-title">Redigera kategori</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <form name="EditCategoryForm" class="form-inline" novalidate>
                                         <label class="control-label">
-                                            Name: <input type="text" ng-model="selectedCategory.Name" class="form-control" required />
+                                            Namn: <input type="text" ng-model="selectedCategory.Name" class="form-control" required />
                                         </label>
-                                        <input type="button" class="btn btn-success" value="Save" ng-click="saveEditCategory(selectedCategory)" />
+                                        <input type="button" class="btn btn-success" value="Spara" ng-click="saveEditCategory(selectedCategory)" />
                                     </form>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Stänga</button>
                         </div>
                     </div>
 
@@ -51,18 +51,18 @@
                     <div class="modal-content ">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Details Category</h4>
+                            <h4 class="modal-title">Kategori detaljer</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label>Category Name : {{selectedCategory.Name}}</label>
+                                    <label>kategori namn : {{selectedCategory.Name}}</label>
                                 </div>
 
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Stänga</button>
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
             <table class="table table-bordered">
                 <tr>
                     <th ng-click="selectOrderBy('Name')" class="btn-link">
-                        Name
+                        Namn
                     </th>
                 </tr>
                 <tr ng-repeat="category in categoriesList | orderBy:selectedOrder">
@@ -86,13 +86,13 @@
                                 data-toggle="modal"
                                 data-target="#editCategoryModal"
                                 value="Edit">
-                            Edit
+                            Redigera
                         </button>
                         <button ng-click="getCategoryDetails(category.Id)" 
                                 class="btn btn-sm btn-link"
                                 data-toggle="modal"
                                 data-target="#detailsCategoryModal"
-                                >Details
+                                >Detaljer
                         </button>
                     </td>
                     
@@ -105,13 +105,13 @@
 
             <form name="newCategoryForm" class="form" novalidate>
                 <label class="control-label">
-                    Category Name:
+                    Kategori Namn:
                     <input type="text" name="newProductName" ng-model="newCategory.Name" class="form-control" required />
-                    <span ng-show="newCategoryForm.Name.$touched && newCategoryForm.Name.$invalid">The name is required.</span>
+                    <span ng-show="newCategoryForm.Name.$touched && newCategoryForm.Name.$invalid">Namnet krävs.</span>
                 </label>
 
 
-                <input type="button" class="btn btn-success" value="Save" ng-click="CreateCategory(newCategory)" />
+                <input type="button" class="btn btn-success" value="Spara" ng-click="CreateCategory(newCategory)" />
 
             </form>
 
