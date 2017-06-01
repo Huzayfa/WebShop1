@@ -21,7 +21,7 @@ app.config(function ($routeProvider) {
 
     }).when("/Category", {
         templateUrl: "/Category/"
-    }).when("/ShopCart", {
+    }).when("/ShopCart/:search", {
         templateUrl: "/ShopCart/"
     }).when("/ViewShopCart",
     {

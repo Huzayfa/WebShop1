@@ -1,6 +1,7 @@
 ﻿'use strict'
-app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window, cookieOptionService, cartService)
+app.controller('ShopCartCtrl', function ($scope, $http, $cookies, $window,$routeParams, cookieOptionService, cartService)
 {
+    $scope.productFilter = $routeParams.search;
     cartService.counteTotalPriceQuantity();
     $scope.cartLength = cartService.cartLength;
     $scope.productsList = [];

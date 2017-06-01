@@ -1,7 +1,6 @@
-﻿
-@*// @media only screen and (min-width:768px) {
-!important
-}*@
+﻿@*// @media only screen and (min-width:768px) {
+    !important
+    }*@
 <header>
     <nav id="header" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container" style="padding-top:5px">
@@ -23,7 +22,7 @@
 
                 @* @Html.ActionLink("WebShop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})*@
 
-                
+
             </div>
 
 
@@ -31,10 +30,25 @@
 
 
                 <form class="navbar-form navbar-right" role="search">
-                    <div class="input-group">
-                        <input style="color:black; background-color:#95e9df;" type="text" class="form-control input-sm" placeholder="Search" name="srch-term" id="srch-term">
+                    <div class="input-group" ng-controller="SearchCtrl">
+                        <input style="color:black;"
+                               
+                              ng-model="search"
+                               background-color:#95e9df;"
+                               type="text" class="form-control input-sm"
+                               placeholder="Search" name="srch-term"
+                               id="srch-term">
                         <div class="input-group-btn">
-                            <button style="background-color:#95e9df;" class="btn btn-default" type="submit"><i style="color:black;" class="glyphicon glyphicon-search"></i></button>
+                            <a href="#/ShopCart/{{search}}">
+
+
+                                <i style="background-color:#95e9df;"
+                                        
+                                        class="btn btn-default" type="submit">
+                                    <i style="color:black;" class="glyphicon glyphicon-search"></i>
+                                </i>
+
+                            </a>
                         </div>
                     </div>
                 </form>
@@ -42,11 +56,11 @@
 
 
             </div>
-           
-            
 
 
-    </div>
+
+
+        </div>
     </nav>
 </header>
-<div class="nav-bar-header-fex" ></div>
+<div class="nav-bar-header-fex"></div>

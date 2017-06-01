@@ -212,36 +212,48 @@ namespace WebShop.Services
 
         public Object GetProductCustomerAllDetails(int? productId)
         {
-            var product = DbContext.Products.Include("Category").Include("Accessories").First(p => p.Id == productId);
-            if (product != null)
-            {
-                var productForCustomer = new
-                {
-                    Id = product.Id,
-                    Description = product.Description,
-                    product.Price,
-                    product.StockQuantityToShow,
-                    product.Photo,
-                    product.Name,
-                    CategoryName = product.Category!=null?product.Category.Name:"Overrigt",
-                    Accessories = product.Accessories.Select(p => new ProductForCustomerViewModel()
-                    {
-                        Id = p.Id,
-                        Price = p.Price,
-                        Photo = p.Photo,
-                        Name = p.Name,
-                        Description = p.Description,
-                        StockQuantityToShow = p.StockQuantityToShow,
-                    }),
 
-                };
-                return productForCustomer;
+            try
+            {
+                var product = DbContext.Products.Include("Category").Include("Accessories").First(p => p.Id == productId);
+                if (product != null)
+                {
+                    var productForCustomer = new
+                    {
+                        Id = product.Id,
+                        Description = product.Description,
+                        product.Price,
+                        product.StockQuantityToShow,
+                        product.Photo,
+                        product.Name,
+                        CategoryName = product.Category != null ? product.Category.Name : "Overrigt",
+                        Accessories = product.Accessories.Select(p => new ProductForCustomerViewModel()
+                        {
+                            Id = p.Id,
+                            Price = p.Price,
+                            Photo = p.Photo,
+                            Name = p.Name,
+                            Description = p.Description,
+                            StockQuantityToShow = p.StockQuantityToShow,
+                        }),
+
+                    };
+                    return productForCustomer;
+                }
             }
-            else
+            //Product not found or product ID Null
+            catch (System.InvalidOperationException e)
+            {
+                return null;
+
+            }
+            catch (System.ArgumentNullException e)
             {
                 return null;
             }
-
+            return null;
+            
+           
 
         }
 

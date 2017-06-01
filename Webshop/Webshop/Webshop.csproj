@@ -216,6 +216,7 @@
     <Content Include="Angular-App\Controller\LoginCtrl.js" />
     <Content Include="Angular-App\Controller\OrderControlPanelListCtrl.js" />
     <Content Include="Angular-App\Controller\ProductControlPanelListCtrl.js" />
+    <Content Include="Angular-App\Controller\SearchCtrl.js" />
     <Content Include="Angular-App\Controller\ShopCartCtrl.js" />
     <Content Include="Angular-App\Controller\RegisterUsersListCtrl.js" />
     <Content Include="Angular-App\Controller\ShopUsersListCtrl.js" />

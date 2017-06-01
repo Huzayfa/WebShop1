@@ -14,6 +14,7 @@
 /// <reference path="../angular-app/controller/recommendedproductctrl.js" />
 /// <reference path="../angular-app/controller/registershopusersctrl.js" />
 /// <reference path="../angular-app/controller/registeruserslistctrl.js" />
+/// <reference path="../angular-app/controller/searchctrl.js" />
 /// <reference path="../angular-app/controller/shopcartctrl.js" />
 /// <reference path="../angular-app/controller/shopuserslistctrl.js" />
 /// <reference path="../angular-app/controller/viewshopcartctrl.js" />
