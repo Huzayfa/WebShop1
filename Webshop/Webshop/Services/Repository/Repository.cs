@@ -223,7 +223,7 @@ namespace WebShop.Services
                     product.StockQuantityToShow,
                     product.Photo,
                     product.Name,
-                    CategoryName = product.Category.Name,
+                    CategoryName = product.Category!=null?product.Category.Name:"Overrigt",
                     Accessories = product.Accessories.Select(p => new ProductForCustomerViewModel()
                     {
                         Id = p.Id,
@@ -253,7 +253,7 @@ namespace WebShop.Services
 
             var pView = new ProductDetailsViewModel()
             {
-                Category = product.Category.Name,
+                Category = product.Category!=null?product.Category.Name:"Overrigt",
                 Description = product.Description,
                 Name = product.Name,
                 Photo = product.Photo,
@@ -509,13 +509,27 @@ namespace WebShop.Services
             }
             else
             {
-                var category = DbContext.Categories.Find(categoryId);
+                //var category = DbContext.Categories.Find(categoryId);
+                var category = DbContext.Categories.Include("Products").FirstOrDefault(c=>c.Id==categoryId) ;
                 if (category == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                 }
                 else
                 {
+                    if(category.Products!=null)
+                    {
+                        List<Product> prouducts = category.Products.ToList<Product>();
+                        for(int i=0;i< prouducts.Count;i++)
+                        {
+                            prouducts[i].CategoryId = null;
+                            DbContext.Entry(prouducts[i]).State = EntityState.Modified;
+
+
+                        }
+                        
+                    }
+
                     DbContext.Categories.Remove(category);
                     DbContext.SaveChanges();
                     return new HttpStatusCodeResult(HttpStatusCode.OK);

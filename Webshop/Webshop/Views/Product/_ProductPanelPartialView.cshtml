@@ -69,6 +69,7 @@
                                         <label class="control-label">
                                             Kategori:
                                             <select name="categorySelect" id="categorySelect" class="form-control" ng-model="selectedProduct.CategoryId">
+                                                <option value="null">Overrigt</option>
                                                 <option ng-repeat="category in categoriesList" value="{{category.Id}}" ng-selected="category.Id==selectedProduct.CategoryId">{{category.Name}}</option>
                                             </select>
                                         </label>

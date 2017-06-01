@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Articel</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2
+                    col-sm-11 col-sm-offset-1
+                    col-xs-11 col-xs-offset-1
+                 ">
+                <article>
+                    <header>
+                        <h1>BEPS news</h1>
+                        <p>Sweden</p>
+                    </header>
+                    <p>                        CbC Reporting Update on Sweden and Hungary, Amendments to withholding taxes in South Africa and Oman
+                        4/4/2017
+
+                        BEPS news
+
+                        Sweden
+                        On 3 March 2017, the proposed law (Prop. 2016/17:47) implementing OECD country-by-country (CbC) reporting and transposing EU Directive 2016/881/EU on the exchange of ruling reports between EU Member States into national legislation, as presented to the parliament was adopted by the parliament. The amendments will enter into force on 1 April 2017. </p>
+
+                    <footer>
+                        <p><small>write your comment</small></p>
+                    </footer>
+                </article>
+            </div>
+
+
+
+
+            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2
+                 col-xs-8 col-xs-offset-2
+                 ">
+                <div id="Comments">
+
+                </div>
+                
+                    <input class="input-lg" type="text" id="newComment" />
+                    <button class="btn btn-primary"
+                            onClick="addComment()">
+                        Add  Comment
+                    </button>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            
+        </div>
+    </div>
+   
+      <style>
+        article {
+            display: block;
+            border:5px;
+        }
+        header>p{
+            font-size:xx-large;
+        }
+        article>p{
+            font-size:x-large;
+        }
+        footer>p{
+            font-size:xx-large;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        (function ()
+        {
+            /*when the page is ready call the function to read 
+            user comments*/
+            window.onload = initComments;
+
+        }
+        )();
+        /*
+            Function to read the comments of the user saved in his local browser
+            to show them in the page
+        */
+        function initComments() {
+            if (Storage !== "undefined") {
+                if (localStorage["myComments"] !== undefined) {
+                    var storedComments = JSON.parse(localStorage["myComments"]);
+                    var comments = document.getElementById("Comments");
+                    for (var i = 0; i < storedComments.length; i++) {
+                        var newComment = document.getElementById("newComment");
+
+                        var newCommentDiv = document.createElement("DIV");
+                        newCommentDiv.className += newCommentDiv.className + "well";
+                        var node = document.createTextNode(storedComments[i]);
+                        var newCommentPar = document.createElement("P");
+                        newCommentPar.appendChild(node);
+                        newCommentDiv.appendChild(newCommentPar);
+                        comments.appendChild(newCommentDiv);
+                        console.log(newComment.value);
+                    }
+                }
+                else {
+                    var storedComments = new Array();
+                    storedComments[0] = value;
+                    localStorage["myComments"] = JSON.stringify(storedComments);
+
+                }
+
+
+            }
+            else {
+                console.log("Old Browser");
+            }
+        };
+        /*
+            when the user add new comment must we save this comment
+            in the localstorag to show them in the new visit
+        */
+        function addCommentToStorage(value)
+        {
+            if (Storage !== "undefined" && localStorage!=="undefined")
+            {
+                if (localStorage["myComments"] !== undefined)
+                {
+                    var storedComments = JSON.parse(localStorage["myComments"]);
+                    storedComments[storedComments.length] = value;
+                    localStorage["myComments"] = JSON.stringify(storedComments);
+                }
+                else
+                {
+                    var storedComments = new Array();
+                    storedComments[0] = value;
+                    localStorage["myComments"] = JSON.stringify(storedComments);
+
+                }
+                for(var i=0;i<storedComments.length;i++)
+                {
+                    console.log(storedComments[i]);
+                }
+
+            }
+            else
+            {
+                console.log("Old Browser");
+            }
+
+        }
+
+        /*
+            Function will be called when the user click 'Add comment'
+            it will add new comment to the page and will call the function
+            'addCommentToStorage' to save data in the localSorage
+        */
+        function addComment()
+        {
+
+            //var db = new PouchDB("myData");
+            //console.log(db);
+            var newComment = document.getElementById("newComment");
+            if (newComment.value.trim() !== "")
+            {
+                var comments = document.getElementById("Comments");
+                var newCommentDiv = document.createElement("DIV");
+                newCommentDiv.className += newCommentDiv.className + "well";
+                var node = document.createTextNode(newComment.value);
+                addCommentToStorage(newComment.value);
+                var newCommentPar = document.createElement("P");
+                newCommentPar.appendChild(node);
+                newCommentDiv.appendChild(newCommentPar);
+                comments.appendChild(newCommentDiv);
+                newComment.value = "";
+            }
+            else
+            {
+                alert("No comment to add");
+            }
+            
+
+        }
+    </script>
+</body>
+</html>

@@ -48,7 +48,7 @@ namespace WebShop.Models.ProductViewModels
         public string Photo { get; set; }
 
         
-        public int? CategoryId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
         
         public NewProductViewModel() :base()
         {

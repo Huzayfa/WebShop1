@@ -242,6 +242,7 @@
     <Content Include="Angular-App\Template\Directive\OrderDetailsPartialView.html" />
     <Content Include="Angular-App\Template\Directive\ProductDetailsPartialView.html" />
     <Content Include="Angular-App\Template\RecommendedProducts.html" />
+    <Content Include="Angular-App\Template\Test.html" />
     <Content Include="Angular-App\Test\PagingAngular.js" />
     <Content Include="App_Data\WebShopDB.mdf" />
     <Content Include="App_Data\WebShopDB_log.ldf">
@@ -1217,7 +1218,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Context\AppContext.cs" />
+    <Compile Include="Content\AppContext.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -1517,6 +1518,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Context\" />
     <Folder Include="Views\GeneralData\" />
   </ItemGroup>
   <PropertyGroup>

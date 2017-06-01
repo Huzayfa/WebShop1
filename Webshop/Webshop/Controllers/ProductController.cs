@@ -125,7 +125,17 @@ namespace WebShop.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Exclude ="Category")] Product product)
         {
-            
+            if (product.CategoryId == null)
+            {
+                foreach (var k in ModelState.Keys)
+                {
+                    if (k.Contains("CategoryId"))
+                    {
+                        ModelState[k].Errors.Clear();
+                    }
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 return _rep.EditProduct(product);
@@ -164,6 +174,16 @@ namespace WebShop.Controllers
         [HttpPost]
         public ActionResult Create(NewProductViewModel product)
         {
+            if(product.CategoryId==null)
+            {
+                foreach (var k in ModelState.Keys)
+                {
+                    if (k.Contains("CategoryId"))
+                    {
+                        ModelState[k].Errors.Clear();
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 var newProduct = _rep.CreateProduct(product);
