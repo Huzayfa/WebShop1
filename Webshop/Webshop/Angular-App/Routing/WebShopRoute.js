@@ -23,6 +23,8 @@ app.config(function ($routeProvider) {
         templateUrl: "/Category/"
     }).when("/ShopCart/:search", {
         templateUrl: "/ShopCart/"
+    }).when("/ShopCart", {
+        templateUrl: "/ShopCart/"
     }).when("/ViewShopCart",
     {
         templateUrl: "/ShopCart/ViewShopCart"
